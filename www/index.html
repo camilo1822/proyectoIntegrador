@@ -19,10 +19,10 @@
       </ion-header-bar>
       <ion-content>
         <div class="list">
-          <a class="item item-avatar-left" ng-repeat="lugar in lugares" href="https://www.facebook.com/" target="_blank">
-            
+          <a class="item item-avatar-left" ng-repeat="lugar in lugares" target="_blank">
+            <img ng-src="{{lugar.image}}">
             <h2>{{ lugar.title }}</h2>
-            <p>{{ lugar.descripcion }}</p>
+            <p>{{ lugar.direccion }}</p>
           </a>
         </div>
       </ion-content>

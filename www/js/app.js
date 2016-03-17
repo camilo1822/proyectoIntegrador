@@ -7,7 +7,7 @@
   app.controller('LugaresCtrl',function($scope,$http){
     $scope.lugares=[
       {title:'primer post',
-      image:'primer post',
+      image:'http://i1030.photobucket.com/albums/y367/Juan_Camilo_Arboleda_Gutierrez/Lugares/vill_zpskxukfdqc.jpg',
       direccion:'primer post',
       latitud:'primer post',
       longitud:'primer post',
