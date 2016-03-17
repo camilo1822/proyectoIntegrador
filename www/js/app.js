@@ -32,15 +32,23 @@
       qr:'tercero post'}
     ];
       });*/
-    $scope.lugares=[];
+    //$scope.lugares=[];
+    $http.get('https://cultural-api.herokuapp.com/api/listaDeLugares').then(function(response) {
+      $scope.lugares = response.data;
+      
+    }
+    
+      /*.success(function(data) {
+      $scope.lugares = data;*/
 
-    $http.get('https://cultural-api.herokuapp.com/api/listaDeLugares')
-      .success(function(lugares){
+      })
+    //$http.get('https://cultural-api.herokuapp.com/api/listaDeLugares')
+      /*.success(function(lugares){
         //console.log(posts);
-        angular.forEach(lugares.lugares,function(lugar){
+        angular.forEach(lugares,function(lugar){
           $scope.lugares.push(lugar);
         });
-      });
+      });*/
   });
   
 
