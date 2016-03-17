@@ -5,7 +5,7 @@
 
   //creamos los controladores
   app.controller('LugaresCtrl',function($scope,$http){
-    $scope.lugares=[
+    /*$scope.lugares=[
       {title:'primer post',
       image:'http://i1030.photobucket.com/albums/y367/Juan_Camilo_Arboleda_Gutierrez/Lugares/vill_zpskxukfdqc.jpg',
       direccion:'primer post',
@@ -31,7 +31,17 @@
       tipo:'tercero post',
       qr:'tercero post'}
     ];
+      });*/
+    $scope.lugares=[];
+
+    $http.get('https://cultural-api.herokuapp.com/api/listaDeLugares')
+      .success(function(lugares){
+        //console.log(posts);
+        angular.forEach(lugares.lugares,function(lugar){
+          $scope.lugares.push(lugar);
+        });
       });
+  });
   
 
   app.run(function($ionicPlatform) {
