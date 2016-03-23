@@ -3,30 +3,52 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
+    <title>Spinnerbank</title>
 
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <link href="lib/ionic/css/ionic.css?ionicCachebuster=25304" rel="stylesheet">
+    <link href="css/style.css?ionicCachebuster=25304" rel="stylesheet">
+    <script src="lib/ionic/js/ionic.bundle.js?ionicCachebuster=25304"></script>
+
+    <link href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css?ionicCachebuster=25304" rel="stylesheet">
+    
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+   
+
+     <!-- ionic/angularjs js -->
+    <script src="lib/angular/angular.min.js"></script>
+    
+    
+    <!-- Firebase & AngularFire -->
+<script src="lib/firebase/firebase.js"></script>
+<script src="lib/angularfire/dist/angularfire.min.js"></script>
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/lodash/lodash.min.js"></script>
+    <script src="lib/angular-google-maps/dist/angular-google-maps.min.js"></script>
+    <script src="lib/angular-simple-logger/dist/angular-simple-logger.min.js"></script>
     <script src="cordova.js"></script>
-    <script src="js/app.js"></script>
-  </head>
-  <body ng-app="starter" ng-controller="LugaresCtrl">
 
-    <ion-pane>
-      <ion-header-bar class="bar-stable">
-        <h1 class="title">Lugares</h1>
-      </ion-header-bar>
-      <ion-content>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/routes.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/directives.js"></script>
+    
+
+  </head>
+ <body ng-app="app" animation="slide-left-right-ios7">
+  <div>
+    <div>
       
-        <div class="list">
-          <a class="item item-avatar-left" ng-repeat="lugar in lugares" target="_blank">
-            <img ng-src="{{lugar.image}}">
-            <h2>{{ lugar.title }}</h2>
-            <p>{{ lugar.direccion }}</p>
-          </a>
-        </div>
-      </ion-content>
-    </ion-pane>
+        <ion-nav-bar class="bar-stable bar-positive">
+            <ion-nav-back-button class="button-icon icon ion-ios-arrow-back">Back</ion-nav-back-button>
+        </ion-nav-bar>
+        <ion-nav-view></ion-nav-view>
+    </div>
+</div>
   </body>
+   
 </html>

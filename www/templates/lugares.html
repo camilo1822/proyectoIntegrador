@@ -1,0 +1,29 @@
+<ion-view view-title="Lugares" hide-back-button="true" >
+ <div class="bar bar-subheader item-input-inset
+      bar-light">
+      <label class="item-input-wrapper">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="search" ng-model="query" placeholder="Search">
+      </lable>
+ </div>
+ 
+  <ion-content  class="has-subheader">
+
+    <ion-list show-reorder="data.showReorder">
+        <ion-item ng-repeat='lugar in lugares | filter:query' class="item item-icon-left item-text-wrap"
+         >
+  
+        
+        <h2>{{lugar.title}}</h2>
+        direccion: {{lugar.direccion}} 
+       
+      </ion-item>
+
+      </ion-list>
+
+       
+               
+             
+  </ion-content>
+</ion-view>
+
