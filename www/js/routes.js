@@ -16,14 +16,11 @@ angular.module('app.routes', [])
     controller: 'LoginCtrl as ctrl'
 })
 
-.state('app.lugares', {
+.state('lugares', {
     url: '/lista_lugares',
-    	views: {
-    	'menuContent': {
-          templateUrl: 'templates/lugares.html',
-          controller: 'lugaresCtrl'
-        }
-      }
+    templateUrl: 'templates/lugares.html',
+    controller: 'lugaresCtrl'
+      
       
 });
 

@@ -2,7 +2,7 @@ angular.module('app.controllers', [])
   
 
 
-/*.controller('lugaresCtrl', ['$scope','lugaresService','SeleccionInterna',function($scope,lugaresService,SeleccionInterna ) {
+.controller('lugaresCtrl', ['$scope','lugaresService',function($scope,lugaresService ) {
 
 	$scope.lugares = [];
 
@@ -24,30 +24,32 @@ angular.module('app.controllers', [])
 
 
  
-}])*/
+}])
 
 .controller('LoginCtrl', LoginCtrl);
 
 function LoginCtrl(Auth, $state) {
 
-/*var ref = new Firebase("https://apiCultural.firebaseio.com");
+var ref = new Firebase("https://APICULTURAL.firebaseio.com");
 ref.authWithOAuthPopup("google", function(error, authData) {
   if (error) {
     console.log("Login Failed!", error);
   } else {
     console.log("Authenticated successfully with payload:", authData);
-    $state.go('tab.dash');
+    $state.go('lugares');
   }
-});*/
+});
+LoginCtrl.$inject = ['Auth', '$state'];
 
-  this.loginWithGoogle = function loginWithGoogle() {
+}
+  /*this.loginWithGoogle = function loginWithGoogle() {
     Auth.$authWithOAuthPopup('google')
       .then(function(authData) {
         $state.go('app.lugares');
       });
   };
 }
-LoginCtrl.$inject = ['Auth', '$state'];
+LoginCtrl.$inject = ['Auth', '$state'];*/
 
 
 
