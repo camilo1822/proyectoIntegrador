@@ -2,7 +2,7 @@
 //o sobreescrictura
 (function(){
 
-  var app=angular.module('app', ['ionic', 'app.controllers', 'app.routes','app.services', 'firebase'])
+  var app=angular.module('app', ['ionic', 'app.controllers', 'app.routes','app.services','app.service', 'firebase'])
   .constant('FirebaseUrl', 'https://ionicle.firebaseio.com/')
   .service('rootRef', ['FirebaseUrl', Firebase])
 

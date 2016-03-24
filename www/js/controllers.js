@@ -7,20 +7,17 @@ angular.module('app.controllers', [])
 	$scope.lugares = [];
 
 	
-	var lugar= 'listaDeLugares';
+	//var lugar= 'listaDeLugares';
+  var lugar= '.json';
 
   lugaresService.getAll(lugar).then(function(response){
 
     console.info(response.data);
     $scope.lugares = response.data;
-    console.log(lugares); 
-    alert(lugares);
+    
   });
 
 
-  $scope.selectProducto=function(producto){
-    SeleccionInterna.setProductoSeleccionado(producto);
-  };
 
 
  
@@ -39,9 +36,10 @@ ref.authWithOAuthPopup("google", function(error, authData) {
     $state.go('lugares');
   }
 });
+}
 LoginCtrl.$inject = ['Auth', '$state'];
 
-}
+
   /*this.loginWithGoogle = function loginWithGoogle() {
     Auth.$authWithOAuthPopup('google')
       .then(function(authData) {

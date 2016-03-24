@@ -1,0 +1,22 @@
+[
+{  
+"title":"Maria Mulata",
+"image":"http://i1030.photobucket.com/albums/y367/Juan_Camilo_Arboleda_Gutierrez/Lugares/mariaMulata_zpsckm1kcbg.jpeg",
+"description":"estatua de la udea",
+"latitud": 5,
+"longitud": 6,
+"qr": "qr",
+"direccion": "udea",
+"tipo": "estatua"
+},
+{
+"title":"Gorda Botero",
+"image":"http://i1030.photobucket.com/albums/y367/Juan_Camilo_Arboleda_Gutierrez/Lugares/gorda_zps6sredk3z.jpeg",
+"description":"estatua de la udea",
+"latitud": 5,
+"longitud": 6,
+"qr": "qr",
+"direccion": "parque berrio",
+"tipo": "estatua"
+}
+]
