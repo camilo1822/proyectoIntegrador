@@ -1,5 +1,3 @@
-//la encerramos en function poruqe app seria global, para evitar problemas de memoria
-//o sobreescrictura
 (function(){
 
   var app=angular.module('app', ['ionic', 'app.controllers', 'app.routes','app.services','app.service', 'firebase'])
