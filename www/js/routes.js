@@ -3,23 +3,66 @@ angular.module('app.routes', [])
 .config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
-    
-      
-        
-.state('login', {
-    url: '/login',
-    templateUrl: 'templates/login.html',
-    controller: 'LoginCtrl as ctrl'
+  .state('app', {
+      url: '/app',
+      abstract: true,
+      views: {
+        '': {
+          template: '<ion-nav-view name="app"></ion-nav-view>'
+        }
+      }
+    })
+    .state('app.login', {
+        url: '/login',
+        views:{
+        'app':{
+        templateUrl: 'templates/login.html',
+        controller: 'LoginCtrl as ctrl'}}
+    })
+
+    .state('app.tab', {
+      url: '/tab',
+      abstract: true,
+      resolve: {
+        'requireAuth': function(){
+          return true;
+        }
+      },
+      views:{
+        'app':{
+      templateUrl: 'templates/tabs.html'
+    }}})
+
+
+.state('app.tab.lugares', {
+url: '/lugares',
+views: {
+'tab-lugares': {
+templateUrl: 'templates/lugares.html',
+controller: 'lugaresCtrl'
+}
+}
+})
+.state('app.tab.about', {
+    url: '/about',
+    views:{
+    'tab-about':{
+    templateUrl: 'templates/about.html'
+}
+}
+})
+.state('app.tab.settings', {
+    url: '/settings',
+    views:{
+    'tab-settings':{
+    templateUrl: 'templates/settings.html',
+    controller:'LoginCtrl as ctrl'
+}
+}
 })
 
-.state('lugares', {
-    url: '/lista_lugares',
-    templateUrl: 'templates/lugares.html',
-    controller: 'lugaresCtrl'
-      
-      
-});
+;
 
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/app/login');
 
 });
