@@ -8,7 +8,9 @@
  </div>
  
   <ion-content  class="has-subheader">
-    
+    <div>
+      <h4>nombre:{{usuario.nombre}}</h4>
+    </div>
     <ion-list show-reorder="data.showReorder">
         <ion-item ng-repeat='lugar in lugares | filter:query' class="item item-avatar-left">
   

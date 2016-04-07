@@ -29,7 +29,13 @@ ref.authWithOAuthPopup("google", function(error, authData) {
 
     //id que nos da firebase
     var authData = ref.getAuth();
-    ref.push({uid:authData.uid});
+    
+  
+    $scope.usuario=authData;
+    $scope.usuario.nombre=authData.google.displayName;
+    console.log("nombre:",$scope.nombre);
+
+    ref.push({uid:authData.uid,provider:authData.provider,nombre:authData.google.displayName});
 
     $state.go('lugares');
   }
