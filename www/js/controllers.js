@@ -41,17 +41,53 @@ ref.authWithOAuthPopup("google", function(error, authData) {
 		if(mm<10){
 				mm='0'+mm
 		}
+		if(Mm<10){
+			Mm='0'+Mm
+		}
+		if(Ss<10){
+				Ss='0'+Ss
+			}
 		var today = dd+'/'+mm+'/'+yyyy+' '+hh+':'+Mm+':'+Ss;
-    //id que nos da firebase
+    //id que nos da firebase}
+	//  ref.push({uid:authData.uid});
     var authData = ref.getAuth();
-  //  ref.push({uid:authData.uid});
-	ref.child(authData.uid).set({
-	  name: authData.google.displayName,
-	  provider: authData.provider,
-		image : authData.google.profileImageURL,
+		var childRef= ref.child(authData.uid);
+		ref.child(authData.uid).once('value', function(snapshot) {
+     var exists = (snapshot.val() !== null);
+     if(!exists){
+			 console.log('No existe');
+			 childRef.set({
+			 name: authData.google.displayName,
+			 provider: authData.provider,
+			 image : authData.google.profileImageURL
+			 });
+			 var dateRef=ref.child(authData.uid+'/'+'date');
+			 dateRef.push().update({
+				 date :today
+			 });
+		 }else{
+			 console.log('existe');
+			 var dateRef=ref.child(authData.uid+'/'+'date');
+			 dateRef.push().update({
+			 	date :today
+			 });
+
+		 }
+   });
+
+
+
+/*ref.orderByKey().equalTo(authData.uid).on("child_added", function(snapshot) {
+	  console.log('llave: '+snapshot.key());
+	//	var dateRef=ref.child(authData.uid+'/'+'date');
+		//console.log(authData.uid+'/'+'date');
+if(snapshot.key()!=null){
+	childRef.child("date").push().update({
 		date: today
 	});
+}
 
+});*/
     $state.go('app.tab.lugares');
   }
 });
