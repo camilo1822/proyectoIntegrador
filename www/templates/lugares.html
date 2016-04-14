@@ -8,24 +8,19 @@
  </div>
  
   <ion-content  class="has-subheader">
-    <div>
-      <h4>nombre:{{usuario.nombre}}</h4>
-    </div>
+
     <ion-list show-reorder="data.showReorder">
-        <ion-item ng-repeat='lugar in lugares | filter:query' class="item item-avatar-left">
-  
+        <ion-item ng-repeat='lugar in lugares | filter:query' class="item item-avatar-left"  href="#/lugar/{{lugar.id}}"
+          ng-click="selectLugar(lugar)">
+        
         <img ng-src="{{lugar.image}}">
+        nombre:{{usuario.google.displayName}}
+        
         <h2>{{lugar.title}}</h2>
-        direccion: {{lugar.direccion}}
-        direccion: {{lugar.name}} 
-       
+        direccion: {{lugar.direccion}} 
       </ion-item>
 
-      </ion-list>
-
-       
-               
-             
+      </ion-list>           
   </ion-content>
 </ion-view>
 
