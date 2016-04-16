@@ -1,8 +1,22 @@
-<ion-view view-title="{{lugar.name}}">
-  <ion-content class="padding">
-    <img ng-src="{{lugar.image}}" style="width: 64px; height: 64px">
-    <p>
-      {{lugar.description}}
-    </p>
-  </ion-content>
+<ion-view view-title="Detalles" >
+<div class="bar bar-subheader
+  item-input-inset bar-light">
+  <label class="item-input-wrapper">
+    <i class="icon ion-search placeholder-icon"></i>
+    <input type="search" ng-model="query" placeholder="Search">
+  </label>
+</div>
+
+<ion-content class="has-subheader">
+<div>
+  <ion-list>
+  <div class="item item-text-wrap">
+    <h2> Nombre: {{detalle.title}}</h2>
+    <h2>Descripcion: {{detalle.description}}</h2>
+    <h2>Direccion: {{detalle.direccion}}</h2>
+    <h2>Tipo: {{detalle.tipo}}</h2>
+  </div>
+  </ion-list>
+</div>
+</ion-content>
 </ion-view>

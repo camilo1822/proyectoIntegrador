@@ -10,13 +10,14 @@
   <ion-content  class="has-subheader">
 
     <ion-list show-reorder="data.showReorder">
-        <ion-item ng-repeat='lugar in lugares | filter:query' class="item-remove-animate item-avatar item-icon-right">
+        <ion-item ng-repeat='lugar in lugares | filter:query' class="item-remove-animate item-avatar item-icon-right" href="#/lugar/{{lugar.id}}"
+          ng-click="selectLugar(lugar)">
 
         <img ng-src="{{lugar.image}}">
         <h2>{{lugar.title}}</h2>
         direccion: {{lugar.direccion}}
         direccion: {{lugar.name}}
-       
+
       </ion-item>
 
       </ion-list>

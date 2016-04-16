@@ -60,7 +60,11 @@ controller: 'lugaresCtrl'
 }
 }
 })
-
+.state('detalles',{
+    url: '/lugar/:aId',
+    templateUrl:'templates/detalle.html',
+    controller:'detallesCtrl'
+  })
 ;
 
   $urlRouterProvider.otherwise('/app/login');

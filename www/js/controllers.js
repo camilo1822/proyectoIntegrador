@@ -2,7 +2,7 @@ angular.module('app.controllers', [])
 
 
 
-.controller('lugaresCtrl', ['$scope','lugaresService',function($scope,lugaresService ) {
+.controller('lugaresCtrl', ['$scope','lugaresService','SeleccionInterna',function($scope,lugaresService,SeleccionInterna ) {
 
 	$scope.lugares = [];
 
@@ -15,7 +15,29 @@ angular.module('app.controllers', [])
     console.log(response.data);
     $scope.lugares = response.data;
   });
+	$scope.selectLugar=function(lugar){
+    SeleccionInterna.setLugarSeleccionado(lugar);
+  };
 
+}])
+
+.controller('detallesCtrl', ['$scope','DetalleService','$state','SeleccionInterna',function($scope,DetalleService,$state,SeleccionInterna) {
+  //$scope.mostrar = function(){
+  $scope.lugar = SeleccionInterna.getLugarSeleccionado();
+  console.log("lalalla",$scope.lugar);
+  //$scope.whichproducto=$state.lugar.id;
+  //var ensayo='5706fab948fc7df9ea5fa90c';
+  var ensayo = $scope.lugar._id;
+  console.log("ensayo",ensayo);
+  $scope.detalle = [];
+  //DetalleService.getAll($scope.whichproducto).then(function(response){
+  DetalleService.getAll(ensayo).then(function(response){
+    console.info(response.data);
+    console.log(response.data);
+    $scope.detalle = response.data;
+  });
+   //$state.go('detalles');
+//}
 }])
 
 .controller('LoginCtrl',['$scope','Auth','$state','$ionicActionSheet','$ionicPopup',function($scope,Auth,$state,$ionicActionSheet,$ionicPopup){
@@ -75,19 +97,6 @@ ref.authWithOAuthPopup("google", function(error, authData) {
 		 }
    });
 
-
-
-/*ref.orderByKey().equalTo(authData.uid).on("child_added", function(snapshot) {
-	  console.log('llave: '+snapshot.key());
-	//	var dateRef=ref.child(authData.uid+'/'+'date');
-		//console.log(authData.uid+'/'+'date');
-if(snapshot.key()!=null){
-	childRef.child("date").push().update({
-		date: today
-	});
-}
-
-});*/
     $state.go('app.tab.lugares');
   }
 });
