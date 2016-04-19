@@ -7,7 +7,7 @@ angular.module('app.controllers', [])
 	$scope.lugares = [];
 
 
-	var lugar= 'listaDeLugares';
+	var lugar= 'Lugares';
 
   lugaresService.getAll(lugar).then(function(response){
 

@@ -8,7 +8,7 @@ angular.module('app.service', [])
 }])
 //obtener lugar por medio de id
 .service('DetalleService', ['$http',function($http){
-    var base = 'https://cultural-api.herokuapp.com/api/listaDeLugares/';
+    var base = 'https://cultural-api.herokuapp.com/api/Lugares/';
     this.getAll=function (idMovimiento) {
 
             return $http.get(base+idMovimiento);
