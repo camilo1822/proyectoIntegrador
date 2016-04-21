@@ -11,7 +11,7 @@ angular.module('app.service', [])
 
 //obtener lugar por medio de id
 .service('DetalleService', ['$http',function($http){
-    var base = 'https://cultural-api.herokuapp.com/api/listaDeLugares/';
+    var base = 'https://cultural-api.herokuapp.com/api/Lugares/';
     this.getAll=function (idMovimiento) {
     
             return $http.get(base+idMovimiento);
@@ -22,14 +22,23 @@ angular.module('app.service', [])
 
 .service("SeleccionInterna",function () {
     var LugarSeleccionado = {};
+    var usuarioSeleccionado = {};
     this.setLugarSeleccionado =function (lugar) {
         LugarSeleccionado = lugar;
         };
+
+         this.setUsuarioSeleccionado = function(usuario) {
+      usuarioSeleccionado = usuario;
+    };
 
 
     this.getLugarSeleccionado = function () {
         return LugarSeleccionado;
 
+    };
+
+    this.getUser = function() {
+      return usuarioSeleccionado;
     };
 
 });
