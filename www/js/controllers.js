@@ -4,14 +4,8 @@ angular.module('app.controllers', [])
 
 .controller('lugaresCtrl', ['$scope','lugaresService','SeleccionInterna',function($scope,lugaresService,SeleccionInterna ) {
 
-	$scope.lugares = [];
-  $scope.usuarioGoogle = {};
-
-  /*var promise = ref.authWithOAuthPopup();
-    promise.then(function (data) {
-     $scope.usuarioGoogle = data;
-      });*/
-	
+	$scope.lugares = [];  
+  $scope.informacion = SeleccionInterna.getUser();
 	var lugar= 'Lugares';
   //var lugar = '.json';
 
@@ -23,9 +17,8 @@ angular.module('app.controllers', [])
   });
 
   //seleccion de lugar
-  $scope.selectLugar=function(lugar,usuarioGoogle){
+  $scope.selectLugar=function(lugar){
     SeleccionInterna.setLugarSeleccionado(lugar);
-    SeleccionInterna.setUsuarioSeleccionado(usuario);
   };
 
  
@@ -76,11 +69,14 @@ angular.module('app.controllers', [])
 
 
 .controller('LoginCtrl',['$scope','Auth','$state','SeleccionInterna',function($scope,Auth,$state,SeleccionInterna){
+  
+  $scope.usuarioGoogle = {};
   $scope.google_data = {};
 
   $scope.logiar = function(){
   var ref = new Firebase("https://APICULTURAL.firebaseio.com");
  ref.authWithOAuthPopup("google", function(error, authData) {
+  SeleccionInterna.setUsuarioSeleccionado(authData);
   if (error) {
     console.log("Login Failed!", error);
   } else {
@@ -89,8 +85,6 @@ angular.module('app.controllers', [])
     //id que nos da firebase
     var authData = ref.getAuth();
     $scope.google_data = authData;
-
-    //SeleccionInterna.setUsuarioSeleccionado($scope.google_data);
     ref.push({uid:authData.uid,provider:authData.provider,nombre:authData.google.displayName});
 
     $state.go('lugares');
