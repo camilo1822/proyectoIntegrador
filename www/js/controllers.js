@@ -1,8 +1,18 @@
 angular.module('app.controllers', [])
 
 
+.controller('lugaresCtrl', ['$scope','lugaresService','SeleccionInterna','$timeout', '$ionicLoading',function($scope,lugaresService,SeleccionInterna,$timeout, $ionicLoading ) {
+	$scope.show = function() {
+     $ionicLoading.show({
+       template: 'Loading...'
+		/*	 content: 'Loading',
+			 animation: 'fade-in',
+			 showBackdrop: true,
+			 maxWidth: 200,
+			 showDelay: 100*/
+     });
+   };
 
-.controller('lugaresCtrl', ['$scope','lugaresService','SeleccionInterna',function($scope,lugaresService,SeleccionInterna ) {
 
 	$scope.lugares = [];
 
@@ -15,6 +25,9 @@ angular.module('app.controllers', [])
     console.log(response.data);
     $scope.lugares = response.data;
   });
+	$scope.hide = function(){
+		$ionicLoading.hide();
+	};
 	$scope.selectLugar=function(lugar){
     SeleccionInterna.setLugarSeleccionado(lugar);
   };
@@ -81,17 +94,15 @@ ref.authWithOAuthPopup("google", function(error, authData) {
 			 childRef.set({
 			 name: authData.google.displayName,
 			 provider: authData.provider,
-			 image : authData.google.profileImageURL
-			 });
-			 var dateRef=ref.child(authData.uid+'/'+'date');
-			 dateRef.push().update({
-				 date :today
+			 image : authData.google.profileImageURL,
+			 creacion: today
 			 });
 		 }else{
 			 console.log('existe');
-			 var dateRef=ref.child(authData.uid+'/'+'date');
-			 dateRef.push().update({
-			 	date :today
+			 var dateRef=ref.child(authData.uid+'/'+'creacion');
+			 dateRef.remove();
+			 childRef.update({
+			 	lastLogin :today
 			 });
 
 		 }
