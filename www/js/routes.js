@@ -18,7 +18,13 @@ angular.module('app.routes', [])
     controller: 'lugaresCtrl'
       
       
-});
+})
+
+.state('detalles',{
+    url: '/lugar/:aId',
+    templateUrl:'templates/detalle.html',
+    controller:'detallesCtrl'
+  });
 
   $urlRouterProvider.otherwise('/login');
 
