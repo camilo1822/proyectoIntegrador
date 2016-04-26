@@ -43,16 +43,15 @@ angular.module('app.controllers', [])
 
  //$scope.formSite = {};
   $scope.save = function(){
-    console.log("entre");
         $http({
-        method : 'POST',
+        method : 'post',
         url : 'https://cultural-api.herokuapp.com/api/Favoritos',
         //headers: headers,
-        params :{
+        data :{
             /*id:$scope.formSite._id,
             title:$scope.formSite.title,
             sites:$scope.formSite.direccion*/
-            id:"123",
+            id_user:"123",
             title:"juaco",
             sites:"poncio"
            }
