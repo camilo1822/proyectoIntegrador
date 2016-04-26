@@ -11,7 +11,7 @@
   {{informacion.google.displayName}}
   <img ng-src="{{informacion.google.profileImageURL}}">
     <ion-list show-reorder="data.showReorder">
-        <ion-item ng-repeat='lugar in lugares | filter:query' class="item item-avatar-left"  href="#/lugar/{{lugar.id}}"
+        <ion-item ng-repeat='lugar in lugares | filter:query' class="item item-avatar-left"  href="#/lugar/{{lugar._id}}"
           ng-click="selectLugar(lugar)">
         
         <img ng-src="{{lugar.image}}">
