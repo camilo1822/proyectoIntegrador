@@ -1,4 +1,4 @@
-<ion-view view-title="Lugares" hide-back-button="true">
+<ion-view view-title="Lugares" hide-back-button="false">
  <div class="bar bar-subheader item-input-inset
       bar-light">
       <label class="item-input-wrapper">
@@ -10,7 +10,7 @@
   <ion-content  class="has-subheader">
 
     <ion-list show-reorder="data.showReorder">
-        <ion-item ng-repeat='lugar in lugares | filter:query' class="item-remove-animate item-avatar item-icon-right" href="#/lugar/{{lugar.id}}"
+        <ion-item ng-repeat='lugar in lugares | filter:query' class="item-remove-animate item-avatar item-icon-right" href="#/app/tab/lugares/{{lugar._id}}"
           ng-click="selectLugar(lugar)">
 
         <img ng-src="{{lugar.image}}">

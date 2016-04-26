@@ -60,11 +60,15 @@ controller: 'lugaresCtrl'
 }
 }
 })
-.state('detalles',{
-    url: '/lugar/:aId',
+.state('app.tab.lugares-detalle',{
+    url: '/lugares/:aId',
+    views:{
+    'tab-lugares':{
     templateUrl:'templates/detalle.html',
     controller:'detallesCtrl'
-  })
+  }
+}
+})
 ;
 
   $urlRouterProvider.otherwise('/app/login');

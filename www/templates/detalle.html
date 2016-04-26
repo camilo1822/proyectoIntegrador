@@ -1,34 +1,12 @@
-<!--<ion-view view-title="Detalles" >
-<div class="bar bar-subheader
-  item-input-inset bar-light">
-  <label class="item-input-wrapper">
-    <i class="icon ion-search placeholder-icon"></i>
-    <input type="search" ng-model="query" placeholder="Search">
-  </label>
-</div>
-
-<ion-content class="has-subheader">
-<div>
-  <ion-list>
-  <div class="item item-text-wrap">
-    <h2> Nombre: {{lugar.title}}</h2>
-    <h2>Descripcion: {{lugar.description}}</h2>
-    <h2>Direccion: {{lugar.direccion}}</h2>
-    <h2>Tipo: {{lugar.tipo}}</h2>
-  </div>
-  </ion-list>
-</div>
-</ion-content>
-</ion-view>-->
-​<ion-view view-title="Detalles" >
+​<ion-view view-title="Detalles" hide-back-button="false" >
 
 <div class="list card">
 
   <div class="item item-avatar">
     <img src="{{lugar.image}}" width="200" height="50">
-    <h2> Nombre: {{lugar.title}}</h2>
-    <h2>Direccion: {{lugar.direccion}}</h2>
-    <h2>Tipo: {{lugar.tipo}}</h2>
+    <h2> Nombre: {{detalle.title}}</h2>
+    <h2>Direccion: {{detalle.direccion}}</h2>
+    <h2>Tipo: {{detalle.tipo}}</h2>
   </div>
   </div>
 
@@ -36,7 +14,7 @@
   <div class="item item-body">
 
 <img src="{{lugar.image}}" width="600" height="450">
-    <p>Descripcion: {{lugar.description}}
+    <p>Descripcion: {{detalle.description}}
     </p>
       <p>
         <a href="#" class="subdued">1 Like</a>

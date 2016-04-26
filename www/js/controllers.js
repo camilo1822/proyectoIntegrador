@@ -1,7 +1,7 @@
 angular.module('app.controllers', [])
 
 
-.controller('lugaresCtrl', ['$scope','lugaresService','SeleccionInterna','$timeout', '$ionicLoading',function($scope,lugaresService,SeleccionInterna,$timeout, $ionicLoading ) {
+.controller('lugaresCtrl', ['$scope','lugaresService','SeleccionInterna','$timeout','$state', '$ionicLoading',function($scope,lugaresService,SeleccionInterna,$timeout, $ionicLoading , $state ) {
 	$scope.show = function() {
      $ionicLoading.show({
        template: 'Loading...'
@@ -30,6 +30,7 @@ angular.module('app.controllers', [])
 	};
 	$scope.selectLugar=function(lugar){
     SeleccionInterna.setLugarSeleccionado(lugar);
+		console.log("El id es:",lugar._id)
   };
 
 }])
@@ -49,7 +50,7 @@ angular.module('app.controllers', [])
     console.log(response.data);
     $scope.detalle = response.data;
   });
-   //$state.go('detalles');
+  //$state.go('app.tab.lugares-detail');
 //}
 }])
 
@@ -104,6 +105,7 @@ ref.authWithOAuthPopup("google", function(error, authData) {
 			 childRef.update({
 			 	lastLogin :today
 			 });
+
 
 		 }
    });
