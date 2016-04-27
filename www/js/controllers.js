@@ -1,5 +1,30 @@
 angular.module('app.controllers', [])
 
+.controller('NuevoFavoritoCtrl',  function($scope, $http,$ionicLoading,$window, SeleccionInterna){
+
+ //$scope.formSite = {};
+  $scope.save = function(){
+        $http({
+        method : 'post',
+        url : 'https://cultural-api.herokuapp.com/api/Favoritos',
+        //headers: headers,
+        data :{
+            /*id:$scope.formSite._id,
+            title:$scope.formSite.title,
+            sites:$scope.formSite.direccion*/
+            id_user:"123",
+            title:"juaco",
+            sites:"poncio"
+           }
+        }).success(function(data) {
+            console.log(data);
+        });
+
+
+  };
+
+})
+
 
 .controller('lugaresCtrl', ['$scope','lugaresService','SeleccionInterna','$timeout','$state', '$ionicLoading',function($scope,lugaresService,SeleccionInterna,$timeout, $ionicLoading , $state ) {
 	$scope.show = function() {
@@ -15,7 +40,7 @@ angular.module('app.controllers', [])
 
 
 	$scope.lugares = [];
-
+ $scope.informacion = SeleccionInterna.getUser();
 
 	var lugar= 'Lugares';
 
@@ -54,10 +79,10 @@ angular.module('app.controllers', [])
 //}
 }])
 
-.controller('LoginCtrl',['$scope','Auth','$state','$ionicActionSheet','$ionicPopup',function($scope,Auth,$state,$ionicActionSheet,$ionicPopup){
+.controller('LoginCtrl',['$scope','Auth','$state','$ionicActionSheet','$ionicPopup','SeleccionInterna',function($scope,Auth,$state,$ionicActionSheet,$ionicPopup,SeleccionInterna){
 	var ref = new Firebase("https://APICULTURAL.firebaseio.com");
-
-	//var usersRef = ref.child("apicultural");
+	$scope.usuarioGoogle = {};
+ $scope.google_data = {};
   $scope.logiar = function(){
 ref.authWithOAuthPopup("google", function(error, authData) {
   if (error) {
@@ -87,6 +112,8 @@ ref.authWithOAuthPopup("google", function(error, authData) {
     //id que nos da firebase}
 	//  ref.push({uid:authData.uid});
     var authData = ref.getAuth();
+		SeleccionInterna.setUsuarioSeleccionado(authData);
+		$scope.google_data = authData;
 		var childRef= ref.child(authData.uid);
 		ref.child(authData.uid).once('value', function(snapshot) {
      var exists = (snapshot.val() !== null);

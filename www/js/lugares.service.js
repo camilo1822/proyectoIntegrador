@@ -19,14 +19,23 @@ angular.module('app.service', [])
 
 .service("SeleccionInterna",function () {
     var LugarSeleccionado = {};
+    var usuarioSeleccionado = {};
     this.setLugarSeleccionado =function (lugar) {
         LugarSeleccionado = lugar;
         };
+
+         this.setUsuarioSeleccionado = function(usuario) {
+      usuarioSeleccionado = usuario;
+    };
 
 
     this.getLugarSeleccionado = function () {
         return LugarSeleccionado;
 
+    };
+
+    this.getUser = function() {
+      return usuarioSeleccionado;
     };
 
 })

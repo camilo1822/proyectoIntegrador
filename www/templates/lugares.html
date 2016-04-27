@@ -1,10 +1,14 @@
 <ion-view view-title="Lugares" hide-back-button="false">
  <div class="bar bar-subheader item-input-inset
       bar-light">
+      <a class="item item-avatar">
+            <img src="{{informacion.google.profileImageURL}}">
+            <h2>{{informacion.google.displayName}}</h2>
+          </a>
       <label class="item-input-wrapper">
         <i class="icon ion-search placeholder-icon"></i>
         <input type="search" ng-model="query" placeholder="Search">
-      </lable>
+      </label>
  </div>
 
   <ion-content  class="has-subheader">

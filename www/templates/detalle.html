@@ -1,5 +1,5 @@
 ​<ion-view view-title="Detalles" hide-back-button="false" >
-<ion-content>
+<ion-content  ng-controller="NuevoFavoritoCtrl">
 <div class="list card">
 
   <div class="item item-avatar">
@@ -20,6 +20,9 @@
         <a href="#" class="subdued">1 Like</a>
         <a href="#" class="subdued">5 Comments</a>
       </p>
+      <button class="button button-block button-assertive" ng-click="save();">
+                favorito
+        </button>
     </div>
   </ion-content>
 </ion-view>​
