@@ -48,9 +48,6 @@ angular.module('app.controllers', [])
         url : 'https://cultural-api.herokuapp.com/api/Favoritos',
         //headers: headers,
         data :{
-            /*id:$scope.formSite._id,
-            title:$scope.formSite.title,
-            sites:$scope.formSite.direccion*/
             id_user:"123",
             title:"juaco",
             sites:"poncio"
