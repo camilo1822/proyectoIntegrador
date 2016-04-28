@@ -1,9 +1,10 @@
-​<ion-view view-title="Detalles" hide-back-button="false" >
-<ion-content  ng-controller="NuevoFavoritoCtrl">
-<div class="list card">
+​<ion-view view-title="Detalles" >
 
+
+<ion-content class="has-subheader" ng-controller="NuevoFavoritoCtrl">
+<div>
   <div class="item item-avatar">
-    <img src="{{lugar.image}}" width="200" height="50">
+  <img src="{{lugar.image}}" width="200" height="50">
     <h2> Nombre: {{detalle.title}}</h2>
     <h2>Direccion: {{detalle.direccion}}</h2>
     <h2>Tipo: {{detalle.tipo}}</h2>
@@ -23,6 +24,5 @@
       <button class="button button-block button-assertive" ng-click="save();">
                 favorito
         </button>
-    </div>
-  </ion-content>
-</ion-view>​
+</ion-content>
+</ion-view>

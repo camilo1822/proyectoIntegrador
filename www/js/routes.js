@@ -69,6 +69,26 @@ controller: 'lugaresCtrl'
   }
 }
 })
+
+.state('app.tab.favoritos',{
+    url: '/favoritos',
+    views:{
+    'tab-favoritos':{
+    templateUrl:'templates/favoritos.html',
+    controller:'favoritosCtrl'
+  }
+}
+})
+
+.state('app.tab.favoritos-detalle',{
+    url: '/favoritos/:aId',
+    views:{
+    'tab-favoritos':{
+    templateUrl:'templates/detalle.html',
+    controller:'detallesFavoritoCtrl'
+  }
+}
+})
 ;
 
   $urlRouterProvider.otherwise('/app/login');

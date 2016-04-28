@@ -17,6 +17,16 @@ angular.module('app.service', [])
 
 }])
 
+.service('FavoritoService', ['$http',function($http){
+    var base = 'https://cultural-api.herokuapp.com/api/Favoritos';
+    this.getAll=function () {
+
+            return $http.get(base);
+
+        };
+
+}])
+
 .service("SeleccionInterna",function () {
     var LugarSeleccionado = {};
     var usuarioSeleccionado = {};
