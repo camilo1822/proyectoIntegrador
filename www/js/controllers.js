@@ -3,13 +3,10 @@ angular.module('app.controllers', [])
 .controller('NuevoFavoritoCtrl',  function($scope, $http,$ionicLoading,$window, SeleccionInterna){
    $scope.informacion = SeleccionInterna.getUser();
    $scope.lugar = SeleccionInterna.getLugarSeleccionado();
-
- //$scope.formSite = {};
   $scope.save = function(){
         $http({
         method : 'post',
         url : 'https://cultural-api.herokuapp.com/api/Favoritos',
-        //headers: headers,
         data :{
             id_user:$scope.informacion.uid,
             id_lugar:$scope.lugar._id,
@@ -19,11 +16,23 @@ angular.module('app.controllers', [])
         }).success(function(data) {
             console.log(data);
         });
-
-
   };
-
+   $scope.comentario='';
+   
+  $scope.guardar = function(){
+        $http({
+        method : 'post',
+        url : 'https://cultural-api.herokuapp.com/api/Comentarios',
+        data :{
+            id_lugar:$scope.lugar._id,
+            comentario:$scope.comentario
+           }
+        }).success(function(data) {
+            console.log(data);
+        });
+  };
 })
+
 
 
 .controller('favoritosCtrl', ['$scope','FavoritoService','SeleccionInterna','$timeout','$state', '$ionicLoading',function($scope,FavoritoService,SeleccionInterna,$timeout, $ionicLoading , $state ) {
@@ -36,7 +45,6 @@ angular.module('app.controllers', [])
 
   $scope.selectFavorito=function(favorito){
     SeleccionInterna.setLugarSeleccionado(favorito);
-    console.log("El id favorito es:",favorito._id)
   };
 
 }])
@@ -71,12 +79,11 @@ angular.module('app.controllers', [])
 	};
 	$scope.selectLugar=function(lugar){
     SeleccionInterna.setLugarSeleccionado(lugar);
-		console.log("El id es:",lugar._id)
   };
 
 }])
 
-.controller('detallesCtrl', ['$scope','DetalleService','$state','SeleccionInterna',function($scope,DetalleService,$state,SeleccionInterna) {
+.controller('detallesCtrl', ['$scope','DetalleService','ComentarioService','$state','SeleccionInterna',function($scope,DetalleService,ComentarioService,$state,SeleccionInterna) {
   $scope.lugar = SeleccionInterna.getLugarSeleccionado();
 
   var identificador = $scope.lugar._id;
@@ -86,10 +93,14 @@ angular.module('app.controllers', [])
     console.log(response.data);
     $scope.detalle = response.data;
   });
+  $scope.comentarios = [];
+
+  ComentarioService.getAll().then(function(response){
+    $scope.comentarios = response.data;
+  });
 }])
 
-.controller('detallesFavoritoCtrl', ['$scope','DetalleService','$state','SeleccionInterna',function($scope,DetalleService,$state,SeleccionInterna) {
-  console.log("entreeeee");
+.controller('detallesFavoritoCtrl', ['$scope','DetalleService','ComentarioService','$state','SeleccionInterna',function($scope,DetalleService,ComentarioService,$state,SeleccionInterna) {
   $scope.lugar = SeleccionInterna.getLugarSeleccionado();
 
   var identificador = $scope.lugar.id_lugar;
@@ -99,6 +110,11 @@ angular.module('app.controllers', [])
     console.info(response.data);
     console.log(response.data);
     $scope.detalle = response.data;
+  });
+  $scope.comentarios = [];
+
+  ComentarioService.getAll().then(function(response){
+    $scope.comentarios = response.data;
   });
 }])
 

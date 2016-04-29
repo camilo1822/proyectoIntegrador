@@ -21,6 +21,19 @@
         <a href="#" class="subdued">1 Like</a>
         <a href="#" class="subdued">5 Comments</a>
       </p>
+      <div>
+        <span>Comentario</span>
+        <input type="text"ng-model="comentario">
+        <button class="button button-dark" ng-click="guardar();">
+                Agregar
+        </button>
+        <ion-item ng-repeat='comentario in comentarios' ng-if="comentario.id_lugar == lugar._id">
+        <p>{{comentario.comentario}}</p>
+       
+
+
+      </ion-item>
+      </div>
       <button class="button button-block button-assertive" ng-click="save();">
                 favorito
         </button>
