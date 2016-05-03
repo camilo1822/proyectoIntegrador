@@ -28,12 +28,17 @@
                 Agregar
         </button>
         <ion-item ng-repeat='comentario in comentarios' ng-if="comentario.id_lugar == lugar._id">
+         <img src="{{comentario.foto}}">
+            <h2>{{comentario.nombre}}</h2>
         <p>{{comentario.comentario}}</p>
        
 
 
       </ion-item>
       </div>
+      <a href="javascript:" ng-repeat="r in ratingArr" class="padding" style="text-decoration:none;">
+      <i class="icon {{r.icon}}" ng-click="save();"></i>
+    </a>
       <button class="button button-block button-assertive" ng-click="save();">
                 favorito
         </button>

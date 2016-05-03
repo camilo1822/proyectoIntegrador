@@ -3,7 +3,16 @@ angular.module('app.controllers', [])
 .controller('NuevoFavoritoCtrl',  function($scope, $http,$ionicLoading,$window, SeleccionInterna){
    $scope.informacion = SeleccionInterna.getUser();
    $scope.lugar = SeleccionInterna.getLugarSeleccionado();
-  $scope.save = function(){
+    $scope.ratingArr=[{
+    value:1,
+    icon:'ion-ios-star-outline'
+  }];
+  //$scope.setRating = function(val) {
+      //var rtgs = $scope.ratingArr;
+        //if (rtgs==1) {
+          //rtgs[1].icon = 'ion-ios-star-outline';
+          //$scope.ratingArr.value=2;
+        $scope.save = function(){
         $http({
         method : 'post',
         url : 'https://cultural-api.herokuapp.com/api/Favoritos',
@@ -16,7 +25,21 @@ angular.module('app.controllers', [])
         }).success(function(data) {
             console.log(data);
         });
+  }
+        /*}*//*else {
+          //rtgs[1].icon= 'ion-ios-star';
+          $scope.delete = function(){
+        $http({
+        method : 'delete',
+        url : 'https://cultural-api.herokuapp.com/api/Favoritos/'+$scope.lugar._id,
+        }).success(function(data) {
+            console.log(data);
+        });
   };
+        };*/
+
+    //}
+ 
    $scope.comentario='';
    
   $scope.guardar = function(){
@@ -25,6 +48,8 @@ angular.module('app.controllers', [])
         url : 'https://cultural-api.herokuapp.com/api/Comentarios',
         data :{
             id_lugar:$scope.lugar._id,
+            foto:$scope.informacion.google.profileImageURL,
+            nombre:$scope.informacion.google.displayName,
             comentario:$scope.comentario
            }
         }).success(function(data) {
