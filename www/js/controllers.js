@@ -39,9 +39,9 @@ angular.module('app.controllers', [])
         };*/
 
     //}
- 
+
    $scope.comentario='';
-   
+
   $scope.guardar = function(){
         $http({
         method : 'post',
@@ -53,9 +53,10 @@ angular.module('app.controllers', [])
             comentario:$scope.comentario
            }
         }).success(function(data) {
-            console.log(data);
+            //console.log(data);
         });
   };
+
 })
 
 
@@ -76,21 +77,13 @@ angular.module('app.controllers', [])
 
 
 .controller('lugaresCtrl', ['$scope','lugaresService','SeleccionInterna','$timeout','$state', '$ionicLoading',function($scope,lugaresService,SeleccionInterna,$timeout, $ionicLoading , $state ) {
-	$scope.show = function() {
-     $ionicLoading.show({
-       template: 'Loading...'
-		/*	 content: 'Loading',
-			 animation: 'fade-in',
-			 showBackdrop: true,
-			 maxWidth: 200,
-			 showDelay: 100*/
-     });
-   };
 
 
-	$scope.lugares = [];
+
+$scope.lugares = [];
  $scope.informacion = SeleccionInterna.getUser();
-
+ var op= $scope.informacion;
+ console.log("Usuario en Lugares:",op);
 	var lugar= 'Lugares';
 
   lugaresService.getAll(lugar).then(function(response){
@@ -99,9 +92,7 @@ angular.module('app.controllers', [])
     console.log(response.data);
     $scope.lugares = response.data;
   });
-	$scope.hide = function(){
-		$ionicLoading.hide();
-	};
+
 	$scope.selectLugar=function(lugar){
     SeleccionInterna.setLugarSeleccionado(lugar);
   };
@@ -148,7 +139,7 @@ angular.module('app.controllers', [])
 	$scope.usuarioGoogle = {};
  $scope.google_data = {};
   $scope.logiar = function(){
-ref.authWithOAuthPopup("google", function(error, authData) {
+  ref.authWithOAuthPopup("google", function(error, authData) {
   if (error) {
     console.log("Login Failed!", error);
   } else {
@@ -177,6 +168,7 @@ ref.authWithOAuthPopup("google", function(error, authData) {
 	//  ref.push({uid:authData.uid});
     var authData = ref.getAuth();
 		SeleccionInterna.setUsuarioSeleccionado(authData);
+    console.log("getUser:",SeleccionInterna.getUser());
 		$scope.google_data = authData;
 		var childRef= ref.child(authData.uid);
 		ref.child(authData.uid).once('value', function(snapshot) {
@@ -203,6 +195,9 @@ ref.authWithOAuthPopup("google", function(error, authData) {
 
     $state.go('app.tab.lugares');
   }
+}, {
+remember: "sessionOnly",
+scope: "email"
 });
 
 }
@@ -215,7 +210,6 @@ $scope.logout = function() {
     cancel: function() {
        },
     destructiveButtonClicked: function() {
-      ref.unauth()
       hideSheet();
 
       return alertCallback();
@@ -223,6 +217,9 @@ $scope.logout = function() {
   });
 }
 function alertCallback(){
+    ref.unauth();
+    SeleccionInterna.setUsuarioSeleccionado(null);
+    console.log("Saliendo de la app");
   var alertPopup = $ionicPopup.alert({
       title: 'Logging Out',
       template: 'Thanks for using CulturalAPP'

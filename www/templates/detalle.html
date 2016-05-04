@@ -1,7 +1,7 @@
 ​<ion-view view-title="Detalles" >
 
 
-<ion-content class="has-subheader" ng-controller="NuevoFavoritoCtrl">
+<ion-content  ng-controller="NuevoFavoritoCtrl">
 <div>
   <div class="item item-avatar">
   <img src="{{lugar.image}}" width="200" height="50">
@@ -13,8 +13,10 @@
 
 
   <div class="item item-body">
+    <div class="item item-image">
+        <img src="{{lugar.image}}">
+      </div>
 
-<img src="{{lugar.image}}" width="600" height="450">
     <p>Descripcion: {{detalle.description}}
     </p>
       <p>
@@ -23,24 +25,30 @@
       </p>
       <div>
         <span>Comentario</span>
-        <input type="text"ng-model="comentario">
-        <button class="button button-dark" ng-click="guardar();">
-                Agregar
+        <div class="list list-inset">
+  <label class="item item-input">
+        <input type="text"ng-model="comentario" placeholder="Inserte su comentario">
+      </label>
+    </div>
+    <div class="button-bar">
+        <button class="button button-dark ion-android-chat" ng-click="guardar();">
+                Comentar
         </button>
+        <button class="button icon-left ion-star button-positive" ng-click="save();">
+                  Favorito
+          </button>
+
+      </div>
         <ion-item ng-repeat='comentario in comentarios' ng-if="comentario.id_lugar == lugar._id">
+<a class="item item-avatar">
          <img src="{{comentario.foto}}">
             <h2>{{comentario.nombre}}</h2>
         <p>{{comentario.comentario}}</p>
-       
+      </a>
 
 
       </ion-item>
       </div>
-      <a href="javascript:" ng-repeat="r in ratingArr" class="padding" style="text-decoration:none;">
-      <i class="icon {{r.icon}}" ng-click="save();"></i>
-    </a>
-      <button class="button button-block button-assertive" ng-click="save();">
-                favorito
-        </button>
+
 </ion-content>
 </ion-view>
