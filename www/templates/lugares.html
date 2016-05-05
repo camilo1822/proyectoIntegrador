@@ -1,17 +1,21 @@
 <ion-view view-title="Lugares" hide-back-button="false">
- <div class="bar bar-subheader item-input-inset
-      bar-light">
-      <a class="item item-avatar">
-            <img src="{{informacion.google.profileImageURL}}">
-            <h2>{{informacion.google.displayName}}</h2>
-          </a>
-      <label class="item-input-wrapper">
-        <i class="icon ion-search placeholder-icon"></i>
-        <input type="search" ng-model="query" placeholder="Search">
-      </label>
+  <!--  <ion-nav-buttons side="right">
+    <a class="item item-avatar">
+          <img src="{{foto}}">
+        <h2>{{nombre}}</h2>
+        </a>
+  </ion-nav-buttons>-->
+ <div class="bar bar-subheader  item-input-inset ">
+   <a class="item item-avatar" ng-click="modal.show()">
+   <img src="{{foto}}">
+ </a>
+         <label class="item-input-wrapper">
+           <i class="icon ion-ios-search placeholder-icon"></i>
+           <input type="search" ng-model="query" placeholder="Buscar">
+         </label>
  </div>
 
-  <ion-content  class="has-subheader">
+  <ion-content  class="has-subheader has-header">
 
     <ion-list show-reorder="data.showReorder">
         <ion-item ng-repeat='lugar in lugares | filter:query' class="item-remove-animate item-avatar item-icon-right" href="#/app/tab/lugares/{{lugar._id}}"
@@ -30,4 +34,24 @@
 
 
   </ion-content>
+  <script id="templates/modal.html" type="text/ng-template">
+       <ion-modal-view>
+         <ion-header-bar class="bar bar-header bar-dark">
+           <h1 class="title">Informacion personal</h1>
+           <button class="button button-clear button-primary" ng-click="modal.hide()">Atrás</button>
+         </ion-header-bar>
+         <ion-content class="padding">
+           <div class="list">
+             <a class="item item-thumbnail-left" >
+      <img src="{{foto}}">
+      <h2>{{nombre}}</h2>
+      <p>{{email}}</p>
+    </a>
+           </div>
+         </ion-content>
+       </ion-modal-view>
+     </script>
+
+
+
 </ion-view>

@@ -1,15 +1,12 @@
 angular.module('app.controllers', [])
 
-.controller('NuevoFavoritoCtrl',  function($scope, $http,$ionicLoading,$window, SeleccionInterna){
+.controller('NuevoFavoritoCtrl', function($scope, $http,$ionicLoading,$window, SeleccionInterna,$ionicPopup,$state){
    $scope.informacion = SeleccionInterna.getUser();
    $scope.lugar = SeleccionInterna.getLugarSeleccionado();
     $scope.estrella='ion-ios-star-outline';
-    /*$scope.ratingArr=[{
-    value:1,
-    icon:'ion-ios-star-outline'
-  }];*/
 
-$scope.setRating = function() {
+//de aca
+/*$scope.setRating = function() {
         if ($scope.estrella=='ion-ios-star-outline') {
          $scope.estrella = 'ion-ios-star';
          
@@ -44,15 +41,11 @@ $scope.setRating = function() {
   //}
         };
 
-    }
+    }*/
+//aca
 
-
-  //$scope.setRating = function(val) {
-      //var rtgs = $scope.ratingArr;
-        //if (rtgs==1) {
-          //rtgs[1].icon = 'ion-ios-star-outline';
-          //$scope.ratingArr.value=2;
-        /*$scope.save = function(){
+  
+        $scope.save = function(){
         $http({
         method : 'post',
         url : 'https://cultural-api.herokuapp.com/api/Favoritos',
@@ -64,25 +57,14 @@ $scope.setRating = function() {
            }
         }).success(function(data) {
             console.log(data);
-        });*/
-  //}
-        /*}*//*else {
-          //rtgs[1].icon= 'ion-ios-star';
-          $scope.delete = function(){
-        $http({
-        method : 'delete',
-        url : 'https://cultural-api.herokuapp.com/api/Favoritos/'+$scope.lugar._id,
-        }).success(function(data) {
-            console.log(data);
         });
-  };
-        };*/
 
-    //}
- 
+
+
    $scope.comentario='';
-   
+
   $scope.guardar = function(){
+    if($scope.comentario){
         $http({
         method : 'post',
         url : 'https://cultural-api.herokuapp.com/api/Comentarios',
@@ -93,9 +75,24 @@ $scope.setRating = function() {
             comentario:$scope.comentario
            }
         }).success(function(data) {
-            console.log(data);
+
+          var alertPopup = $ionicPopup.alert({
+            title: 'Hecho',
+            template: 'Comentario agregado exitosamente'
+          });
+
+          alertPopup.then(function(res) {
+            $scope.comentario='';
+          });
         });
+      }else {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Error',
+          template: 'Comentario vacio'
+        });
+      }
   };
+
 })
 
 
@@ -115,22 +112,23 @@ $scope.setRating = function() {
 }])
 
 
-.controller('lugaresCtrl', ['$scope','lugaresService','SeleccionInterna','$timeout','$state', '$ionicLoading',function($scope,lugaresService,SeleccionInterna,$timeout, $ionicLoading , $state ) {
-	$scope.show = function() {
-     $ionicLoading.show({
-       template: 'Loading...'
-		/*	 content: 'Loading',
-			 animation: 'fade-in',
-			 showBackdrop: true,
-			 maxWidth: 200,
-			 showDelay: 100*/
-     });
-   };
+.controller('lugaresCtrl', ['$scope','lugaresService','SeleccionInterna','$timeout','$state', '$ionicLoading','$ionicModal',function($scope,lugaresService,SeleccionInterna,$timeout, $ionicLoading , $state,$ionicModal ) {
 
+//Modal para datos personales
+  $ionicModal.fromTemplateUrl('templates/modal.html', {
+      scope: $scope
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+    //Inicializando lugares
+$scope.lugares = [];
+ $scope.$on('$ionicView.enter', function() {
+var user= SeleccionInterna.getUser();
+ $scope.foto=user.google.profileImageURL;
+ $scope.nombre=user.google.displayName;
+ $scope.email=user.google.email;
 
-	$scope.lugares = [];
- $scope.informacion = SeleccionInterna.getUser();
-
+   });
 	var lugar= 'Lugares';
 
   lugaresService.getAll(lugar).then(function(response){
@@ -139,9 +137,7 @@ $scope.setRating = function() {
     console.log(response.data);
     $scope.lugares = response.data;
   });
-	$scope.hide = function(){
-		$ionicLoading.hide();
-	};
+
 	$scope.selectLugar=function(lugar){
     SeleccionInterna.setLugarSeleccionado(lugar);
   };
@@ -188,36 +184,17 @@ $scope.setRating = function() {
 	$scope.usuarioGoogle = {};
  $scope.google_data = {};
   $scope.logiar = function(){
-ref.authWithOAuthPopup("google", function(error, authData) {
+  ref.authWithOAuthPopup("google", function(error, authData) {
   if (error) {
     console.log("Login Failed!", error);
   } else {
     console.log("Authenticated successfully with payload:", authData);
-		var today = new Date();
-		var dd = today.getDate();
-		var mm = today.getMonth()+1; //January is 0!
-		var yyyy = today.getFullYear();
-		var hh =today.getHours();
-		var Mm=today.getMinutes();
-		var Ss=today.getSeconds();
-		if(dd<10){
-				dd='0'+dd
-		}
-		if(mm<10){
-				mm='0'+mm
-		}
-		if(Mm<10){
-			Mm='0'+Mm
-		}
-		if(Ss<10){
-				Ss='0'+Ss
-			}
-		var today = dd+'/'+mm+'/'+yyyy+' '+hh+':'+Mm+':'+Ss;
-    //id que nos da firebase}
-	//  ref.push({uid:authData.uid});
+
     var authData = ref.getAuth();
 		SeleccionInterna.setUsuarioSeleccionado(authData);
+    console.log("getUser:",SeleccionInterna.getUser());
 		$scope.google_data = authData;
+    var today=SeleccionInterna.fechaExacta();
 		var childRef= ref.child(authData.uid);
 		ref.child(authData.uid).once('value', function(snapshot) {
      var exists = (snapshot.val() !== null);
@@ -227,7 +204,7 @@ ref.authWithOAuthPopup("google", function(error, authData) {
 			 name: authData.google.displayName,
 			 provider: authData.provider,
 			 image : authData.google.profileImageURL,
-			 creacion: today
+			 creacion:today
 			 });
 		 }else{
 			 console.log('existe');
@@ -243,6 +220,9 @@ ref.authWithOAuthPopup("google", function(error, authData) {
 
     $state.go('app.tab.lugares');
   }
+}, {
+remember: "sessionOnly",
+scope: "email"
 });
 
 }
@@ -255,7 +235,6 @@ $scope.logout = function() {
     cancel: function() {
        },
     destructiveButtonClicked: function() {
-      ref.unauth()
       hideSheet();
 
       return alertCallback();
@@ -263,6 +242,13 @@ $scope.logout = function() {
   });
 }
 function alertCallback(){
+    ref.unauth();
+
+    $scope.$on("$ionicView.afterLeave", function () {
+            $ionicHistory.clearCache();
+    });
+
+    console.log("Saliendo de la app");
   var alertPopup = $ionicPopup.alert({
       title: 'Logging Out',
       template: 'Thanks for using CulturalAPP'

@@ -1,7 +1,7 @@
 <ion-view view-title="Favoritos" >
 
 
-<ion-content class="has-subheader">
+<ion-content >
 <ion-list show-reorder="data.showReorder">
         <ion-item ng-repeat='favorito in favoritos | filter:query' ng-if="favorito.id_user == informacion.uid" class="item-remove-animate item-avatar item-icon-right" href="#/app/tab/favoritos/{{favorito.id_lugar}}"
           ng-click="selectFavorito(favorito)">
