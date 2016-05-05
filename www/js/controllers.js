@@ -3,16 +3,18 @@ angular.module('app.controllers', [])
 .controller('NuevoFavoritoCtrl',  function($scope, $http,$ionicLoading,$window, SeleccionInterna){
    $scope.informacion = SeleccionInterna.getUser();
    $scope.lugar = SeleccionInterna.getLugarSeleccionado();
-    $scope.ratingArr=[{
+    $scope.estrella='ion-ios-star-outline';
+    /*$scope.ratingArr=[{
     value:1,
     icon:'ion-ios-star-outline'
-  }];
-  //$scope.setRating = function(val) {
-      //var rtgs = $scope.ratingArr;
-        //if (rtgs==1) {
-          //rtgs[1].icon = 'ion-ios-star-outline';
-          //$scope.ratingArr.value=2;
-        $scope.save = function(){
+  }];*/
+
+$scope.setRating = function() {
+        if ($scope.estrella=='ion-ios-star-outline') {
+         $scope.estrella = 'ion-ios-star';
+         
+       // $scope.save = function(){
+          console.log("entre a la save");
         $http({
         method : 'post',
         url : 'https://cultural-api.herokuapp.com/api/Favoritos',
@@ -25,7 +27,45 @@ angular.module('app.controllers', [])
         }).success(function(data) {
             console.log(data);
         });
-  }
+  //}
+      }else {
+          $scope.estrella = 'ion-ios-star-outline';
+
+          //$scope.delete = function(){
+            console.log("entre a la delete");
+            console.log("borre",$scope.lugar._id);
+            var base='https://cultural-api.herokuapp.com/api/Favoritos/';
+        $http({
+        method : 'delete',
+        url : base+$scope.lugar._id
+        }).success(function(data) {
+            console.log(data);
+        });
+  //}
+        };
+
+    }
+
+
+  //$scope.setRating = function(val) {
+      //var rtgs = $scope.ratingArr;
+        //if (rtgs==1) {
+          //rtgs[1].icon = 'ion-ios-star-outline';
+          //$scope.ratingArr.value=2;
+        /*$scope.save = function(){
+        $http({
+        method : 'post',
+        url : 'https://cultural-api.herokuapp.com/api/Favoritos',
+        data :{
+            id_user:$scope.informacion.uid,
+            id_lugar:$scope.lugar._id,
+            title:$scope.lugar.title,
+            image:$scope.lugar.image
+           }
+        }).success(function(data) {
+            console.log(data);
+        });*/
+  //}
         /*}*//*else {
           //rtgs[1].icon= 'ion-ios-star';
           $scope.delete = function(){
