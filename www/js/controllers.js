@@ -6,7 +6,7 @@ angular.module('app.controllers', [])
     $scope.estrella='ion-ios-star-outline';
 
 //de aca
-/*$scope.setRating = function() {
+$scope.setRating = function() {
         if ($scope.estrella=='ion-ios-star-outline') {
          $scope.estrella = 'ion-ios-star';
          
@@ -41,11 +41,11 @@ angular.module('app.controllers', [])
   //}
         };
 
-    }*/
+    }
 //aca
 
   
-        $scope.save = function(){
+        /*$scope.save = function(){
         $http({
         method : 'post',
         url : 'https://cultural-api.herokuapp.com/api/Favoritos',
@@ -58,7 +58,7 @@ angular.module('app.controllers', [])
         }).success(function(data) {
             console.log(data);
         });
-
+}*/
 
 
    $scope.comentario='';
