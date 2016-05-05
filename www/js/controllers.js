@@ -1,6 +1,6 @@
 angular.module('app.controllers', [])
 
-.controller('NuevoFavoritoCtrl',  function($scope, $http,$ionicLoading,$window, SeleccionInterna){
+.controller('NuevoFavoritoCtrl', function($scope, $http,$ionicLoading,$window, SeleccionInterna,$ionicPopup,$state){
    $scope.informacion = SeleccionInterna.getUser();
    $scope.lugar = SeleccionInterna.getLugarSeleccionado();
     $scope.ratingArr=[{
@@ -24,7 +24,14 @@ angular.module('app.controllers', [])
            }
         }).success(function(data) {
             console.log(data);
+            var alertPopup = $ionicPopup.alert({
+              title: 'Hecho',
+              template: 'Añadido a favoritos'
+            });
         });
+
+
+
   }
         /*}*//*else {
           //rtgs[1].icon= 'ion-ios-star';
@@ -43,6 +50,7 @@ angular.module('app.controllers', [])
    $scope.comentario='';
 
   $scope.guardar = function(){
+    if($scope.comentario){
         $http({
         method : 'post',
         url : 'https://cultural-api.herokuapp.com/api/Comentarios',
@@ -53,8 +61,22 @@ angular.module('app.controllers', [])
             comentario:$scope.comentario
            }
         }).success(function(data) {
-            //console.log(data);
+
+          var alertPopup = $ionicPopup.alert({
+            title: 'Hecho',
+            template: 'Comentario agregado exitosamente'
+          });
+
+          alertPopup.then(function(res) {
+            $scope.comentario='';
+          });
         });
+      }else {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Error',
+          template: 'Comentario vacio'
+        });
+      }
   };
 
 })
@@ -76,14 +98,23 @@ angular.module('app.controllers', [])
 }])
 
 
-.controller('lugaresCtrl', ['$scope','lugaresService','SeleccionInterna','$timeout','$state', '$ionicLoading',function($scope,lugaresService,SeleccionInterna,$timeout, $ionicLoading , $state ) {
+.controller('lugaresCtrl', ['$scope','lugaresService','SeleccionInterna','$timeout','$state', '$ionicLoading','$ionicModal',function($scope,lugaresService,SeleccionInterna,$timeout, $ionicLoading , $state,$ionicModal ) {
 
-
-
+//Modal para datos personales
+  $ionicModal.fromTemplateUrl('templates/modal.html', {
+      scope: $scope
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+    //Inicializando lugares
 $scope.lugares = [];
- $scope.informacion = SeleccionInterna.getUser();
- var op= $scope.informacion;
- console.log("Usuario en Lugares:",op);
+ $scope.$on('$ionicView.enter', function() {
+var user= SeleccionInterna.getUser();
+ $scope.foto=user.google.profileImageURL;
+ $scope.nombre=user.google.displayName;
+ $scope.email=user.google.email;
+
+   });
 	var lugar= 'Lugares';
 
   lugaresService.getAll(lugar).then(function(response){
@@ -144,32 +175,12 @@ $scope.lugares = [];
     console.log("Login Failed!", error);
   } else {
     console.log("Authenticated successfully with payload:", authData);
-		var today = new Date();
-		var dd = today.getDate();
-		var mm = today.getMonth()+1; //January is 0!
-		var yyyy = today.getFullYear();
-		var hh =today.getHours();
-		var Mm=today.getMinutes();
-		var Ss=today.getSeconds();
-		if(dd<10){
-				dd='0'+dd
-		}
-		if(mm<10){
-				mm='0'+mm
-		}
-		if(Mm<10){
-			Mm='0'+Mm
-		}
-		if(Ss<10){
-				Ss='0'+Ss
-			}
-		var today = dd+'/'+mm+'/'+yyyy+' '+hh+':'+Mm+':'+Ss;
-    //id que nos da firebase}
-	//  ref.push({uid:authData.uid});
+
     var authData = ref.getAuth();
 		SeleccionInterna.setUsuarioSeleccionado(authData);
     console.log("getUser:",SeleccionInterna.getUser());
 		$scope.google_data = authData;
+    var today=SeleccionInterna.fechaExacta();
 		var childRef= ref.child(authData.uid);
 		ref.child(authData.uid).once('value', function(snapshot) {
      var exists = (snapshot.val() !== null);
@@ -179,7 +190,7 @@ $scope.lugares = [];
 			 name: authData.google.displayName,
 			 provider: authData.provider,
 			 image : authData.google.profileImageURL,
-			 creacion: today
+			 creacion:today
 			 });
 		 }else{
 			 console.log('existe');
@@ -218,7 +229,11 @@ $scope.logout = function() {
 }
 function alertCallback(){
     ref.unauth();
-    SeleccionInterna.setUsuarioSeleccionado(null);
+
+    $scope.$on("$ionicView.afterLeave", function () {
+            $ionicHistory.clearCache();
+    });
+
     console.log("Saliendo de la app");
   var alertPopup = $ionicPopup.alert({
       title: 'Logging Out',
