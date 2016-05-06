@@ -31,12 +31,15 @@
       </label>
     </div>
     <div class="button-bar">
-        <button class="button button-dark ion-android-chat" ng-click="guardar();">
+        <button class="button icon-left button-dark ion-android-chat" ng-click="guardar();">
                 Comentar
         </button>
         <button class="button icon-left ion-star button-positive" ng-click="save();">
                   Favorito
           </button>
+          <button class="button icon-left ion-map button-assertive"  ng-href="#/app/tab/lugares/{{lugar._id}}//mapa/" ng-click="go('/app/tab/lugares/{{lugar._id}}/mapa')">
+                    Mapa
+            </button>
 
       </div>
         <ion-item ng-repeat='comentario in comentarios' ng-if="comentario.id_lugar == lugar._id">

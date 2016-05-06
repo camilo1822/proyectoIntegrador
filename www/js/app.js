@@ -4,7 +4,7 @@
   .constant('FirebaseUrl', 'https://ionicle.firebaseio.com/')
   .service('rootRef', ['FirebaseUrl', Firebase])
 
-  
+
   app.run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
 
@@ -17,6 +17,6 @@
     });
   })
 
-  
+
 
 }());

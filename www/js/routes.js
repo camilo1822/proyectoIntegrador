@@ -89,6 +89,15 @@ controller: 'lugaresCtrl'
   }
 }
 })
+.state('app.tab.mapa',{
+  url:'/lugares/:aId/mapa',
+  views:{
+    'tab-lugares':{
+      templateUrl:'templates/map.html',
+      controller:'mapCtrl'
+    }
+  }
+})
 ;
 
   $urlRouterProvider.otherwise('/app/login');

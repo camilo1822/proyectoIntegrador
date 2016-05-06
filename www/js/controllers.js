@@ -130,7 +130,7 @@ var user= SeleccionInterna.getUser();
 
 }])
 
-.controller('detallesCtrl', ['$scope','DetalleService','ComentarioService','$state','SeleccionInterna',function($scope,DetalleService,ComentarioService,$state,SeleccionInterna) {
+.controller('detallesCtrl', ['$scope','DetalleService','ComentarioService','$state','SeleccionInterna','$location',function($scope,DetalleService,ComentarioService,$state,SeleccionInterna,$location) {
   $scope.lugar = SeleccionInterna.getLugarSeleccionado();
 
   var identificador = $scope.lugar._id;
@@ -145,6 +145,13 @@ var user= SeleccionInterna.getUser();
   ComentarioService.getAll().then(function(response){
     $scope.comentarios = response.data;
   });
+  $scope.go = function ( path ) {
+  $location.path( path );
+};
+$scope.map=function(){
+  $state.go('app.tab.mapa');
+}
+
 }])
 
 .controller('detallesFavoritoCtrl', ['$scope','DetalleService','ComentarioService','$state','SeleccionInterna',function($scope,DetalleService,ComentarioService,$state,SeleccionInterna) {
@@ -163,6 +170,39 @@ var user= SeleccionInterna.getUser();
   ComentarioService.getAll().then(function(response){
     $scope.comentarios = response.data;
   });
+}])
+
+.controller('mapCtrl',['$scope','$ionicLoading','SeleccionInterna','$state','$stateParams',function($scope,$ionicLoading,SeleccionInterna,$state,$stateParams){
+  var lugar = SeleccionInterna.getLugarSeleccionado();
+ console.log('Idparam:' ,$stateParams.aId,'idlugar:',lugar._id);
+  console.log('Latitud: ',lugar.latitud,'longitud: ',lugar.longitud);
+
+  console.log("Not initialize");
+  google.maps.event.addDomListener(window, 'load', initialize());
+
+  function initialize() {
+    console.log("Initialize");
+    var mapOptions = {
+      // the Teide ;-)
+      center: {lat: lugar.latitud, lng: lugar.longitud},
+      zoom: 18,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      mapTypeControlOptions: {
+        mapTypeIds: []
+      },
+      panControl: false,
+      streetViewControl: false,
+      zoomControlOptions: {
+        style: google.maps.ZoomControlStyle.SMALL
+      }
+    };
+
+    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    $scope.map = map;
+  }
+
+
+
 }])
 
 .controller('LoginCtrl',['$scope','Auth','$state','$ionicActionSheet','$ionicPopup','SeleccionInterna',function($scope,Auth,$state,$ionicActionSheet,$ionicPopup,SeleccionInterna){
