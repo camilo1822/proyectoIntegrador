@@ -9,7 +9,7 @@ angular.module('app.controllers', [])
 $scope.setRating = function() {
         if ($scope.estrella=='ion-ios-star-outline') {
          $scope.estrella = 'ion-ios-star';
-         
+
        // $scope.save = function(){
           console.log("entre a la save");
         $http({
@@ -44,7 +44,7 @@ $scope.setRating = function() {
     }
 //aca
 
-  
+
         /*$scope.save = function(){
         $http({
         method : 'post',
@@ -186,7 +186,7 @@ $scope.map=function(){
   });
 }])
 
-.controller('mapCtrl',['$scope','$ionicLoading','SeleccionInterna','$state','$stateParams',function($scope,$ionicLoading,SeleccionInterna,$state,$stateParams){
+.controller('mapCtrl',['$scope','$ionicLoading','SeleccionInterna','$state','$stateParams','$compile',function($scope,$ionicLoading,SeleccionInterna,$state,$stateParams,$compile){
   var lugar = SeleccionInterna.getLugarSeleccionado();
  console.log('Idparam:' ,$stateParams.aId,'idlugar:',lugar._id);
   console.log('Latitud: ',lugar.latitud,'longitud: ',lugar.longitud);
@@ -200,7 +200,7 @@ $scope.map=function(){
       // the Teide ;-)
       center: {lat: lugar.latitud, lng: lugar.longitud},
       zoom: 18,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      mapTypeId: google.maps.MapTypeId.HYBRID,
       mapTypeControlOptions: {
         mapTypeIds: []
       },
@@ -212,10 +212,30 @@ $scope.map=function(){
     };
 
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    var contentString = "<div><a ng-click='clickTest()'>"+lugar.title+"</a></div>";
+            var compiled = $compile(contentString)($scope);
+
+            var infowindow = new google.maps.InfoWindow({
+              content: compiled[0]
+            });
+
+
+    var marker = new google.maps.Marker({
+    position: mapOptions.center,
+    title:lugar.nombre,
+    icon: "img/moai-statues-pascua-island.png"
+    });
+    google.maps.event.addListener(marker, 'click', function() {
+        infowindow.open(map,marker);
+      });
+    marker.setMap(map);
     $scope.map = map;
+
   }
 
-
+  $scope.clickTest = function() {
+          alert('Example of infowindow with ng-click')
+        };
 
 }])
 
