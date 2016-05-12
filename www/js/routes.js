@@ -47,7 +47,8 @@ controller: 'lugaresCtrl'
     url: '/about',
     views:{
     'tab-about':{
-    templateUrl: 'templates/about.html'
+    templateUrl: 'templates/map.html',
+    //controller:'mapCtrl'
 }
 }
 })
@@ -94,7 +95,7 @@ controller: 'lugaresCtrl'
   views:{
     'tab-lugares':{
       templateUrl:'templates/map.html',
-      controller:'mapCtrl'
+      controller:'mapCtrlDetail'
     }
   }
 })
