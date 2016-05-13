@@ -44,7 +44,7 @@
             </button>
 
       </div>
-        <ion-item ng-repeat='comentario in comentarios' ng-if="comentario.id_lugar == lugar._id">
+        <ion-item ng-repeat='comentario in comentarios' ng-if="comentario.id_lugar == lugar._id || comentario.id_lugar == lugar.id_lugar">
 <a class="item item-avatar">
          <img src="{{comentario.foto}}">
             <h2>{{comentario.nombre}}</h2>
