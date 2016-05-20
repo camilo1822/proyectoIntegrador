@@ -1,4 +1,21 @@
-angular.module('app.controllers', [])
+angular.module('app.controllers', ['ngCordova'])
+
+
+.controller("camCtrl",['$scope','$ionicPlatform',
+   function($scope,$ionicPlatform,$cordovaBarcodeScanner) {
+     $scope.scanBarcode = function(){
+   window.cordova.plugins.barcodeScanner.scan().then(function(barcodeData) {
+     // Success! Barcode data is here
+     alert('barcode scanned:' +  barcodeData.text);
+   }, function(error) {
+     alert('Error')
+     console.log(error);
+     // An error occurred
+   });
+ };
+      }
+
+])
 
 .controller('NuevoFavoritoCtrl', function($scope, $http,$ionicLoading,$window, SeleccionInterna,$ionicPopup,$state){
    $scope.informacion = SeleccionInterna.getUser();

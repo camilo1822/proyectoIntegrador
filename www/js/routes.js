@@ -80,6 +80,15 @@ controller: 'lugaresCtrl'
   }
 }
 })
+.state('app.tab.camara',{
+    url: '/camara',
+    views:{
+    'tab-camara':{
+    templateUrl:'templates/camara.html',
+    controller:'camCtrl'
+  }
+}
+})
 
 .state('app.tab.favoritos-detalle',{
     url: '/favoritos/:aId',
