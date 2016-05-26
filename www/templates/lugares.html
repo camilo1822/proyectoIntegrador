@@ -6,7 +6,7 @@
         </a>
   </ion-nav-buttons>-->
  <div class="bar bar-subheader  item-input-inset ">
-   <a class="item item-avatar" ng-click="modal.show()">
+   <a class="item item-avatar" ng-click="modal1.show()">
    <img src="{{foto}}">
  </a>
          <label class="item-input-wrapper">
@@ -19,7 +19,7 @@
 
     <ion-list show-reorder="data.showReorder">
         <ion-item ng-repeat='lugar in lugares | filter:query' class="item-remove-animate item-thumbnail-left item-icon-right" href="#/app/tab/lugares/{{lugar._id}}"
-          ng-click="selectLugar(lugar)">
+          ng-click="selectLugar(lugar)" on-hold="goToSlide($index)">
 
         <img ng-src="{{lugar.image}}">
         <h2>{{lugar.title}}</h2>
@@ -31,14 +31,11 @@
       </ion-list>
 
 
-
-
-  </ion-content>
-  <script id="templates/modal.html" type="text/ng-template">
+<script id="templates/modal.html" type="text/ng-template">
        <ion-modal-view>
          <ion-header-bar class="bar bar-header bar-dark">
            <h1 class="title">Informacion personal</h1>
-           <button class="button button-clear button-primary" ng-click="modal.hide()">Atrás</button>
+           <button class="button button-clear button-primary" ng-click="modal1.hide()">Atrás</button>
          </ion-header-bar>
          <ion-content class="padding">
            <div class="list">
@@ -51,6 +48,21 @@
          </ion-content>
        </ion-modal-view>
      </script>
+     <script id="templates/image-modal.html" type="text/ng-template">
+              <div class="modal image-modal transparent" 
+                   ng-click="closeModal()">
+                <ion-slide-box on-slide-changed="slideChanged(index)" 
+                               show-pager="false">
+                  <ion-slide ng-repeat="lugar in lugares">
+                    <img ng-src="{{lugar.image}}" class="fullscreen-image" />
+                    <p class="info">{{lugar.title}}</p>
+                  </ion-slide>
+                </ion-slide-box>
+              </div>
+          </script>
+
+  </ion-content>
+
 
 
 

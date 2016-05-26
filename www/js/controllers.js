@@ -1,18 +1,31 @@
 angular.module('app.controllers', ['ngCordova'])
 
 
-.controller("camCtrl",['$scope','$ionicPlatform',
+.controller('camCtrl',['$scope','$ionicPlatform','$cordovaBarcodeScanner',
    function($scope,$ionicPlatform,$cordovaBarcodeScanner) {
-     $scope.scanBarcode = function(){
-   window.cordova.plugins.barcodeScanner.scan().then(function(barcodeData) {
-     // Success! Barcode data is here
-     alert('barcode scanned:' +  barcodeData.text);
-   }, function(error) {
-     alert('Error')
-     console.log(error);
-     // An error occurred
-   });
- };
+     document.addEventListener("deviceready", function () {
+
+    $cordovaBarcodeScanner
+      .scan()
+      .then(function(barcodeData) {
+        alert(barcodeData.text);
+        alert(barcodeData);
+        // Success! Barcode data is here
+      }, function(error) {
+        alert("An error happened");
+      });
+
+
+    // NOTE: encoding not functioning yet
+    $cordovaBarcodeScanner
+      .encode(BarcodeScanner.Encode.TEXT_TYPE, "http://www.nytimes.com")
+      .then(function(success) {
+        // Success!
+      }, function(error) {
+        // An error occurred
+      });
+
+  }, false);
       }
 
 ])
@@ -122,7 +135,7 @@ $scope.$on('$ionicView.enter', function() {
 }])
 
 
-.controller('lugaresCtrl', ['$scope','lugaresService','SeleccionInterna','$timeout','$state', '$ionicLoading','$ionicModal',function($scope,lugaresService,SeleccionInterna,$timeout, $state,$ionicLoading ,$ionicModal )  {
+.controller('lugaresCtrl', ['$scope','lugaresService','SeleccionInterna','$timeout','$state', '$ionicLoading','$ionicModal','$ionicSlideBoxDelegate',function($scope,lugaresService,SeleccionInterna,$timeout, $state,$ionicLoading ,$ionicModal,$ionicSlideBoxDelegate )  {
 //Modal para datos personales
 $scope.show = function() {
   $ionicLoading.show({
@@ -136,7 +149,7 @@ $scope.hide = function(){
 $ionicModal.fromTemplateUrl('templates/modal.html', {
       scope: $scope
     }).then(function(modal) {
-      $scope.modal = modal;
+      $scope.modal1 = modal;
     });
     //Inicializando lugares
 $scope.lugares = [];
@@ -165,6 +178,58 @@ var user= SeleccionInterna.getUser();
 	$scope.selectLugar=function(lugar){
     SeleccionInterna.setLugarSeleccionado(lugar);
   };
+  
+    $ionicModal.fromTemplateUrl('templates/image-modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+
+    $scope.openModal = function() {
+      $ionicSlideBoxDelegate.slide(0);
+      $scope.modal.show();
+    };
+
+    $scope.closeModal = function() {
+      $scope.modal.hide();
+    };
+
+    // Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+    });
+    // Execute action on hide modal
+    $scope.$on('modal.hide', function() {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function() {
+      // Execute action
+    });
+    $scope.$on('modal.shown', function() {
+      console.log('Modal is shown!');
+    });
+
+    // Call this functions if you need to manually control the slides
+    $scope.next = function() {
+      $ionicSlideBoxDelegate.next();
+    };
+  
+    $scope.previous = function() {
+      $ionicSlideBoxDelegate.previous();
+    };
+  
+    $scope.goToSlide = function(index) {
+      $scope.modal.show();
+      $ionicSlideBoxDelegate.slide(index);
+    };
+  
+    // Called each time the slide changes
+    $scope.slideChanged = function(index) {
+      $scope.slideIndex = index;
+    };
+
 
 }])
 
@@ -390,7 +455,7 @@ $scope.map=function(){
 
 
   $scope.clickTest = function() {
-          alert('Un lugar muy hermoso')
+          alert(lugar.description);
         };
 
 }])
