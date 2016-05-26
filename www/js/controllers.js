@@ -22,12 +22,11 @@ angular.module('app.controllers', ['ngCordova'])
    $scope.lugar = SeleccionInterna.getLugarSeleccionado();
     $scope.estrella='ion-ios-star-outline';
 
-//de aca
+
 $scope.setRating = function() {
         if ($scope.estrella=='ion-ios-star-outline') {
          $scope.estrella = 'ion-ios-star';
 
-       // $scope.save = function(){
           console.log("entre a la save");
         $http({
         method : 'post',
@@ -41,7 +40,6 @@ $scope.setRating = function() {
         }).success(function(data) {
             console.log(data);
         });
-  //}
       }else {
           $scope.estrella = 'ion-ios-star-outline';
 
@@ -59,24 +57,6 @@ $scope.setRating = function() {
         };
 
     }
-//aca
-
-
-        /*$scope.save = function(){
-        $http({
-        method : 'post',
-        url : 'https://cultural-api.herokuapp.com/api/Favoritos',
-        data :{
-            id_user:$scope.informacion.uid,
-            id_lugar:$scope.lugar._id,
-            title:$scope.lugar.title,
-            image:$scope.lugar.image
-           }
-        }).success(function(data) {
-            console.log(data);
-        });
-}*/
-
 
    $scope.comentario='';
 
