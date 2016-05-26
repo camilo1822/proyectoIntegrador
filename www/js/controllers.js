@@ -17,7 +17,7 @@ angular.module('app.controllers', ['ngCordova'])
 
 ])
 
-.controller('NuevoFavoritoCtrl', function($scope, $http,$ionicLoading,$window, SeleccionInterna,$ionicPopup,$state){
+.controller('NuevoFavoritoCtrl', function($scope,ComentarioService,$http,$ionicLoading,$window, SeleccionInterna,$ionicPopup,$state){
    $scope.informacion = SeleccionInterna.getUser();
    $scope.lugar = SeleccionInterna.getLugarSeleccionado();
     $scope.estrella='ion-ios-star-outline';
@@ -98,6 +98,18 @@ $scope.setRating = function() {
             template: 'Comentario agregado exitosamente'
           });
 
+          console.log("refrescando ando");
+    
+        $scope.comentarios = [];
+   
+
+          ComentarioService.getAll().then(function(response){
+            $scope.comentarios = response.data;
+          })
+             .finally(function() {
+               // Stop the ion-refresher from spinning
+               $scope.$broadcast('scroll.refreshComplete');
+});
           alertPopup.then(function(res) {
             $scope.comentario='';
           });
