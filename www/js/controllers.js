@@ -1,32 +1,37 @@
 angular.module('app.controllers', ['ngCordova'])
 
 
-.controller('camCtrl',['$scope','$ionicPlatform','$cordovaBarcodeScanner',
-   function($scope,$ionicPlatform,$cordovaBarcodeScanner) {
-     document.addEventListener("deviceready", function () {
+.controller('camCtrl',['$scope','$cordovaBarcodeScanner','$state',
+    
 
-    $cordovaBarcodeScanner
-      .scan()
-      .then(function(barcodeData) {
-        alert(barcodeData.text);
-        alert(barcodeData);
-        // Success! Barcode data is here
-      }, function(error) {
-        alert("An error happened");
-      });
+   function($scope,$cordovaBarcodeScanner,$state) {
 
+    $scope.scan=function(){
 
-    // NOTE: encoding not functioning yet
-    $cordovaBarcodeScanner
-      .encode(BarcodeScanner.Encode.TEXT_TYPE, "http://www.nytimes.com")
-      .then(function(success) {
-        // Success!
-      }, function(error) {
-        // An error occurred
-      });
-
-  }, false);
+    cordova.plugins.barcodeScanner.scan(
+      function (result) {
+          alert("We got a barcode\n" +
+                "Result: " + result.text + "\n" +
+                "Format: " + result.format + "\n" +
+                "Cancelled: " + result.cancelled);
+          $state.go('app.tab.lugares-detalle', { aId:result.text});
+      }, 
+      function (error) {
+          alert("Scanning failed: " + error);
+      },
+      {
+          "preferFrontCamera" : true, // iOS and Android
+          "showFlipCameraButton" : true, // iOS and Android
+          "prompt" : "Place a barcode inside the scan area", // supported on Android only
+          "formats" : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
+          "orientation" : "landscape" // Android only (portrait|landscape), default unset so it rotates with the device
       }
+   );
+}
+
+
+
+    } 
 
 ])
 
@@ -233,10 +238,8 @@ var user= SeleccionInterna.getUser();
 
 }])
 
-.controller('detallesCtrl', ['$scope','DetalleService','ComentarioService','$state','SeleccionInterna','$location',function($scope,DetalleService,ComentarioService,$state,SeleccionInterna,$location) {
-  $scope.lugar = SeleccionInterna.getLugarSeleccionado();
-
-  var identificador = $scope.lugar._id;
+.controller('detallesCtrl', ['$scope','DetalleService','ComentarioService','$state','SeleccionInterna','$location','$stateParams',function($scope,DetalleService,ComentarioService,$state,SeleccionInterna,$location,$stateParams) {
+  var identificador = $stateParams.aId;
   $scope.detalle = [];
   DetalleService.getAll(identificador).then(function(response){
     console.info(response.data);
