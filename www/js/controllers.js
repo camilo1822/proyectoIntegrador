@@ -102,7 +102,7 @@ $scope.setRating = function() {
    
 
           ComentarioService.getAll().then(function(response){
-            $scope.comentarios = response.data;
+            $scope.comentarios = response.data.reverse();
           })
              .finally(function() {
                // Stop the ion-refresher from spinning
@@ -249,8 +249,10 @@ var user= SeleccionInterna.getUser();
   $scope.comentarios = [];
 
   ComentarioService.getAll().then(function(response){
-    $scope.comentarios = response.data;
+    $scope.comentarios = response.data.reverse();
   });
+  
+
   $scope.go = function ( path ) {
   $location.path( path );
 };
