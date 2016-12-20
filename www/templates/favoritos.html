@@ -3,7 +3,7 @@
 
 <ion-content >
 <ion-list show-reorder="data.showReorder">
-        <ion-item ng-repeat='favorito in favoritos | filter:query' ng-if="favorito.id_user == informacion.uid" class="item-remove-animate item-avatar item-icon-right" href="#/app/tab/favoritos/{{favorito.id_lugar}}"
+        <ion-item ng-repeat='favorito in vm.favoritos | filter:query' ng-if="favorito.id_user == vm.informacion.uid" class="item-remove-animate item-avatar item-icon-right" href="#/app/tab/favoritos/{{favorito.id_lugar}}"
           ng-click="selectFavorito(favorito)">
           <img ng-src="{{favorito.image}}">
           <h2>{{favorito.title}}</h2>
