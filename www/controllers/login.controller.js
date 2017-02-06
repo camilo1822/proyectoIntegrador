@@ -33,10 +33,10 @@ function loginController($scope, $state, $ionicActionSheet,
                 // [START signin]
                 firebase.auth().signInWithRedirect(provider).then(function(result) {
                     // This gives you a Google Access Token. You can use it to access the Google API.
-                    var token = result.credential.accessToken;
+                   // var token = result.credential.accessToken;
                     // The signed-in user info.
-                   // console.log(result.user);
-                   seleccionInterna.setUsuarioSeleccionado(result.user);
+                   console.log("Resultado",result);
+                   //seleccionInterna.setUsuarioSeleccionado(result.user);
                     // [START_EXCLUDE]
                     // [END_EXCLUDE]
                 }).catch(function(error) {
@@ -64,7 +64,7 @@ function loginController($scope, $state, $ionicActionSheet,
                 // [END signout]
             }
             // [START_EXCLUDE]
-            $state.go('app.tab.lugares')
+            $state.go('app.tab.lugares');
             // [END_EXCLUDE]
 
     }

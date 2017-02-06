@@ -3,12 +3,6 @@
 ## DEVELOPMENT
 
 ### ``` bash
-	npm install
-	gulp orderify (Every time you change a .js file)
-	ionic state restore
-	ionic serve
-	````
-
 npm install
 gulp orderify (Every time you change a .js file)
 ionic state restore

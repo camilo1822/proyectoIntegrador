@@ -5,7 +5,7 @@
   <ion-content>
     <div>
       <div class="item item-avatar">
-        <img src="{{vm.detalle.image}}" width="200" height="50">
+        <img ng-src="{{vm.detalle.image}}" width="200" height="50">
         <h2> Nombre: {{vm.detalle.title}}</h2>
         <h2>Direccion: {{vm.detalle.direccion}}</h2>
         <h2>Tipo: {{vm.detalle.tipo}}</h2>
@@ -18,7 +18,7 @@
 
     <div class="item item-body">
       <div class="item item-image">
-        <img src="{{vm.detalle.image}}">
+        <img ng-src="{{vm.detalle.image}}">
       </div>
 
       <p>Descripcion: {{vm.detalle.description}}

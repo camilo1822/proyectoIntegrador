@@ -13,4 +13,4 @@ angular.module('app', ['ionic','firebase', 'ngCordova','app.authService'])
             StatusBar.styleDefault();
         }
     });
-})
+});
