@@ -4,10 +4,13 @@ angular.module('app')
 .controller('loginController', loginController);
 
 loginController.$inject = ['$scope', '$state', '$ionicActionSheet',
-    '$ionicPopup', 'seleccionInterna', '$firebaseAuth'
+    '$ionicPopup', 'seleccionInterna', 'Firebase', '$cordovaDialogs',
+    '$cordovaActionSheet', '$ionicPlatform','$ionicHistory'
 ];
 
-function loginController($scope, $state, $ionicActionSheet, $ionicPopup, seleccionInterna, $firebaseAuth) {
+function loginController($scope, $state, $ionicActionSheet,
+    $ionicPopup, seleccionInterna, Firebase, $cordovaDialogs,
+    $cordovaActionSheet, $ionicPlatform,$ionicHistory) {
 
     var vm = this;
     //var ref = new Firebase("https://APICULTURAL.firebaseio.com");
@@ -18,65 +21,56 @@ function loginController($scope, $state, $ionicActionSheet, $ionicPopup, selecci
 
 
 
-
     function logIn() {
-        /*
-                    ref.authWithOAuthPopup("google", function(error, authData) {
-                        if (error) {
-                            console.log("Login Failed!", error);
-                        } else {
-                            console.log("Authenticated successfully with payload:", authData);
 
-                            var authData = ref.getAuth();
-                            seleccionInterna.setUsuarioSeleccionado(authData);
-                            console.log("getUser:", seleccionInterna.getUser());
-                            $scope.google_data = authData;
-                            var today = seleccionInterna.fechaExacta();
-                            var childRef = ref.child(authData.uid);
-                            ref.child(authData.uid).once('value', function(snapshot) {
-                                var exists = (snapshot.val() !== null);
-                                if (!exists) {
-                                    console.log('No existe');
-                                    childRef.set({
-                                        name: authData.google.displayName,
-                                        provider: authData.provider,
-                                        image: authData.google.profileImageURL,
-                                        creacion: today
-                                    });
-                                } else {
-                                    console.log('existe');
-                                    var dateRef = ref.child(authData.uid + '/' + 'creacion');
-                                    dateRef.remove();
-                                    childRef.update({
-                                        lastLogin: today
-                                    });
+            if (!firebase.auth().currentUser) {
+                // [START createprovider]
+                var provider = new firebase.auth.GoogleAuthProvider();
+                // [END createprovider]
+                // [START addscopes]
+                provider.addScope('https://www.googleapis.com/auth/plus.login');
+                // [END addscopes]
+                // [START signin]
+                firebase.auth().signInWithRedirect(provider).then(function(result) {
+                    // This gives you a Google Access Token. You can use it to access the Google API.
+                    var token = result.credential.accessToken;
+                    // The signed-in user info.
+                   // console.log(result.user);
+                   seleccionInterna.setUsuarioSeleccionado(result.user);
+                    // [START_EXCLUDE]
+                    // [END_EXCLUDE]
+                }).catch(function(error) {
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    // The email of the user's account used.
+                    var email = error.email;
+                    // The firebase.auth.AuthCredential type that was used.
+                    var credential = error.credential;
+                    // [START_EXCLUDE]
+                    if (errorCode === 'auth/account-exists-with-different-credential') {
+                        alert('You have already signed up with a different auth provider for that email.');
+                        // If you are using multiple auth providers on your app you should handle linking
+                        // the user's accounts here.
+                    } else {
+                        console.error(error);
+                    }
+                    // [END_EXCLUDE]
+                });
+                // [END signin]
+            } else {
+                // [START signout]
+                //firebase.auth().signOut();
+                // [END signout]
+            }
+            // [START_EXCLUDE]
+            $state.go('app.tab.lugares')
+            // [END_EXCLUDE]
 
-
-                                }
-                            });
-
-                            $state.go('app.tab.lugares');
-                        }
-                    }, {
-                        remember: "sessionOnly",
-                        scope: "email"
-                    });*/
-
-        var auth = $firebaseAuth();
-            var provider = new firebase.auth.GoogleAuthProvider();
-            provider.addScope('https://www.googleapis.com/auth/plus.login');
-        // login with Facebook
-        auth.$signInWithPopup(provider).then(function(firebaseUser) {
-            console.log("Signed in as:", firebaseUser);
-            seleccionInterna.setUsuarioSeleccionado(firebaseUser.user);
-            $state.go('app.tab.lugares');
-        }).catch(function(error) {
-            console.log("Authentication failed:", error);
-        });
     }
     //LogOut
     function logOut() {
-         
+
         var hideSheet = $ionicActionSheet.show({
             titleText: 'Estás seguro?',
             destructiveText: 'Log out',
@@ -92,7 +86,6 @@ function loginController($scope, $state, $ionicActionSheet, $ionicPopup, selecci
 
     function alertCallback() {
         // ref.unauth();ç
-        var auth = $firebaseAuth();
 
         $scope.$on("$ionicView.afterLeave", function() {
             $ionicHistory.clearCache();
@@ -104,7 +97,7 @@ function loginController($scope, $state, $ionicActionSheet, $ionicPopup, selecci
             template: 'Thanks for using CulturalAPP'
         });
         alertPopup.then(function(res) {
-          auth.$signOut();
+            firebase.auth().signOut();
             /*firebase.auth().signOut().then(function() {
                 // Sign-out successful.
             }, function(error) {
@@ -113,4 +106,9 @@ function loginController($scope, $state, $ionicActionSheet, $ionicPopup, selecci
             $state.go('app.login');
         });
     };
+
+    vm.showDialog = function() {
+        $cordovaDialogs.alert('message', 'title', 'button name')
+            .then(function() {});
+    }
 }

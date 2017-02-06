@@ -123,6 +123,6 @@ angular.module('app')
             }
         });
 
-    $urlRouterProvider.otherwise('/app/tab/lugares');
+    $urlRouterProvider.otherwise('/app/login');
 
 });

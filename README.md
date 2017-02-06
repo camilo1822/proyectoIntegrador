@@ -2,7 +2,7 @@
 
 ## DEVELOPMENT
 
-### ```bash
+### ``` bash
 	npm install
 	gulp orderify (Every time you change a .js file)
 	ionic state restore
@@ -10,7 +10,7 @@
 	````
 ## PRODUCTION
 
-### ```bash
+### ``` bash
 	ionic platform add android
 	ionic build android
 	ionic run android -d ```
@@ -19,4 +19,4 @@
 #### * codova-camera-plugin
 #### * cordova barcode scanner
 
-#### Remember to install them and do ```bash ionic state save```
+#### Remember to install them and do ```bash ionic state save``

@@ -1,4 +1,4 @@
-angular.module('app', ['ionic','firebase', 'ngCordova'])
+angular.module('app', ['ionic','firebase', 'ngCordova','app.authService'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
