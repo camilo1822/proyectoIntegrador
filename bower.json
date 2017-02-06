@@ -3,5 +3,9 @@
   "private": "true",
   "devDependencies": {
     "ionic": "driftyco/ionic-bower#1.2.4"
+  },
+  "dependencies": {
+    "firebaseui": "^1.0.0",
+    "ionic-material": "^0.4.2"
   }
 }

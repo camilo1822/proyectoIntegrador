@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.apicultural323685" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>apiCultural</name>
+<widget id="co.edu.udea.culturalapp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>CulturalApp</name>
   <description>
-        An Ionic Framework and Cordova project.
+      Muestra las principales esculturas cercanas a nuestro entorno universitario.
     </description>
-  <author email="you@example.com" href="http://example.com.com/">
-      Your Name Here
+  <author email="mguillermo.ochoa@udea.edu.co" href="http://github.com/mgochoa">
+      Manuel Ochoa Loaiza
     </author>
   <content src="index.html"/>
   <access origin="*"/>

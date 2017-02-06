@@ -1,0 +1,1186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8d454edb-c8b7-491a-8597-09ef2bffdeed" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-land-hdpi/screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-land-ldpi/screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-land-mdpi/screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-land-xhdpi/screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-land-xxhdpi/screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-land-xxxhdpi/screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-port-hdpi/screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-port-ldpi/screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-port-mdpi/screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-port-xhdpi/screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-port-xxhdpi/screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-port-xxxhdpi/screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/mipmap-hdpi/icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/mipmap-ldpi/icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/mipmap-mdpi/icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/mipmap-xhdpi/icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/mipmap-xxhdpi/icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/mipmap-xxxhdpi/icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/moai-statues-pascua-island.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/proyectoIntegrador.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.io-config.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ionic.config.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/controllers/camera.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/controllers/detalles.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/controllers/detallesFavorito.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/controllers/favoritos.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/controllers/login.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/controllers/lugares.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/controllers/map.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/controllers/mapDetalle.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/controllers/nuevoFavorito.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/dist/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebase/firebase-app-externs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebase/firebase-app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebase/firebase-auth-externs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebase/firebase-auth.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebase/firebase-database-externs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebase/firebase-database.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebase/firebase-messaging-externs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebase/firebase-messaging.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebase/firebase-storage-externs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebase/firebase-storage.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebase/firebase.d.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/.bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/CONTRIBUTING.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/STYLEGUIDE.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/buildtools/all_tests.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/buildtools/common.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/buildtools/gen_all_tests_js.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/buildtools/gen_test_html.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/buildtools/generate_test_files.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/buildtools/run_demo.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/buildtools/run_tests.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/buildtools/sauce_connect.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/buildtools/soy_files.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/buildtools/test_template.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/changelog.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/demo/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/demo/database.rules.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/demo/firebase.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/demo/public/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/demo/public/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/demo/public/sample-config.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/demo/public/style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/demo/public/widget.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/dist/firebaseui.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/dist/firebaseui.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/dist/npm.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/gulpfile.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/image/facebook.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/image/github.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/image/google.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/image/mail.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/image/twitter.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/externs/accountchooser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/testing/acclient.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/testing/auth.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/testing/auth_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/testing/util.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/element/common.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/element/common_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/element/elementtesthelper.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/element/email.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/element/emailtesthelper.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/element/form.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/element/formtesthelper.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/element/idps.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/element/idpstesthelper.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/element/infobar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/element/infobartesthelper.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/element/name.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/element/nametesthelper.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/element/newpassword.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/element/newpasswordtesthelper.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/element/password.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/element/passwordtesthelper.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/base.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/callback.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/callback_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/emailchangerevoke.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/emailchangerevoke_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/emailmismatch.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/emailmismatch_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/federatedlinking.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/federatedlinking_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/notice.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/notice_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/pagetesthelper.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/passwordlinking.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/passwordlinking_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/passwordrecovery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/passwordrecovery_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/passwordreset.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/passwordreset_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/passwordsignin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/passwordsignin_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/passwordsignup.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/passwordsignup_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/providersignin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/providersignin_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/signin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/ui/page/signin_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/utils/acclient.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/utils/acclient_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/utils/account.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/utils/account_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/utils/config.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/utils/config_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/utils/eventregister.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/utils/eventregister_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/utils/idp.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/utils/idp_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/utils/log.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/utils/pendingemailcredential.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/utils/pendingemailcredential_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/utils/sni.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/utils/sni_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/utils/storage.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/utils/storage_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/utils/util.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/utils/util_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/authui.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/authui_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/config.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/config_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/dispatcher.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/dispatcher_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/exports_app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/actioncode.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/actioncode_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/callback.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/callback_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/common.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/common_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/emailmismatch.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/emailmismatch_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/federatedlinking.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/federatedlinking_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/federatedsignin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/federatedsignin_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/handler.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/handler_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/passwordlinking.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/passwordlinking_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/passwordrecovery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/passwordrecovery_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/passwordsignin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/passwordsignin_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/passwordsignup.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/passwordsignup_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/providersignin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/providersignin_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/signin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/signin_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/starter.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/starter_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/javascript/widgets/handler/testhelper.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/protractor.conf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/protractor_spec.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/sauce_browsers.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/soy/elements.soy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/soy/elements_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/soy/elements_test_dom.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/soy/pages.soy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/soy/pages_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/soy/pages_test_dom.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/soy/strings.soy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/soy/viewhelper.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/stylesheet/firebase-ui.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/stylesheet/imports.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/firebaseui/stylesheet/mdl.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/.bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/.cz.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/.jshintrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/CONTRIBUTING.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/dist/ionic.material.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/dist/ionic.material.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/dist/ionic.material.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/dist/ionic.material.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/dist/ionic.material.min.js.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/js/ionic-material.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/js/lib/_ink.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/js/lib/_motion.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/directives/md-label.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/elements/bar-header-expanded.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/elements/bar.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/elements/button-bar.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/elements/button-fab.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/elements/button-floating.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/elements/button.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/elements/card.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/elements/hero.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/elements/item.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/elements/list.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/elements/loading.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/elements/login.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/elements/mask.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/elements/menu.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/elements/motion-elements.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/helpers/colors.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/helpers/sizes.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/helpers/utilities.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/index.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/motion/blinds.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/motion/pan-in-left.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/motion/ripple.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/motion/slide-fade-in.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/motion/slide-in-right.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/motion/slide-up.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/overrides/ink.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/src/scss/overrides/ionic.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-material/webpack.config.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ngCordova/.bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ngCordova/CHANGELOG.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ngCordova/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ngCordova/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ngCordova/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova-mocks.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova-mocks.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ngCordova/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/.bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/Gruntfile.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/dist/waves.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/dist/waves.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/dist/waves.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/dist/waves.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/dist/waves.min.js.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/docs/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/docs/static/jquery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/docs/static/prims.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/docs/static/prims.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/docs/static/snarl.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/docs/static/snarl.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/docs/static/style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/situs.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/src/js/waves.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/src/less/waves.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/src/sass/waves.sass" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/src/scss/waves.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/waves/src/stylus/waves.styl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/services/auth.service.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/services/lugar.service.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/camara.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/favoritos.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/map.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/css/MAGNETOB.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/js/services.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/firebase/firebase-debug.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular/angular.min.js.gzip" afterPath="$PROJECT_DIR$/www/lib/angular/angular.min.js.gzip" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hooks/after_prepare/010_add_platform_class.js" afterPath="$PROJECT_DIR$/hooks/after_prepare/010_add_platform_class.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ionic.project" afterPath="$PROJECT_DIR$/ionic.project" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scss/ionic.app.scss" afterPath="$PROJECT_DIR$/scss/ionic.app.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/style.css" afterPath="$PROJECT_DIR$/www/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/app.js" afterPath="$PROJECT_DIR$/www/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controllers.js" afterPath="$PROJECT_DIR$/www/js/controllers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/lugares.service.js" afterPath="$PROJECT_DIR$/www/js/lugares.service.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/routes.js" afterPath="$PROJECT_DIR$/www/js/routes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular/.bower.json" afterPath="$PROJECT_DIR$/www/lib/angular/.bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular/angular.js" afterPath="$PROJECT_DIR$/www/lib/angular/angular.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular/angular.min.js" afterPath="$PROJECT_DIR$/www/lib/angular/angular.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular/angular.min.js.map" afterPath="$PROJECT_DIR$/www/lib/angular/angular.min.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular/bower.json" afterPath="$PROJECT_DIR$/www/lib/angular/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular/package.json" afterPath="$PROJECT_DIR$/www/lib/angular/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/firebase/.bower.json" afterPath="$PROJECT_DIR$/www/lib/firebase/.bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/firebase/README.md" afterPath="$PROJECT_DIR$/www/lib/firebase/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/firebase/bower.json" afterPath="$PROJECT_DIR$/www/lib/firebase/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/firebase/firebase.js" afterPath="$PROJECT_DIR$/www/lib/firebase/firebase.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/detalle.html" afterPath="$PROJECT_DIR$/www/templates/detalle.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/login.html" afterPath="$PROJECT_DIR$/www/templates/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/lugares.html" afterPath="$PROJECT_DIR$/www/templates/lugares.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/settings.html" afterPath="$PROJECT_DIR$/www/templates/settings.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/tabs.html" afterPath="$PROJECT_DIR$/www/templates/tabs.html" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="31" lean-forward="false" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/js/routes.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1875">
+              <caret line="125" column="44" lean-forward="false" selection-start-line="125" selection-start-column="44" selection-end-line="125" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="32" column="21" lean-forward="false" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/templates/login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="11" lean-forward="false" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lugares.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/templates/lugares.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="526">
+              <caret line="52" column="11" lean-forward="false" selection-start-line="52" selection-start-column="11" selection-end-line="52" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="controllers.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-480">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="detalle.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/templates/detalle.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="750">
+              <caret line="50" column="43" lean-forward="false" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="favoritos.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/templates/favoritos.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>inapp</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/config.xml" />
+        <option value="$PROJECT_DIR$/www/dist/app.js" />
+        <option value="$PROJECT_DIR$/www/js/app.js" />
+        <option value="$PROJECT_DIR$/www/services/auth.service.js" />
+        <option value="$PROJECT_DIR$/www/js/routes.js" />
+        <option value="$PROJECT_DIR$/www/controllers/login.controller.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/www/index.html" />
+        <option value="$PROJECT_DIR$/www/templates/detalle.html" />
+        <option value="$PROJECT_DIR$/www/templates/login.html" />
+        <option value="$PROJECT_DIR$/www/templates/lugares.html" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBowerSettings">
+    <exe-path>/usr/local/bin/bower</exe-path>
+    <config-path>$PROJECT_DIR$/bower.json</config-path>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsFlowSettings">
+    <service-enabled>false</service-enabled>
+    <exe-path />
+    <annotation-enable>false</annotation-enable>
+    <other-services-enabled>false</other-services-enabled>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <gulpfiles>
+      <GulpfileState>
+        <gulpfile-path>$PROJECT_DIR$/gulpfile.js</gulpfile-path>
+        <tasks>
+          <GulpTaskState>
+            <dependencies>
+              <dependency value="sass" />
+            </dependencies>
+            <task-name>default</task-name>
+          </GulpTaskState>
+          <GulpTaskState>
+            <task-name>sass</task-name>
+          </GulpTaskState>
+          <GulpTaskState>
+            <task-name>orderify</task-name>
+          </GulpTaskState>
+          <GulpTaskState>
+            <task-name>watch</task-name>
+          </GulpTaskState>
+          <GulpTaskState>
+            <dependencies>
+              <dependency value="git-check" />
+            </dependencies>
+            <task-name>install</task-name>
+          </GulpTaskState>
+          <GulpTaskState>
+            <task-name>git-check</task-name>
+          </GulpTaskState>
+        </tasks>
+      </GulpfileState>
+    </gulpfiles>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1920" />
+    <option name="height" value="989" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="proyectoIntegrador" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="proyectoIntegrador" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="proyectoIntegrador" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="proyectoIntegrador" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="proyectoIntegrador" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="proyectoIntegrador" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="proyectoIntegrador" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="proyectoIntegrador" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="proyectoIntegrador" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="proyectoIntegrador" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="settings.phonegap" />
+    <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
+    <property name="settings.editor.splitter.proportion" value="0.26545087" />
+    <property name="js.buildTools.gulp.gulp_package_dir" value="$PROJECT_DIR$/node_modules/gulp" />
+    <property name="js.eslint.eslintPackage" value="" />
+    <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="editor.config.accepted" value="true" />
+  </component>
+  <component name="RunManager" selected="PhoneGap/Cordova.Run Android">
+    <configuration default="false" name="orderify" type="js.build_tools.gulp" factoryName="Gulp.js" temporary="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile>$PROJECT_DIR$/gulpfile.js</gulpfile>
+      <tasks>
+        <task>orderify</task>
+      </tasks>
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhoneGap" factoryName="PhoneGap/Cordova">
+      <option name="myExecutable" value="/usr/local/bin/ionic" />
+      <option name="myWorkDir" value="$PROJECT_DIR$" />
+      <option name="myCommand" value="run" />
+      <option name="myPassParent" value="true" />
+      <option name="myPlatform" value="android" />
+      <option name="myExtraArgs" value="-d" />
+      <option name="hasTarget" value="false" />
+      <option name="target" value="" />
+      <method>
+        <option name="GulpBeforeRunTask" enabled="true">
+          <node-interpreter>project</node-interpreter>
+          <node-options />
+          <gulpfile>$PROJECT_DIR$/gulpfile.js</gulpfile>
+          <tasks>
+            <task>orderify</task>
+          </tasks>
+          <arguments />
+          <envs />
+        </option>
+      </method>
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+    <configuration default="false" name="Serve" type="PhoneGap" factoryName="PhoneGap/Cordova">
+      <option name="myExecutable" value="/usr/local/bin/ionic" />
+      <option name="myWorkDir" value="$PROJECT_DIR$" />
+      <option name="myCommand" value="serve" />
+      <option name="myPassParent" value="true" />
+      <option name="myPlatform" value="browser" />
+      <option name="myExtraArgs" value="" />
+      <option name="hasTarget" value="false" />
+      <option name="target" value="" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Run Android" type="PhoneGap" factoryName="PhoneGap/Cordova">
+      <option name="myExecutable" value="/usr/local/bin/ionic" />
+      <option name="myWorkDir" value="$PROJECT_DIR$" />
+      <option name="myCommand" value="run" />
+      <option name="myPassParent" value="true" />
+      <option name="myPlatform" value="android" />
+      <option name="myExtraArgs" value="-d" />
+      <option name="hasTarget" value="false" />
+      <option name="target" value="" />
+      <method />
+    </configuration>
+    <list size="3">
+      <item index="0" class="java.lang.String" itemvalue="PhoneGap/Cordova.Serve" />
+      <item index="1" class="java.lang.String" itemvalue="PhoneGap/Cordova.Run Android" />
+      <item index="2" class="java.lang.String" itemvalue="Gulp.js.orderify" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Gulp.js.orderify" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8d454edb-c8b7-491a-8597-09ef2bffdeed" name="Default" comment="" />
+      <created>1482291258615</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1482291258615</updated>
+      <workItem from="1482291259882" duration="722000" />
+      <workItem from="1482294323875" duration="3782000" />
+      <workItem from="1482328426127" duration="113000" />
+      <workItem from="1482328664154" duration="175000" />
+      <workItem from="1486400455418" duration="986000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="6036000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1920" height="989" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1671875" sideWeight="0.5251076" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1671875" sideWeight="0.4748924" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2423913" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16712329" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova-mocks.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/dist/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1905">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="52" lean-forward="false" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/services/lugar.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="62" column="31" lean-forward="false" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/services/auth.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="16" lean-forward="false" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/controllers/login.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="33" column="50" lean-forward="false" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="31" lean-forward="false" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/controllers/login.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="50" lean-forward="false" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1875">
+          <caret line="125" column="44" lean-forward="false" selection-start-line="125" selection-start-column="44" selection-end-line="125" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="30" lean-forward="false" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="52" lean-forward="false" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/dist/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/services/auth.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="16" lean-forward="false" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="56" lean-forward="false" selection-start-line="0" selection-start-column="56" selection-end-line="0" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/controllers/login.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="50" lean-forward="false" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1875">
+          <caret line="125" column="44" lean-forward="false" selection-start-line="125" selection-start-column="44" selection-end-line="125" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="30" lean-forward="false" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="52" lean-forward="false" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/dist/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="56" lean-forward="false" selection-start-line="0" selection-start-column="56" selection-end-line="0" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/services/auth.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/controllers/login.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1875">
+          <caret line="125" column="44" lean-forward="false" selection-start-line="125" selection-start-column="44" selection-end-line="125" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="30" lean-forward="false" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="52" lean-forward="false" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/dist/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="56" lean-forward="false" selection-start-line="0" selection-start-column="56" selection-end-line="0" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/splash.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/icon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gulpfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platforms/android/platform_www/cordova_plugins.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="63" column="26" lean-forward="false" selection-start-line="63" selection-start-column="21" selection-end-line="63" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova-mocks.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/dist/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1905">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="52" lean-forward="false" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/services/lugar.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="62" column="31" lean-forward="false" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/services/auth.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="16" lean-forward="false" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/controllers/login.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="33" column="50" lean-forward="false" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="31" lean-forward="false" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="21" lean-forward="false" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/favoritos.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="11" lean-forward="false" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/lugares.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="52" column="11" lean-forward="false" selection-start-line="52" selection-start-column="11" selection-end-line="52" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-480">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/detalle.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="50" column="43" lean-forward="false" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1875">
+          <caret line="125" column="44" lean-forward="false" selection-start-line="125" selection-start-column="44" selection-end-line="125" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
