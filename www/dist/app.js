@@ -11,7 +11,6 @@ angular.module('app', ['ionic', 'ngCordova','app.authService'])
         }
         if (window.StatusBar) {
             StatusBar.styleDefault();
-            StatusBar.styleColor('green');
         }
     });
 })
