@@ -9,7 +9,7 @@ function lugaresController($scope, lugaresService, seleccionInterna, $timeout,
     $state, $ionicLoading, $ionicModal, $ionicSlideBoxDelegate) {
     //Modal para datos personales
     var vm = this;
-
+    vm.user={};
 
     vm.lugares = [];
 
@@ -48,8 +48,9 @@ function lugaresController($scope, lugaresService, seleccionInterna, $timeout,
 
     //Inicializando lugares
 
-    $scope.$on('$ionicView.enter', function() {
+    $scope.$on('$ionicView.afterEnter', function() {
         vm.user = seleccionInterna.getUser();
+        console.log("Usuario completo",vm.user);
     });
     var lugar = 'Lugares';
     $scope.$on('$ionicView.loaded', function() {

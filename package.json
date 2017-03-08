@@ -2,6 +2,9 @@
   "name": "apicultural",
   "version": "1.1.1",
   "description": "apiCultural: An Ionic project",
+  "scripts": {
+    "android": "gulp orderify && ionic run android -d"
+  },
   "dependencies": {
     "firebaseui": "^1.0.0",
     "gulp": "^3.5.6",
@@ -37,7 +40,15 @@
       "locator": "https://github.com/phonegap/phonegap-plugin-barcodescanner.git",
       "id": "phonegap-plugin-barcodescanner"
     },
-    "cordova-plugin-geolocation"
+    "cordova-plugin-geolocation",
+    {
+      "id": "cordova-plugin-facebook4",
+      "locator": "cordova-plugin-facebook4",
+      "variables": {
+        "APP_ID": "942560402507309",
+        "APP_NAME": "Cultural App"
+      }
+    }
   ],
   "cordovaPlatforms": [
     "ios",

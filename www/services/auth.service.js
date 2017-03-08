@@ -10,6 +10,8 @@ angular.module('app.authService',[])
         }
     ])*/
 
+    // TODO: Native authentication
+
     .factory('Firebase', function() {
         var config = {
             apiKey: "AIzaSyDuIRfagLRoWtW9wtmpcGeAZvd18v7VxWA",

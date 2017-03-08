@@ -1,3 +1,4 @@
+//TODO: Social sharing
 angular.module('app')
 
 .controller('detallesController', detallesController);

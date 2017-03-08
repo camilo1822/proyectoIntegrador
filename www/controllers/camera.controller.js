@@ -1,3 +1,5 @@
+
+    // TODO: Native map
 angular.module('app')
 
 .controller('cameraController',cameraController);
@@ -5,7 +7,7 @@ angular.module('app')
 
 cameraController.$inject=['$scope','$cordovaBarcodeScanner','$state'];
 
-    
+
    function cameraController($scope,$cordovaBarcodeScanner,$state) {
 
     var vm = this;
@@ -19,7 +21,7 @@ cameraController.$inject=['$scope','$cordovaBarcodeScanner','$state'];
                 "Format: " + result.format + "\n" +
                 "Cancelled: " + result.cancelled);
           $state.go('app.tab.lugares-detalle', { aId:result.text});
-      }, 
+      },
       function (error) {
           alert("Scanning failed: " + error);
       },
@@ -32,6 +34,6 @@ cameraController.$inject=['$scope','$cordovaBarcodeScanner','$state'];
       }
    );
 
-    } 
+    }
 
 }

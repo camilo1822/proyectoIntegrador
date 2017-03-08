@@ -3,59 +3,82 @@
 
 
   <ion-content>
-    <div>
+    <!--div>
       <div class="item item-avatar">
         <img ng-src="{{vm.detalle.image}}" width="200" height="50">
         <h2> Nombre: {{vm.detalle.title}}</h2>
         <h2>Direccion: {{vm.detalle.direccion}}</h2>
         <h2>Tipo: {{vm.detalle.tipo}}</h2>
-        <a href="javascript:">
+        <a>
           <i class="icon {{vm.estrella}}" ng-click="vm.setRating();"></i>
         </a>
       </div>
-    </div>
+    </div-->
 
 
-    <div class="item item-body">
+    <div class="list">
       <div class="item item-image">
         <img ng-src="{{vm.detalle.image}}">
       </div>
 
-      <p>Descripcion: {{vm.detalle.description}}
-      </p>
-      <p>
-        <a href="#" class="subdued">1 Like</a>
-        <a href="#" class="subdued">5 Comments</a>
-      </p>
-      <div>
-        <span>Comentario</span>
-        <div class="list list-inset">
-          <label class="item item-input">
+      <div class="card">
+        <div class="item item-body">
+          <h2> {{vm.detalle.title}}</h2>
+          <h3> {{vm.detalle.direccion}}</h3>
+          <h3> {{vm.detalle.tipo}}</h3>
+
+          <p>Descripcion: {{vm.detalle.description}}
+          </p>
+          <p>
+            <a href="#" class="subdued">1 Like</a>
+            <a href="#" class="subdued">5 Comments</a>
+            <a>
+              <i class="subdued icon {{vm.estrella}}" ng-click="vm.setRating();"></i>
+            </a>
+          </p>
+        </div>
+
+      </div>
+      <div class="button-bar">
+        <button class="button icon-left ion-map button-assertive" ng-href="#/app/tab/lugares/{{vm.lugar._id}}//mapa/" ng-click="vm.go('/app/tab/lugares/{{vm.lugar._id}}/mapa')">
+      Mapa
+    </button>
+        <button class="button icon-left ion-share button-royal">
+      Compartir
+    </button>
+
+      </div>
+
+    </div>
+
+
+
+
+    <div class=" card">
+
+
+
+      <div class="item text-center">
+        Comentarios
+      </div>
+      <ion-item ng-repeat="comment in vm.comentarios" ng-if="comment.id_lugar == vm.lugar._id">
+        <a class="item item-avatar">
+          <img ng-src="{{comment.foto}}">
+          <h2>{{comment.nombre}}</h2>
+          <p>{{comment.comentario}}</p>
+        </a>
+
+    </div>
+    <div class="list card">
+      </ion-item>
+      <label class="item item-input ">
             <input type="text" ng-model="vm.comentario" placeholder="Inserte su comentario">
           </label>
-        </div>
-        <div class="button-bar">
-          <button class="button icon-left button-dark ion-android-chat" ng-click="vm.guardar();">
-            Comentar
-          </button>
 
-          </button>
-          <button class="button icon-left ion-map button-assertive" ng-href="#/app/tab/lugares/{{vm.lugar._id}}//mapa/"
-                  ng-click="vm.go('/app/tab/lugares/{{vm.lugar._id}}/mapa')">
-            Mapa
-          </button>
+      <a class=" item text-center item-icon-left assertive" ng-click="vm.guardar()">
+        <i class="icon ion-android-chat"></i> Comentar
+      </a>
 
-        </div>
-        <ion-item ng-repeat="comment in vm.comentarios" ng-if="comment.id_lugar == vm.lugar._id">
-          <a class="item item-avatar">
-            <img ng-src="{{comment.foto}}">
-            <h2>{{comment.nombre}}</h2>
-            <p>{{comment.comentario}}</p>
-          </a>
-
-
-        </ion-item>
-      </div>
     </div>
 
   </ion-content>

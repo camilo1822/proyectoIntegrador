@@ -13,4 +13,10 @@ angular.module('app', ['ionic','firebase', 'ngCordova','app.authService'])
             StatusBar.styleDefault();
         }
     });
-});
+})
+.config(['$ionicConfigProvider', function ($ionicConfigProvider) {
+
+        $ionicConfigProvider.backButton.previousTitleText(false).text('');
+        $ionicConfigProvider.navBar.alignTitle('platform');
+    }]);
+;

@@ -13,7 +13,13 @@ angular.module('app', ['ionic','firebase', 'ngCordova','app.authService'])
             StatusBar.styleDefault();
         }
     });
-});
+})
+.config(['$ionicConfigProvider', function ($ionicConfigProvider) {
+
+        $ionicConfigProvider.backButton.previousTitleText(false).text('');
+        $ionicConfigProvider.navBar.alignTitle('platform');
+    }]);
+;
 
 angular.module('app')
 
@@ -156,6 +162,8 @@ angular.module('app.authService',[])
         }
     ])*/
 
+    // TODO: Native authentication
+
     .factory('Firebase', function() {
         var config = {
             apiKey: "AIzaSyDuIRfagLRoWtW9wtmpcGeAZvd18v7VxWA",
@@ -170,108 +178,115 @@ angular.module('app.authService',[])
 
     });
 
-angular.module('app')
-
-.service('lugaresService', lugaresService)
-.service('detalleService', detalleService)
-.service('comentarioService', comentarioService)
-.service('favoritoService', favoritoService)
-.service('seleccionInterna', seleccionInterna);
+angular.module('app').service('lugaresService', lugaresService).service('detalleService', detalleService).service('comentarioService', comentarioService).service('favoritoService', favoritoService).service('seleccionInterna', seleccionInterna);
 
 lugaresService.$inject = ['$http'];
 detalleService.$inject = ['$http'];
 comentarioService.$inject = ['$http'];
 favoritoService.$inject = ['$http'];
-seleccionInterna.$inject = ['$http'];
-
+seleccionInterna.$inject = ['$state'];
 
 function lugaresService($http) {
-    var base = 'https://cultural-api.herokuapp.com/';
+  var base = 'https://cultural-api.herokuapp.com/';
 
-    this.getAll = function(lugar) {
-        return $http.get(base + 'api/' + lugar);
-    };
+  this.getAll = function(lugar) {
+    return $http.get(base + 'api/' + lugar);
+  };
 }
-
 
 //obtener lugar por medio de id
 function detalleService($http) {
-    var base = 'https://cultural-api.herokuapp.com/api/Lugares/';
-    this.getAll = function(idMovimiento) {
+  var base = 'https://cultural-api.herokuapp.com/api/Lugares/';
+  this.getAll = function(idMovimiento) {
 
-        return $http.get(base + idMovimiento);
+    return $http.get(base + idMovimiento);
 
-    };
+  };
 
 }
 
 function comentarioService($http) {
-    var base = 'https://cultural-api.herokuapp.com/api/Comentarios';
-    this.getAll = function() {
+  var base = 'https://cultural-api.herokuapp.com/api/Comentarios';
+  this.getAll = function() {
 
-        return $http.get(base);
+    return $http.get(base);
 
-    };
+  };
 
 }
 
 function favoritoService($http) {
-    var base = 'https://cultural-api.herokuapp.com/api/favoritos';
-    this.getAll = function() {
+  var base = 'https://cultural-api.herokuapp.com/api/favoritos';
+  this.getAll = function() {
 
-        return $http.get(base);
+    return $http.get(base);
 
-    };
+  };
 
 }
 
-function seleccionInterna() {
-    var LugarSeleccionado = {};
-    var usuarioSeleccionado = {};
-    this.setLugarSeleccionado = function(lugar) {
-        LugarSeleccionado = lugar;
-    };
+function seleccionInterna($state) {
+  var LugarSeleccionado = {};
+  var usuarioSeleccionado = {
+    displayName: null,
+    email: null,
+    photoURL: null
+  };
+  this.setLugarSeleccionado = function(lugar) {
+    LugarSeleccionado = lugar;
+  };
 
-    this.setUsuarioSeleccionado = function(usuario) {
-        usuarioSeleccionado = usuario;
-    };
+  this.setUsuarioSeleccionado = function(usuario) {
+    facebookConnectPlugin.api('/me?fields=name,email,picture.type(large)', [
+      "email", "public_profile"
+    ], function(data) {
+      console.log("User info: ", data);
+      usuarioSeleccionado.displayName = data.name;
+      usuarioSeleccionado.email = data.email;
+      usuarioSeleccionado.photoURL = data.picture.data.url;
+      $state.go('app.tab.lugares');
+    }, function(data) {
+      console.log("ERROR");
+    });
+  };
 
+  this.getLugarSeleccionado = function() {
+    return LugarSeleccionado;
 
-    this.getLugarSeleccionado = function() {
-        return LugarSeleccionado;
+  };
 
-    };
+  this.getUser = function() {
+    return usuarioSeleccionado;
+  };
 
-    this.getUser = function() {
-        return usuarioSeleccionado;
-    };
-
-    this.fechaExacta = function() {
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth() + 1; //January is 0!
-        var yyyy = today.getFullYear();
-        var hh = today.getHours();
-        var Mm = today.getMinutes();
-        var Ss = today.getSeconds();
-        if (dd < 10) {
-            dd = '0' + dd
-        }
-        if (mm < 10) {
-            mm = '0' + mm
-        }
-        if (Mm < 10) {
-            Mm = '0' + Mm
-        }
-        if (Ss < 10) {
-            Ss = '0' + Ss
-        }
-        var today = dd + '/' + mm + '/' + yyyy + ' ' + hh + ':' + Mm + ':' + Ss;
-        return today;
+  this.fechaExacta = function() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
+    var hh = today.getHours();
+    var Mm = today.getMinutes();
+    var Ss = today.getSeconds();
+    if (dd < 10) {
+      dd = '0' + dd
     }
+    if (mm < 10) {
+      mm = '0' + mm
+    }
+    if (Mm < 10) {
+      Mm = '0' + Mm
+    }
+    if (Ss < 10) {
+      Ss = '0' + Ss
+    }
+    var today = dd + '/' + mm + '/' + yyyy + ' ' + hh + ':' + Mm + ':' + Ss;
+    return today;
+  }
 
 }
 
+
+    // TODO: Native map
 angular.module('app')
 
 .controller('cameraController',cameraController);
@@ -279,7 +294,7 @@ angular.module('app')
 
 cameraController.$inject=['$scope','$cordovaBarcodeScanner','$state'];
 
-    
+
    function cameraController($scope,$cordovaBarcodeScanner,$state) {
 
     var vm = this;
@@ -293,7 +308,7 @@ cameraController.$inject=['$scope','$cordovaBarcodeScanner','$state'];
                 "Format: " + result.format + "\n" +
                 "Cancelled: " + result.cancelled);
           $state.go('app.tab.lugares-detalle', { aId:result.text});
-      }, 
+      },
       function (error) {
           alert("Scanning failed: " + error);
       },
@@ -306,9 +321,11 @@ cameraController.$inject=['$scope','$cordovaBarcodeScanner','$state'];
       }
    );
 
-    } 
+    }
 
 }
+
+//TODO: Social sharing
 angular.module('app')
 
 .controller('detallesController', detallesController);
@@ -480,119 +497,89 @@ function favoritosController($scope, favoritoService, seleccionInterna, $timeout
 
 }
 
-angular.module('app')
+angular.module('app').controller('loginController', loginController);
 
-
-.controller('loginController', loginController);
-
-loginController.$inject = ['$scope', '$state', '$ionicActionSheet',
-    '$ionicPopup', 'seleccionInterna', 'Firebase', '$cordovaDialogs',
-    '$cordovaActionSheet', '$ionicPlatform','$ionicHistory'
+loginController.$inject = [
+  '$scope',
+  '$state',
+  '$ionicActionSheet',
+  '$ionicPopup',
+  'seleccionInterna',
+  '$cordovaDialogs',
+  '$cordovaActionSheet',
+  '$ionicPlatform',
+  '$ionicHistory'
 ];
 
-function loginController($scope, $state, $ionicActionSheet,
-    $ionicPopup, seleccionInterna, Firebase, $cordovaDialogs,
-    $cordovaActionSheet, $ionicPlatform,$ionicHistory) {
+function loginController($scope, $state, $ionicActionSheet, $ionicPopup, seleccionInterna, $cordovaDialogs, $cordovaActionSheet, $ionicPlatform, $ionicHistory) {
 
-    var vm = this;
-    //var ref = new Firebase("https://APICULTURAL.firebaseio.com");
-    vm.usuarioGoogle = {};
-    vm.google_data = {};
+  var vm = this;
+
+  vm.google_data = {};
+  vm.logOut = logOut;
+
+  $ionicPlatform.ready(function() {
+
     vm.logIn = logIn;
-    vm.logOut = logOut;
+  });
 
-
-
-    function logIn() {
-
-            if (!firebase.auth().currentUser) {
-                // [START createprovider]
-                var provider = new firebase.auth.GoogleAuthProvider();
-                // [END createprovider]
-                // [START addscopes]
-                provider.addScope('https://www.googleapis.com/auth/plus.login');
-                // [END addscopes]
-                // [START signin]
-                firebase.auth().signInWithRedirect(provider).then(function(result) {
-                    // This gives you a Google Access Token. You can use it to access the Google API.
-                   // var token = result.credential.accessToken;
-                    // The signed-in user info.
-                   console.log("Resultado",result);
-                   //seleccionInterna.setUsuarioSeleccionado(result.user);
-                    // [START_EXCLUDE]
-                    // [END_EXCLUDE]
-                }).catch(function(error) {
-                    // Handle Errors here.
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    // The email of the user's account used.
-                    var email = error.email;
-                    // The firebase.auth.AuthCredential type that was used.
-                    var credential = error.credential;
-                    // [START_EXCLUDE]
-                    if (errorCode === 'auth/account-exists-with-different-credential') {
-                        alert('You have already signed up with a different auth provider for that email.');
-                        // If you are using multiple auth providers on your app you should handle linking
-                        // the user's accounts here.
-                    } else {
-                        console.error(error);
-                    }
-                    // [END_EXCLUDE]
-                });
-                // [END signin]
-            } else {
-                // [START signout]
-                //firebase.auth().signOut();
-                // [END signout]
-            }
-            // [START_EXCLUDE]
-            $state.go('app.tab.lugares');
-            // [END_EXCLUDE]
-
-    }
-    //LogOut
-    function logOut() {
-
-        var hideSheet = $ionicActionSheet.show({
-            titleText: 'Estás seguro?',
-            destructiveText: 'Log out',
-            cancelText: 'Cancel',
-            cancel: function() {},
-            destructiveButtonClicked: function() {
-                hideSheet();
-
-                return alertCallback();
-            }
-        });
+  function logIn() {
+    var fbLoginSuccess = function(userData) {
+      console.log("login: ", userData);
+      seleccionInterna.setUsuarioSeleccionado(userData);
     }
 
-    function alertCallback() {
-        // ref.unauth();ç
+    facebookConnectPlugin.login([
+      "public_profile", "email"
+    ], fbLoginSuccess, function loginError(error) {
+      $cordovaDialogs.alert('No se pudo iniciar sesión', 'ERROR', 'Aceptar').then(function() {});
+    });
 
-        $scope.$on("$ionicView.afterLeave", function() {
-            $ionicHistory.clearCache();
-        });
+  }
+  //LogOut
+  function logOut() {
 
-        console.log("Saliendo de la app");
-        var alertPopup = $ionicPopup.alert({
-            title: 'Logging Out',
-            template: 'Thanks for using CulturalAPP'
-        });
-        alertPopup.then(function(res) {
-            firebase.auth().signOut();
-            /*firebase.auth().signOut().then(function() {
+    var hideSheet = $ionicActionSheet.show({
+      titleText: 'Estás seguro?',
+      destructiveText: 'Log out',
+      cancelText: 'Cancel',
+      cancel: function() {},
+      destructiveButtonClicked: function() {
+        hideSheet();
+
+        return alertCallback();
+      }
+    });
+  }
+
+  function alertCallback() {
+    // ref.unauth();ç
+
+    $scope.$on("$ionicView.afterLeave", function() {
+      $ionicHistory.clearCache();
+    });
+
+    console.log("Saliendo de la app");
+    var alertPopup = $ionicPopup.alert({title: 'Saliendo de la aplicación', template: 'Gracias por usar CulturalAPP'});
+    alertPopup.then(function(res) {
+      //firebase.auth().signOut();
+      /*firebase.auth().signOut().then(function() {
                 // Sign-out successful.
             }, function(error) {
                 // An error happened.
             });*/
-            $state.go('app.login');
-        });
-    };
+      facebookConnectPlugin.logout(function() {
+        $state.go('app.login');
+      }, function() {
+        $state.go('app.login');
+      })
 
-    vm.showDialog = function() {
-        $cordovaDialogs.alert('message', 'title', 'button name')
-            .then(function() {});
-    }
+    });
+  }
+
+  vm.showDialog = function() {
+    $cordovaDialogs.alert('message', 'title', 'button name').then(function() {});
+  };
 }
 
 angular.module('app')
@@ -606,7 +593,7 @@ function lugaresController($scope, lugaresService, seleccionInterna, $timeout,
     $state, $ionicLoading, $ionicModal, $ionicSlideBoxDelegate) {
     //Modal para datos personales
     var vm = this;
-
+    vm.user={};
 
     vm.lugares = [];
 
@@ -645,8 +632,9 @@ function lugaresController($scope, lugaresService, seleccionInterna, $timeout,
 
     //Inicializando lugares
 
-    $scope.$on('$ionicView.enter', function() {
+    $scope.$on('$ionicView.afterEnter', function() {
         vm.user = seleccionInterna.getUser();
+        console.log("Usuario completo",vm.user);
     });
     var lugar = 'Lugares';
     $scope.$on('$ionicView.loaded', function() {
