@@ -12,7 +12,7 @@ angular.module('app.authService',[])
 
     // TODO: Native authentication
 
-    .factory('Firebase', function() {
+  /*  .factory('Firebase', function() {
         var config = {
             apiKey: "AIzaSyDuIRfagLRoWtW9wtmpcGeAZvd18v7VxWA",
             authDomain: "culturalapp-ee59b.firebaseapp.com",
@@ -24,4 +24,4 @@ angular.module('app.authService',[])
             init: firebase.initializeApp(config)
         }
 
-    });
+    });*/

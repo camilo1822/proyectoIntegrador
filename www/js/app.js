@@ -1,4 +1,4 @@
-angular.module('app', ['ionic','firebase', 'ngCordova','app.authService'])
+angular.module('app', ['ionic', 'ngCordova','app.authService'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -11,6 +11,7 @@ angular.module('app', ['ionic','firebase', 'ngCordova','app.authService'])
         }
         if (window.StatusBar) {
             StatusBar.styleDefault();
+            StatusBar.styleColor('green');
         }
     });
 })

@@ -1,4 +1,4 @@
-angular.module('app', ['ionic','firebase', 'ngCordova','app.authService'])
+angular.module('app', ['ionic', 'ngCordova','app.authService'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -11,6 +11,7 @@ angular.module('app', ['ionic','firebase', 'ngCordova','app.authService'])
         }
         if (window.StatusBar) {
             StatusBar.styleDefault();
+            StatusBar.styleColor('green');
         }
     });
 })
@@ -164,7 +165,7 @@ angular.module('app.authService',[])
 
     // TODO: Native authentication
 
-    .factory('Firebase', function() {
+  /*  .factory('Firebase', function() {
         var config = {
             apiKey: "AIzaSyDuIRfagLRoWtW9wtmpcGeAZvd18v7VxWA",
             authDomain: "culturalapp-ee59b.firebaseapp.com",
@@ -176,7 +177,7 @@ angular.module('app.authService',[])
             init: firebase.initializeApp(config)
         }
 
-    });
+    });*/
 
 angular.module('app').service('lugaresService', lugaresService).service('detalleService', detalleService).service('comentarioService', comentarioService).service('favoritoService', favoritoService).service('seleccionInterna', seleccionInterna);
 
