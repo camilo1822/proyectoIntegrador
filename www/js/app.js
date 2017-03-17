@@ -1,4 +1,4 @@
-angular.module('app', ['ionic', 'ngCordova','app.authService'])
+angular.module('app', ['ionic', 'ngCordova','app.authService','ngCordovaBeacon'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
