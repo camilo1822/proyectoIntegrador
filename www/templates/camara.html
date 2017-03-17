@@ -1,7 +1,39 @@
-<ion-view view-title="Lector QR">
+<ion-view view-title="Lector Beacons">
   <ion-content class="padding">
+
+    <div class="list">
+
+
+      <div class="list card">
+       <div class="item" ng-repeat="(key, value) in vm.beacons">
+           <div class="row">
+               <div class="col truncate">
+                   {{value.uuid}}
+               </div>
+           </div>
+           <div class="row">
+               <div class="col">
+                   major: {{value.major}}
+               </div>
+               <div class="col">
+                   minor: {{value.minor}}
+               </div>
+           </div>
+           <div class="row">
+               <div class="col">
+                   {{value.proximity}}
+               </div>
+           </div>
+           <div class="row">
+               <div class="col">
+                   {{vm.date}}
+               </div>
+           </div>
+       </div>
+   </div>
+
+    </div>
+
   </ion-content>
-  <ion-footer-bar class="bar-dark">
-       <a ng-click="vm.scan()" class="button button-icon button-center icon ion-checkmark-round">Capturar</a>
-     </ion-footer-bar>
+
 </ion-view>

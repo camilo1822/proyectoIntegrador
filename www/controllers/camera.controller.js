@@ -1,39 +1,108 @@
+// TODO: Native map
+angular.module('app').controller('cameraController', cameraController);
 
-    // TODO: Native map
-angular.module('app')
+cameraController.$inject = [
+  '$scope',
+  '$cordovaBarcodeScanner',
+  '$state',
+  '$cordovaBeacon',
+  '$ionicPlatform',
+  '$rootScope'
+];
 
-.controller('cameraController',cameraController);
+function cameraController($scope, $cordovaBarcodeScanner, $state, $cordovaBeacon, $ionicPlatform, $rootScope) {
 
+  var vm = this;
+  vm.beacons = {};
+  var brIdentifier = 'ranged region';
+  var brUuid = 'B9407F30-F5F8-466E-AFF9-25556B57FE6D';
+  var brMajor = 4579;
+  var brMinor = 30200;
+  var brNotifyEntryStateOnDisplay = true;
+  vm.date='';
 
-cameraController.$inject=['$scope','$cordovaBarcodeScanner','$state'];
+  $ionicPlatform.ready(function() {
 
+  /*  vm.didStartMonitoringForRegionLog = '';
+    vm.didDetermineStateForRegionLog = '';
+    vm.didRangeBeaconsInRegionLog = '';
 
-   function cameraController($scope,$cordovaBarcodeScanner,$state) {
+    vm.requestAlwaysAuthorization = function() {
+        $cordovaBeacon.requestWhenInUseAuthorization();
+    };
 
-    var vm = this;
+    vm.startMonitoringForRegion = function() {
+      $cordovaBeacon.startMonitoringForRegion($cordovaBeacon.createBeaconRegion(brIdentifier, brUuid, brMajor, brMinor, brNotifyEntryStateOnDisplay));
+    };
+    vm.startRangingBeaconsInRegion = function() {
+      //$cordovaBeacon.startRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion(brIdentifier, brUuid, brMajor, brMinor, brNotifyEntryStateOnDisplay));
+      $cordovaBeacon.startRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion(brIdentifier, brUuid));
+    };
 
-    vm.scan=function(){
+    vm.stopMonitoringForRegion = function() {
+      $cordovaBeacon.stopMonitoringForRegion($cordovaBeacon.createBeaconRegion(brIdentifier, brUuid, brMajor, brMinor, brNotifyEntryStateOnDisplay));
+    };
+    vm.stopRangingBeaconsInRegion = function() {
+      $cordovaBeacon.stopRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion(brIdentifier, brUuid, brMajor, brMinor, brNotifyEntryStateOnDisplay));
+    };
 
-    cordova.plugins.barcodeScanner.scan(
-      function (result) {
-          alert("We got a barcode\n" +
-                "Result: " + result.text + "\n" +
-                "Format: " + result.format + "\n" +
-                "Cancelled: " + result.cancelled);
-          $state.go('app.tab.lugares-detalle', { aId:result.text});
-      },
-      function (error) {
-          alert("Scanning failed: " + error);
-      },
-      {
-          "preferFrontCamera" : true, // iOS and Android
-          "showFlipCameraButton" : true, // iOS and Android
-          "prompt" : "Place a barcode inside the scan area", // supported on Android only
-          "formats" : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
-          "orientation" : "landscape" // Android only (portrait|landscape), default unset so it rotates with the device
-      }
-   );
-
+    vm.clearLogs = function() {
+      vm.didStartMonitoringForRegionLog = '';
+      vm.didDetermineStateForRegionLog = '';
+      vm.didRangeBeaconsInRegionLog = '';
+    };
+    vm.requestAlwaysAuthorization()
+    vm.play = function() {
+      //vm.startMonitoringForRegion();
+      vm.startRangingBeaconsInRegion();
     }
+    vm.stop = function() {
+      //vm.stopMonitoringForRegion();
+      vm.stopRangingBeaconsInRegion();
+    }
+
+    // ========== Events
+
+    $rootScope.$on("$cordovaBeacon:didStartMonitoringForRegion", function(event, pluginResult) {
+      //vm.didStartMonitoringForRegionLog += '-----' + '\n';
+      //vm.didStartMonitoringForRegionLog += JSON.stringify(pluginResult) + '\n';
+      console.log('pluginResult: ', pluginResult);
+    });
+
+    $rootScope.$on("$cordovaBeacon:didDetermineStateForRegion", function(event, pluginResult) {
+      vm.didDetermineStateForRegionLog += '-----' + '\n';
+      vm.didDetermineStateForRegionLog += JSON.stringify(pluginResult) + '\n';
+    });
+
+    $rootScope.$on("$cordovaBeacon:didRangeBeaconsInRegion", function(event, pluginResult) {
+      vm.didRangeBeaconsInRegionLog += '-----' + '\n';
+      vm.didRangeBeaconsInRegionLog += JSON.stringify(pluginResult) + '\n';
+      /*var uniqueBeaconKey;
+      for (var i = 0; i < pluginResult.beacons.length; i++) {
+        uniqueBeaconKey = pluginResult.beacons[i].uuid + ":" + pluginResult.beacons[i].major + ":" + pluginResult.beacons[i].minor;
+        vm.beacons[uniqueBeaconKey] = pluginResult.beacons[i];
+      }
+      $scope.$apply();
+      console.log('pluginResult: ', pluginResult);
+    });*/
+
+    // =========/ Events
+    $cordovaBeacon.requestAlwaysAuthorization();
+
+        $rootScope.$on("$cordovaBeacon:didRangeBeaconsInRegion", function(event, pluginResult) {
+
+          var uniqueBeaconKey;
+          for (var i = 0; i < pluginResult.beacons.length; i++) {
+            //uniqueBeaconKey = pluginResult.beacons[i].uuid + ":" + pluginResult.beacons[i].major + ":" + pluginResult.beacons[i].minor;
+            vm.beacons[i] = pluginResult.beacons[i];
+            vm.date= (new Date()).toString();
+          }
+          $scope.$apply();
+
+
+        });
+
+        $cordovaBeacon.startRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion(brIdentifier, brUuid));
+  });
 
 }
