@@ -33,6 +33,7 @@ function loginController($scope, $state, $ionicActionSheet, $ionicPopup, selecci
     facebookConnectPlugin.login([
       "public_profile", "email"
     ], fbLoginSuccess, function loginError(error) {
+      console.log(error);
       $cordovaDialogs.alert('No se pudo iniciar sesión', 'ERROR', 'Aceptar').then(function() {});
     });
 

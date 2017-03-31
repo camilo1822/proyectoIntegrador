@@ -1,38 +1,13 @@
 <ion-view view-title="Lector Beacons">
   <ion-content class="padding">
 
-    <div class="list">
+      <div  class="list card">
+        <ion-item  class="item-remove-animate item-text-wrap item-thumbnail-left item-icon-right" href="#/app/tab/lugares/{{lugar._id}}">
+            <img ng-src="{{vm.lugar.image}}">
+            <h2>{{vm.lugar.title}}</h2> Direccion: {{vm.lugar.direccion}}
+        </ion-item>
 
-
-      <div class="list card">
-       <div class="item" ng-repeat="(key, value) in vm.beacons">
-           <div class="row">
-               <div class="col truncate">
-                   {{value.uuid}}
-               </div>
-           </div>
-           <div class="row">
-               <div class="col">
-                   major: {{value.major}}
-               </div>
-               <div class="col">
-                   minor: {{value.minor}}
-               </div>
-           </div>
-           <div class="row">
-               <div class="col">
-                   {{value.proximity}}
-               </div>
-           </div>
-           <div class="row">
-               <div class="col">
-                   {{vm.date}}
-               </div>
-           </div>
-       </div>
-   </div>
-
-    </div>
+      </div>
 
   </ion-content>
 

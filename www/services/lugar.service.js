@@ -1,17 +1,39 @@
 angular.module('app').service('lugaresService', lugaresService).service('detalleService', detalleService).service('comentarioService', comentarioService).service('favoritoService', favoritoService).service('seleccionInterna', seleccionInterna);
 
-lugaresService.$inject = ['$http'];
+lugaresService.$inject = ['$http','$q'];
 detalleService.$inject = ['$http'];
 comentarioService.$inject = ['$http'];
 favoritoService.$inject = ['$http'];
 seleccionInterna.$inject = ['$state'];
 
-function lugaresService($http) {
+function lugaresService($http,$q) {
+  var service=this;
   var base = 'https://cultural-api.herokuapp.com/';
-
+  service.lugares=[];
   this.getAll = function(lugar) {
     return $http.get(base + 'api/' + lugar);
   };
+  this._initializeLugares=function(){
+      $http.get(base + 'api/lugares')
+      .then(function(response){
+        service.lugares=response.data;
+      },function(err){
+        console.log(err);
+      });
+  }
+  this._searchByBeaconId= function(beaconId){
+    var defer= $q.defer();
+    if(service.lugares){
+      service.lugares.forEach(function (lugar) {
+        if(lugar.beaconId==beaconId){
+          defer.resolve(lugar);
+        }
+      });
+    }else{
+      defer.reject('No se pudo cargar el lugar');
+    }
+    return defer.promise;
+  }
 }
 
 //obtener lugar por medio de id
