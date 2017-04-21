@@ -178,6 +178,90 @@ angular.module('app.authService',[])
 
     });*/
 
+angular
+  .module('app')
+  .service('beaconService', beaconService);
+
+beaconService.$inject = ['$ionicPlatform', '$rootScope', '$cordovaBeacon', 'lugaresService', '$cordovaLocalNotification'];
+
+function beaconService($ionicPlatform, $rootScope, $cordovaBeacon, lugaresService, $cordovaLocalNotification) {
+  var service = this;
+  var brIdentifier = 'ranged region';
+  var brUuid = 'B9407F30-F5F8-466E-AFF9-25556B57FE6D';
+  var brMajor = 4579;
+  var brMinor = 30200;
+  var brNotifyEntryStateOnDisplay = true;
+  service.firstTime = true;
+  service.beaconPlaces = [];
+
+  service.getArray = getArray;
+
+  function getArray() {
+    return service.beaconPlaces;
+  }
+
+
+  $ionicPlatform.ready(function () {
+    lugaresService._initializeLugares();
+
+    // =========/ Events
+    $cordovaBeacon.requestAlwaysAuthorization();
+
+    $rootScope.$on("$cordovaBeacon:didRangeBeaconsInRegion", function (event, pluginResult) {
+
+      var uniqueBeaconKey;
+
+      for (var i = 0; i < pluginResult.beacons.length; i++) {
+        console.log(pluginResult.beacons[i]);
+        uniqueBeaconKey = pluginResult.beacons[i].uuid + ":" + pluginResult.beacons[i].major + ":" + pluginResult.beacons[i].minor;
+
+        if (typeof lugaresService._searchByBeaconId(uniqueBeaconKey) != 'undefined') {
+          if (typeof service.beaconPlaces.find(function (lugar) {
+              return lugar.beaconId == uniqueBeaconKey
+
+            }) == 'undefined') {
+            var lugar = lugaresService._searchByBeaconId(uniqueBeaconKey);
+            switch (pluginResult.beacons[i].proximity) {
+              case 'ProximityImmediate':
+                lugar.proximidad = 'MUY cerca';
+                break;
+              case 'ProximityNear':
+                lugar.proximidad = 'cerca';
+                break;
+              case 'ProximityFar':
+                lugar.proximidad = 'algo lejos';
+                break;
+              default:
+                lugar.proximidad = 'a una distancia desconocida';
+                break;
+            }
+            service.beaconPlaces.push(lugar);
+
+            $cordovaLocalNotification.schedule({
+              id: 1,
+              title: 'Estás '.concat(lugar.proximidad).concat(' de ').concat(lugar.title),
+              text: 'Toca aquí para ver más detalles',
+              data: {
+                customProperty: 'custom value'
+              },
+              icon: lugar.image
+            }).then(function (result) {
+              console.log('Nice notificacion bro!');
+            });
+
+          } else {
+
+          }
+        }
+      }
+
+    })
+    $cordovaBeacon.startRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion(brIdentifier, brUuid));
+  });
+
+
+}
+
 angular.module('app').service('lugaresService', lugaresService).service('detalleService', detalleService).service('comentarioService', comentarioService).service('favoritoService', favoritoService).service('seleccionInterna', seleccionInterna);
 
 lugaresService.$inject = ['$http','$q'];
@@ -201,7 +285,7 @@ function lugaresService($http,$q) {
         console.log(err);
       });
   }
-  this._searchByBeaconId= function(beaconId){
+/*  this._searchByBeaconId= function(beaconId){
     var defer= $q.defer();
     if(service.lugares){
       service.lugares.forEach(function (lugar) {
@@ -213,8 +297,16 @@ function lugaresService($http,$q) {
       defer.reject('No se pudo cargar el lugar');
     }
     return defer.promise;
-  }
+  }*/
+
+this._searchByBeaconId= function (beaconId) {
+  return service.lugares.find(function (lugar) {
+    return lugar.beaconId=beaconId
+  })
+
 }
+}
+
 
 //obtener lugar por medio de id
 function detalleService($http) {
@@ -312,69 +404,13 @@ angular.module('app').controller('cameraController', cameraController);
 
 cameraController.$inject = [
   '$scope',
-  '$cordovaBarcodeScanner',
-  '$state',
-  '$cordovaBeacon',
-  '$ionicPlatform',
-  '$rootScope',
-  'lugaresService'
+  'beaconService'
 ];
 
-function cameraController($scope, $cordovaBarcodeScanner, $state, $cordovaBeacon, $ionicPlatform, $rootScope, lugaresService) {
+function cameraController($scope,beaconService) {
 
   var vm = this;
-  vm.beacons = {};
-  var brIdentifier = 'ranged region';
-  var brUuid = 'B9407F30-F5F8-466E-AFF9-25556B57FE6D';
-  var brMajor = 4579;
-  var brMinor = 30200;
-  var brNotifyEntryStateOnDisplay = true;
-  vm.date = '';
-  vm.firstTime = true;
-  vm.lugar = {};
-  $scope.$watch(angular.bind(this, function() {
-    return this.lugar;
-  }), function(newVal) {
-    console.log('Lugar changed to ', newVal);
-  });
-  $scope.$watch(angular.bind(this, function() {
-    return this.firstTime;
-  }), function(newVal) {
-    console.log('FirstTime changed to ', newVal);
-  });
-
-  $ionicPlatform.ready(function() {
-    lugaresService._initializeLugares();
-
-    // =========/ Events
-    $cordovaBeacon.requestAlwaysAuthorization();
-
-    $rootScope.$on("$cordovaBeacon:didRangeBeaconsInRegion", function(event, pluginResult) {
-
-      var uniqueBeaconKey;
-
-      for (var i = 0; i < pluginResult.beacons.length; i++) {
-        uniqueBeaconKey = pluginResult.beacons[i].uuid + ":" + pluginResult.beacons[i].major + ":" + pluginResult.beacons[i].minor;
-        if (vm.firstTime) {
-          lugaresService._searchByBeaconId(uniqueBeaconKey).then(function(lugar) {
-            console.log("Lugar en beacon",lugar);
-            vm.lugar = lugar;
-            $scope.$apply();
-            vm.firstTime= false;
-          }),
-          function(err) {
-            console.log('err ', err);
-          };
-        } else {
-          
-        }
-      }
-
-    });
-
-    $cordovaBeacon.startRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion(brIdentifier, brUuid));
-  });
-
+  $scope.beacons = beaconService.beaconPlaces;
 }
 
 //TODO: Social sharing

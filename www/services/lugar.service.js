@@ -21,7 +21,7 @@ function lugaresService($http,$q) {
         console.log(err);
       });
   }
-  this._searchByBeaconId= function(beaconId){
+/*  this._searchByBeaconId= function(beaconId){
     var defer= $q.defer();
     if(service.lugares){
       service.lugares.forEach(function (lugar) {
@@ -33,8 +33,16 @@ function lugaresService($http,$q) {
       defer.reject('No se pudo cargar el lugar');
     }
     return defer.promise;
-  }
+  }*/
+
+this._searchByBeaconId= function (beaconId) {
+  return service.lugares.find(function (lugar) {
+    return lugar.beaconId=beaconId
+  })
+
 }
+}
+
 
 //obtener lugar por medio de id
 function detalleService($http) {
