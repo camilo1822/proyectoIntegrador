@@ -35,6 +35,13 @@ function comentarioService($http) {
 
 }
 
+function agendaService($http) {
+    var base = 'https://cultural-api.herokuapp.com/api/Agenda';
+    this.getAll=function () {
+            return $http.get(base);
+        };
+}
+
 function favoritoService($http) {
   var base = 'https://cultural-api.herokuapp.com/api/favoritos';
   this.getAll = function() {

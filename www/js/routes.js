@@ -112,6 +112,16 @@ angular.module('app')
                 }
             }
         })
+    .state('app.tab.agenda',{
+  url:'/lugares/:aId/agenda',
+  views:{
+    'tab-lugares':{
+      templateUrl:'templates/ag.html',
+      controller:'agendaDetailController',
+      controllerAs:'vm'
+    }
+  }
+})
         .state('app.tab.mapa', {
             url: '/lugares/:aId/mapa',
             views: {
