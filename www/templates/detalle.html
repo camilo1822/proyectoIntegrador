@@ -2,6 +2,24 @@
 
 
 <ion-content  ng-controller="NuevoFavoritoCtrl">
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.8&appId=614028575448982";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-share-button" data-href="{{detalle.image}}" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{detalle.image}}">Compartir</a></div>
+
+
+
+
+
 <div>
   <div class="item item-avatar">
   <img src="{{detalle.image}}" width="200" height="50">
@@ -41,6 +59,10 @@
           </button>
           <button class="button icon-left ion-map button-assertive"  ng-href="#/app/tab/lugares/{{lugar._id}}//mapa/" ng-click="go('/app/tab/lugares/{{lugar._id}}/mapa')">
                     Mapa
+            </button>
+
+            <button class="button icon-left ion-calendar button-default"  ng-href="#/app/tab/lugares/{{lugar._id}}//mapa/" ng-click="go('/app/tab/lugares/{{lugar._id}}/agenda')">
+                    Agenda 
             </button>
 
       </div>

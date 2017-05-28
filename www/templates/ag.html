@@ -1,0 +1,21 @@
+​<ion-view view-title="Agenda" >
+
+
+<ion-content  ng-controller="NuevoFavoritoCtrl">
+  <div class="item item-body">
+
+   <ion-item ng-repeat='agenda in agendas' ng-if="agenda.id_lugar == lugar._id || agenda.id_lugar == lugar.id_lugar">
+<a class="item item-avatar">
+            <h2>{{agenda.nombre}}</h2>
+        <p>{{agenda.descripcion}}</p>
+        <p>{{agenda.fecha}}</p>
+      </a>
+
+
+      </ion-item>
+
+  </div>
+        
+
+</ion-content>
+</ion-view>

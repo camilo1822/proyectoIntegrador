@@ -35,13 +35,35 @@ angular.module('app.controllers', ['ngCordova'])
 
 ])
 
-.controller('NuevoFavoritoCtrl', function($scope,ComentarioService,$http,$ionicLoading,$window, SeleccionInterna,$ionicPopup,$state){
-   $scope.informacion = SeleccionInterna.getUser();
-   $scope.lugar = SeleccionInterna.getLugarSeleccionado();
-    $scope.estrella='ion-ios-star-outline';
+.controller('NuevoFavoritoCtrl', function($scope,ComentarioService,FavoritoService,$http,$ionicLoading,$window, SeleccionInterna,$ionicPopup,$state,$stateParams){
+
+  $scope.informacion = SeleccionInterna.getUser();
+  var favoritos = [];
+  var ident='';
+  FavoritoService.getAll().then(function(response){
+
+      
+      $scope.lugar = SeleccionInterna.getLugarSeleccionado();
+      $scope.estrella='ion-ios-star-outline';
+
+
+     favoritos = response.data;
+     var tamano = favoritos.length;
+     for(var i=0;i<tamano;i++){
+       var identificador2 = $scope.lugar._id;
+      if(favoritos[i].id_lugar==$scope.lugar._id && favoritos[i].id_user==$scope.informacion.uid){
+        $scope.estrella='ion-ios-star';
+        ident = favoritos[i]._id;
+      }
+
+     }
+    });
+
+
 
 
 $scope.setRating = function() {
+    $scope.lugar = SeleccionInterna.getLugarSeleccionado();
         if ($scope.estrella=='ion-ios-star-outline') {
          $scope.estrella = 'ion-ios-star';
 
@@ -60,17 +82,38 @@ $scope.setRating = function() {
         });
       }else {
           $scope.estrella = 'ion-ios-star-outline';
-
+          var identificador = $stateParams.aId;
+          
           //$scope.delete = function(){
             console.log("entre a la delete");
-            console.log("borre",$scope.lugar._id);
-            var base='https://cultural-api.herokuapp.com/api/Favoritos/';
-        $http({
+            console.log("borre",identificador);
+            
+            var base='https://cultural-api.herokuapp.com/api/Favoritos/'+ident;
+            //aca
+              $http({
         method : 'delete',
-        url : base+$scope.lugar._id
+        url : base
         }).success(function(data) {
             console.log(data);
         });
+
+        /*var borrr = "https://cultural-api.herokuapp.com/api/Comentarios/57f9acfc89ed030300ae021b";
+        console.log("intentando borrar comentario");
+                $http({
+        method : 'delete',
+        url : 'https://cultural-api.herokuapp.com/api/Comentarios/585b368f61ac040400beb426'
+        
+        }).success(function(data) {
+            console.log(data);
+        });*/
+
+
+        /*$http({
+        method : 'delete',
+        url : base+identificador2
+        }).success(function(data) {
+            console.log(data);
+        });*/
   //}
         };
 
@@ -120,6 +163,8 @@ $scope.setRating = function() {
       }
   };
 
+ 
+
 })
 
 
@@ -132,7 +177,6 @@ $scope.$on('$ionicView.enter', function() {
     $scope.favoritos = response.data;
   });
 });
-
   $scope.selectFavorito=function(favorito){
     SeleccionInterna.setLugarSeleccionado(favorito);
   };
@@ -277,6 +321,24 @@ $scope.map=function(){
 
   ComentarioService.getAll().then(function(response){
     $scope.comentarios = response.data;
+  });
+}])
+
+.controller('agCtrlDetail', ['$scope','DetalleService','AgendaService','$state','SeleccionInterna',function($scope,DetalleService,AgendaService,$state,SeleccionInterna) {
+  $scope.lugar = SeleccionInterna.getLugarSeleccionado();
+
+  var identificador = $scope.lugar.id_lugar;
+  console.log("id",identificador);
+  $scope.detalle = [];
+  DetalleService.getAll(identificador).then(function(response){
+    console.info(response.data);
+    console.log(response.data);
+    $scope.detalle = response.data;
+  });
+  $scope.agendas = [];
+
+  AgendaService.getAll().then(function(response){
+    $scope.agendas = response.data;
   });
 }])
 

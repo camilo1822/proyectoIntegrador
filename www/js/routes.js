@@ -109,6 +109,15 @@ controller: 'lugaresCtrl'
     }
   }
 })
+.state('app.tab.agenda',{
+  url:'/lugares/:aId/agenda',
+  views:{
+    'tab-lugares':{
+      templateUrl:'templates/ag.html',
+      controller:'agCtrlDetail'
+    }
+  }
+})
 ;
 
   $urlRouterProvider.otherwise('/app/login');
