@@ -178,21 +178,143 @@ angular.module('app.authService',[])
 
     });*/
 
+angular
+  .module('app')
+  .service('beaconService', beaconService);
+
+beaconService.$inject = ['$ionicPlatform', '$rootScope', '$cordovaBeacon', 'lugaresService', '$cordovaLocalNotification'];
+
+function beaconService($ionicPlatform, $rootScope, $cordovaBeacon, lugaresService, $cordovaLocalNotification) {
+  var service = this;
+  var brIdentifier = 'ranged region';
+  var brUuid = 'B9407F30-F5F8-466E-AFF9-25556B57FE6D';
+  var brMajor = 4579;
+  var brMinor = 30200;
+  var brNotifyEntryStateOnDisplay = true;
+  service.firstTime = true;
+  service.beaconPlaces = [];
+  service.timer = 50;
+
+  service.getArray = getArray;
+
+  function getArray() {
+    return service.beaconPlaces;
+  }
+
+
+  $ionicPlatform.ready(function () {
+    lugaresService._initializeLugares();
+
+    // =========/ Events
+    $cordovaBeacon.requestAlwaysAuthorization();
+
+    $rootScope.$on("$cordovaBeacon:didRangeBeaconsInRegion", function (event, pluginResult) {
+
+      if (service.timer == 50) {
+        for (var i = 0; i < pluginResult.beacons.length; i++) {
+          console.log(pluginResult.beacons[i]);
+          var uniqueBeaconKey = pluginResult.beacons[i].uuid + ":" + pluginResult.beacons[i].major + ":" + pluginResult.beacons[i].minor;
+
+          if (typeof lugaresService._searchByBeaconId(uniqueBeaconKey) != 'undefined') {
+            if (typeof service.beaconPlaces.find(function (lugar) {
+                return lugar.beaconId === uniqueBeaconKey
+
+              }) == 'undefined') {
+              var lugar = lugaresService._searchByBeaconId(uniqueBeaconKey);
+              switch (pluginResult.beacons[i].proximity) {
+                case 'ProximityImmediate':
+                  lugar.proximidad = 'MUY cerca';
+                  break;
+                case 'ProximityNear':
+                  lugar.proximidad = 'cerca';
+                  break;
+                case 'ProximityFar':
+                  lugar.proximidad = 'algo lejos';
+                  break;
+                default:
+                  lugar.proximidad = 'a una distancia desconocida';
+                  break;
+              }
+              service.beaconPlaces.push(lugar);
+
+              $cordovaLocalNotification.schedule({
+                id: 1,
+                title: 'Estás '.concat(lugar.proximidad).concat(' de ').concat(lugar.title),
+                text: 'Toca aquí para ver más detalles',
+                data: {
+                  customProperty: 'custom value'
+                },
+                icon: "file://img/moai-statues-pascua-island.png",
+                sound: "file://img/soundnot.mp3"
+              }).then(function (result) {
+                console.log('Nice notificacion bro!');
+              });
+
+            } else {
+
+            }
+          }
+        }
+        service.timer = 0;
+
+
+      } else {
+        service.timer++;
+      }
+
+
+    });
+    $cordovaBeacon.startRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion(brIdentifier, brUuid));
+  });
+
+
+}
+
 angular.module('app').service('lugaresService', lugaresService).service('detalleService', detalleService).service('comentarioService', comentarioService).service('favoritoService', favoritoService).service('seleccionInterna', seleccionInterna);
 
-lugaresService.$inject = ['$http'];
+lugaresService.$inject = ['$http','$q'];
 detalleService.$inject = ['$http'];
 comentarioService.$inject = ['$http'];
 favoritoService.$inject = ['$http'];
 seleccionInterna.$inject = ['$state'];
 
-function lugaresService($http) {
+function lugaresService($http,$q) {
+  var service=this;
   var base = 'https://cultural-api.herokuapp.com/';
-
+  service.lugares=[];
   this.getAll = function(lugar) {
     return $http.get(base + 'api/' + lugar);
   };
+  this._initializeLugares=function(){
+      $http.get(base + 'api/lugares')
+      .then(function(response){
+        service.lugares=response.data;
+      },function(err){
+        console.log(err);
+      });
+  }
+/*  this._searchByBeaconId= function(beaconId){
+    var defer= $q.defer();
+    if(service.lugares){
+      service.lugares.forEach(function (lugar) {
+        if(lugar.beaconId==beaconId){
+          defer.resolve(lugar);
+        }
+      });
+    }else{
+      defer.reject('No se pudo cargar el lugar');
+    }
+    return defer.promise;
+  }*/
+
+this._searchByBeaconId= function (beaconId) {
+  return service.lugares.find(function (lugar) {
+    return lugar.beaconId=beaconId
+  })
+
 }
+}
+
 
 //obtener lugar por medio de id
 function detalleService($http) {
@@ -290,108 +412,13 @@ angular.module('app').controller('cameraController', cameraController);
 
 cameraController.$inject = [
   '$scope',
-  '$cordovaBarcodeScanner',
-  '$state',
-  '$cordovaBeacon',
-  '$ionicPlatform',
-  '$rootScope'
+  'beaconService'
 ];
 
-function cameraController($scope, $cordovaBarcodeScanner, $state, $cordovaBeacon, $ionicPlatform, $rootScope) {
+function cameraController($scope,beaconService) {
 
   var vm = this;
-  vm.beacons = {};
-  var brIdentifier = 'ranged region';
-  var brUuid = 'B9407F30-F5F8-466E-AFF9-25556B57FE6D';
-  var brMajor = 4579;
-  var brMinor = 30200;
-  var brNotifyEntryStateOnDisplay = true;
-  vm.date='';
-
-  $ionicPlatform.ready(function() {
-
-  /*  vm.didStartMonitoringForRegionLog = '';
-    vm.didDetermineStateForRegionLog = '';
-    vm.didRangeBeaconsInRegionLog = '';
-
-    vm.requestAlwaysAuthorization = function() {
-        $cordovaBeacon.requestWhenInUseAuthorization();
-    };
-
-    vm.startMonitoringForRegion = function() {
-      $cordovaBeacon.startMonitoringForRegion($cordovaBeacon.createBeaconRegion(brIdentifier, brUuid, brMajor, brMinor, brNotifyEntryStateOnDisplay));
-    };
-    vm.startRangingBeaconsInRegion = function() {
-      //$cordovaBeacon.startRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion(brIdentifier, brUuid, brMajor, brMinor, brNotifyEntryStateOnDisplay));
-      $cordovaBeacon.startRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion(brIdentifier, brUuid));
-    };
-
-    vm.stopMonitoringForRegion = function() {
-      $cordovaBeacon.stopMonitoringForRegion($cordovaBeacon.createBeaconRegion(brIdentifier, brUuid, brMajor, brMinor, brNotifyEntryStateOnDisplay));
-    };
-    vm.stopRangingBeaconsInRegion = function() {
-      $cordovaBeacon.stopRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion(brIdentifier, brUuid, brMajor, brMinor, brNotifyEntryStateOnDisplay));
-    };
-
-    vm.clearLogs = function() {
-      vm.didStartMonitoringForRegionLog = '';
-      vm.didDetermineStateForRegionLog = '';
-      vm.didRangeBeaconsInRegionLog = '';
-    };
-    vm.requestAlwaysAuthorization()
-    vm.play = function() {
-      //vm.startMonitoringForRegion();
-      vm.startRangingBeaconsInRegion();
-    }
-    vm.stop = function() {
-      //vm.stopMonitoringForRegion();
-      vm.stopRangingBeaconsInRegion();
-    }
-
-    // ========== Events
-
-    $rootScope.$on("$cordovaBeacon:didStartMonitoringForRegion", function(event, pluginResult) {
-      //vm.didStartMonitoringForRegionLog += '-----' + '\n';
-      //vm.didStartMonitoringForRegionLog += JSON.stringify(pluginResult) + '\n';
-      console.log('pluginResult: ', pluginResult);
-    });
-
-    $rootScope.$on("$cordovaBeacon:didDetermineStateForRegion", function(event, pluginResult) {
-      vm.didDetermineStateForRegionLog += '-----' + '\n';
-      vm.didDetermineStateForRegionLog += JSON.stringify(pluginResult) + '\n';
-    });
-
-    $rootScope.$on("$cordovaBeacon:didRangeBeaconsInRegion", function(event, pluginResult) {
-      vm.didRangeBeaconsInRegionLog += '-----' + '\n';
-      vm.didRangeBeaconsInRegionLog += JSON.stringify(pluginResult) + '\n';
-      /*var uniqueBeaconKey;
-      for (var i = 0; i < pluginResult.beacons.length; i++) {
-        uniqueBeaconKey = pluginResult.beacons[i].uuid + ":" + pluginResult.beacons[i].major + ":" + pluginResult.beacons[i].minor;
-        vm.beacons[uniqueBeaconKey] = pluginResult.beacons[i];
-      }
-      $scope.$apply();
-      console.log('pluginResult: ', pluginResult);
-    });*/
-
-    // =========/ Events
-    $cordovaBeacon.requestAlwaysAuthorization();
-
-        $rootScope.$on("$cordovaBeacon:didRangeBeaconsInRegion", function(event, pluginResult) {
-
-          var uniqueBeaconKey;
-          for (var i = 0; i < pluginResult.beacons.length; i++) {
-            //uniqueBeaconKey = pluginResult.beacons[i].uuid + ":" + pluginResult.beacons[i].major + ":" + pluginResult.beacons[i].minor;
-            vm.beacons[i] = pluginResult.beacons[i];
-            vm.date= (new Date()).toString();
-          }
-          $scope.$apply();
-
-
-        });
-
-        $cordovaBeacon.startRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion(brIdentifier, brUuid));
-  });
-
+  $scope.beacons = beaconService.beaconPlaces;
 }
 
 //TODO: Social sharing
@@ -594,15 +621,25 @@ loginController.$inject = [
   '$cordovaDialogs',
   '$cordovaActionSheet',
   '$ionicPlatform',
-  '$ionicHistory'
+  '$ionicHistory',
+  '$ionicModal'
 ];
 
-function loginController($scope, $state, $ionicActionSheet, $ionicPopup, seleccionInterna, $cordovaDialogs, $cordovaActionSheet, $ionicPlatform, $ionicHistory) {
+function loginController($scope, $state, $ionicActionSheet, $ionicPopup, seleccionInterna, $cordovaDialogs, $cordovaActionSheet, $ionicPlatform, $ionicHistory,$ionicModal) {
 
   var vm = this;
 
   vm.google_data = {};
   vm.logOut = logOut;
+  vm.showAddModal= showAddModal;
+
+
+  $ionicModal.fromTemplateUrl('templates/modals/agregar-lugar.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.agregarModal = modal;
+  });
 
   $ionicPlatform.ready(function() {
 
@@ -618,6 +655,7 @@ function loginController($scope, $state, $ionicActionSheet, $ionicPopup, selecci
     facebookConnectPlugin.login([
       "public_profile", "email"
     ], fbLoginSuccess, function loginError(error) {
+      console.log(error);
       $cordovaDialogs.alert('No se pudo iniciar sesión', 'ERROR', 'Aceptar').then(function() {});
     });
 
@@ -665,6 +703,12 @@ function loginController($scope, $state, $ionicActionSheet, $ionicPopup, selecci
 
   vm.showDialog = function() {
     $cordovaDialogs.alert('message', 'title', 'button name').then(function() {});
+  };
+  function showAddModal(){
+    $scope.agregarModal.show();
+  }
+  $scope.closeAddModal = function() {
+    $scope.agregarModal.hide();
   };
 }
 

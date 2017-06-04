@@ -1,37 +1,19 @@
-<ion-view view-title="Lector Beacons">
+<ion-view view-title="Lugares cercanos">
   <ion-content class="padding">
 
-    <div class="list">
+    <div class="list card" ng-show="beacons.length != 0">
+      <ion-item ng-repeat="lugar in beacons"
+                class="item-remove-animate item-text-wrap item-thumbnail-left item-icon-right">
+        <img ng-src="{{lugar.image}}">
+        <h2>{{lugar.title}}</h2> Direccion: {{lugar.direccion}}
+        <p>{{lugar.proximidad}}</p>
+      </ion-item>
 
-
-      <div class="list card">
-       <div class="item" ng-repeat="(key, value) in vm.beacons">
-           <div class="row">
-               <div class="col truncate">
-                   {{value.uuid}}
-               </div>
-           </div>
-           <div class="row">
-               <div class="col">
-                   major: {{value.major}}
-               </div>
-               <div class="col">
-                   minor: {{value.minor}}
-               </div>
-           </div>
-           <div class="row">
-               <div class="col">
-                   {{value.proximity}}
-               </div>
-           </div>
-           <div class="row">
-               <div class="col">
-                   {{vm.date}}
-               </div>
-           </div>
-       </div>
-   </div>
-
+    </div>
+    <div class="card" ng-show="beacons.length == 0">
+      <ion-item>
+        <h2>No hay lugares cercanos :)</h2>
+      </ion-item>
     </div>
 
   </ion-content>
