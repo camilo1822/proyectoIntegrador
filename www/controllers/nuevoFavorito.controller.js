@@ -11,12 +11,35 @@ function nuevoFavoritoController($scope, comentarioService, $http, $ionicLoading
     var vm = this;
     vm.informacion = seleccionInterna.getUser();
     vm.lugar = seleccionInterna.getLugarSeleccionado();
-    vm.estrella = 'ion-ios-star-outline';
+    //vm.estrella = 'ion-ios-star-outline';
     vm.comentario = '';
     vm.setRating = setRating;
     vm.comentarios = [];
 
-    function setRating() {
+    /*Arreglo favorito*/
+    vm.favoritos = [];
+  vm.ident='';
+  FavoritoService.getAll().then(function(response){
+
+      
+      $scope.lugar = SeleccionInterna.getLugarSeleccionado();
+      $scope.estrella='ion-ios-star-outline';
+
+
+     favoritos = response.data;
+     var tamano = favoritos.length;
+     for(var i=0;i<tamano;i++){
+       var identificador2 = $scope.lugar._id;
+      if(favoritos[i].id_lugar==$scope.lugar._id && favoritos[i].id_user==$scope.informacion.uid){
+        $scope.estrella='ion-ios-star';
+        ident = favoritos[i]._id;
+      }
+
+     }
+    });
+    /*Fin*/
+
+    /*function setRating() {
         if (vm.estrella == 'ion-ios-star-outline') {
             vm.estrella = 'ion-ios-star';
 
@@ -47,6 +70,43 @@ function nuevoFavoritoController($scope, comentarioService, $http, $ionicLoading
                 console.log(data);
             });
             //}
+        };
+
+    }*/
+    $scope.setRating = function() {
+    $scope.lugar = SeleccionInterna.getLugarSeleccionado();
+        if ($scope.estrella=='ion-ios-star-outline') {
+         $scope.estrella = 'ion-ios-star';
+
+          console.log("entre a la save");
+        $http({
+        method : 'post',
+        url : 'https://cultural-api.herokuapp.com/api/Favoritos',
+        data :{
+            id_user:$scope.informacion.uid,
+            id_lugar:$scope.lugar._id,
+            title:$scope.lugar.title,
+            image:$scope.lugar.image
+           }
+        }).success(function(data) {
+            console.log(data);
+        });
+      }else {
+          $scope.estrella = 'ion-ios-star-outline';
+          var identificador = $stateParams.aId;
+          
+          //$scope.delete = function(){
+            console.log("entre a la delete");
+            console.log("borre",identificador);
+            
+            var base='https://cultural-api.herokuapp.com/api/Favoritos/'+ident;
+            //aca
+              $http({
+        method : 'delete',
+        url : base
+        }).success(function(data) {
+            console.log(data);
+        });
         };
 
     }
