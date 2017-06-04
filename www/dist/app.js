@@ -193,6 +193,7 @@ function beaconService($ionicPlatform, $rootScope, $cordovaBeacon, lugaresServic
   var brNotifyEntryStateOnDisplay = true;
   service.firstTime = true;
   service.beaconPlaces = [];
+  service.timer = 50;
 
   service.getArray = getArray;
 
@@ -209,53 +210,60 @@ function beaconService($ionicPlatform, $rootScope, $cordovaBeacon, lugaresServic
 
     $rootScope.$on("$cordovaBeacon:didRangeBeaconsInRegion", function (event, pluginResult) {
 
-      var uniqueBeaconKey;
+      if (service.timer == 50) {
+        for (var i = 0; i < pluginResult.beacons.length; i++) {
+          console.log(pluginResult.beacons[i]);
+          var uniqueBeaconKey = pluginResult.beacons[i].uuid + ":" + pluginResult.beacons[i].major + ":" + pluginResult.beacons[i].minor;
 
-      for (var i = 0; i < pluginResult.beacons.length; i++) {
-        console.log(pluginResult.beacons[i]);
-        uniqueBeaconKey = pluginResult.beacons[i].uuid + ":" + pluginResult.beacons[i].major + ":" + pluginResult.beacons[i].minor;
+          if (typeof lugaresService._searchByBeaconId(uniqueBeaconKey) != 'undefined') {
+            if (typeof service.beaconPlaces.find(function (lugar) {
+                return lugar.beaconId === uniqueBeaconKey
 
-        if (typeof lugaresService._searchByBeaconId(uniqueBeaconKey) != 'undefined') {
-          if (typeof service.beaconPlaces.find(function (lugar) {
-              return lugar.beaconId == uniqueBeaconKey
+              }) == 'undefined') {
+              var lugar = lugaresService._searchByBeaconId(uniqueBeaconKey);
+              switch (pluginResult.beacons[i].proximity) {
+                case 'ProximityImmediate':
+                  lugar.proximidad = 'MUY cerca';
+                  break;
+                case 'ProximityNear':
+                  lugar.proximidad = 'cerca';
+                  break;
+                case 'ProximityFar':
+                  lugar.proximidad = 'algo lejos';
+                  break;
+                default:
+                  lugar.proximidad = 'a una distancia desconocida';
+                  break;
+              }
+              service.beaconPlaces.push(lugar);
 
-            }) == 'undefined') {
-            var lugar = lugaresService._searchByBeaconId(uniqueBeaconKey);
-            switch (pluginResult.beacons[i].proximity) {
-              case 'ProximityImmediate':
-                lugar.proximidad = 'MUY cerca';
-                break;
-              case 'ProximityNear':
-                lugar.proximidad = 'cerca';
-                break;
-              case 'ProximityFar':
-                lugar.proximidad = 'algo lejos';
-                break;
-              default:
-                lugar.proximidad = 'a una distancia desconocida';
-                break;
+              $cordovaLocalNotification.schedule({
+                id: 1,
+                title: 'Estás '.concat(lugar.proximidad).concat(' de ').concat(lugar.title),
+                text: 'Toca aquí para ver más detalles',
+                data: {
+                  customProperty: 'custom value'
+                },
+                icon: "file://img/moai-statues-pascua-island.png",
+                sound: "file://img/soundnot.mp3"
+              }).then(function (result) {
+                console.log('Nice notificacion bro!');
+              });
+
+            } else {
+
             }
-            service.beaconPlaces.push(lugar);
-
-            $cordovaLocalNotification.schedule({
-              id: 1,
-              title: 'Estás '.concat(lugar.proximidad).concat(' de ').concat(lugar.title),
-              text: 'Toca aquí para ver más detalles',
-              data: {
-                customProperty: 'custom value'
-              },
-              icon: lugar.image
-            }).then(function (result) {
-              console.log('Nice notificacion bro!');
-            });
-
-          } else {
-
           }
         }
+        service.timer = 0;
+
+
+      } else {
+        service.timer++;
       }
 
-    })
+
+    });
     $cordovaBeacon.startRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion(brIdentifier, brUuid));
   });
 
@@ -613,15 +621,25 @@ loginController.$inject = [
   '$cordovaDialogs',
   '$cordovaActionSheet',
   '$ionicPlatform',
-  '$ionicHistory'
+  '$ionicHistory',
+  '$ionicModal'
 ];
 
-function loginController($scope, $state, $ionicActionSheet, $ionicPopup, seleccionInterna, $cordovaDialogs, $cordovaActionSheet, $ionicPlatform, $ionicHistory) {
+function loginController($scope, $state, $ionicActionSheet, $ionicPopup, seleccionInterna, $cordovaDialogs, $cordovaActionSheet, $ionicPlatform, $ionicHistory,$ionicModal) {
 
   var vm = this;
 
   vm.google_data = {};
   vm.logOut = logOut;
+  vm.showAddModal= showAddModal;
+
+
+  $ionicModal.fromTemplateUrl('templates/modals/agregar-lugar.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.agregarModal = modal;
+  });
 
   $ionicPlatform.ready(function() {
 
@@ -685,6 +703,12 @@ function loginController($scope, $state, $ionicActionSheet, $ionicPopup, selecci
 
   vm.showDialog = function() {
     $cordovaDialogs.alert('message', 'title', 'button name').then(function() {});
+  };
+  function showAddModal(){
+    $scope.agregarModal.show();
+  }
+  $scope.closeAddModal = function() {
+    $scope.agregarModal.hide();
   };
 }
 

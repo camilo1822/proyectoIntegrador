@@ -9,15 +9,25 @@ loginController.$inject = [
   '$cordovaDialogs',
   '$cordovaActionSheet',
   '$ionicPlatform',
-  '$ionicHistory'
+  '$ionicHistory',
+  '$ionicModal'
 ];
 
-function loginController($scope, $state, $ionicActionSheet, $ionicPopup, seleccionInterna, $cordovaDialogs, $cordovaActionSheet, $ionicPlatform, $ionicHistory) {
+function loginController($scope, $state, $ionicActionSheet, $ionicPopup, seleccionInterna, $cordovaDialogs, $cordovaActionSheet, $ionicPlatform, $ionicHistory,$ionicModal) {
 
   var vm = this;
 
   vm.google_data = {};
   vm.logOut = logOut;
+  vm.showAddModal= showAddModal;
+
+
+  $ionicModal.fromTemplateUrl('templates/modals/agregar-lugar.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.agregarModal = modal;
+  });
 
   $ionicPlatform.ready(function() {
 
@@ -81,5 +91,11 @@ function loginController($scope, $state, $ionicActionSheet, $ionicPopup, selecci
 
   vm.showDialog = function() {
     $cordovaDialogs.alert('message', 'title', 'button name').then(function() {});
+  };
+  function showAddModal(){
+    $scope.agregarModal.show();
+  }
+  $scope.closeAddModal = function() {
+    $scope.agregarModal.hide();
   };
 }
