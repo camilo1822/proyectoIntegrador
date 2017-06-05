@@ -112,3 +112,26 @@ p.info {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.emptyPlaces{
+  position: absolute;
+  width: 100%;
+  height:100%;
+}
+.emptyImage{
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20%;
+
+}
+.emptyText{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: large;
+  font-weight: 700;
+  color: darkgray;
+  bottom: 20%;
+  width: 80%;
+  text-align: center;
+}

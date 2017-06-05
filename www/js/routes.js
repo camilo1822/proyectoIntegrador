@@ -113,7 +113,7 @@ angular.module('app')
             }
         })
     .state('app.tab.agenda',{
-  url:'/lugares/:aId/agenda',
+  url:'/lugares/agenda/:aId',
   views:{
     'tab-lugares':{
       templateUrl:'templates/ag.html',

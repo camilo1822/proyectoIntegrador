@@ -1,21 +1,24 @@
 angular.module('app')
 
-.controller('agendaDetailController',detallesFavoritoController);
+.controller('agendaDetailController',agendaDetailController);
 
-agendaDetailController.$inject=['$scope','DetalleService','AgendaService','$state','seleccionInterna'];
+agendaDetailController.$inject=['$scope','detalleService','agendaService','$state','seleccionInterna','$stateParams'];
 
- function agendaDetailController($scope,detalleService,agendaService,$state,seleccionInterna) {
+ function agendaDetailController($scope,detalleService,agendaService,$state,seleccionInterna,$stateParams) {
   var vm= this;
   vm.lugar = seleccionInterna.getLugarSeleccionado();
+  console.log(vm.lugar);
   vm.detalle = [];
   vm.agendas = [];
   var identificador = vm.lugar.id_lugar;
 
-  detalleService.getAll(identificador).then(function(response){
+  detalleService.getAll($stateParams.aId).then(function(response){
+    console.log("detalle",response);
     vm.detalle = response.data;
   });
 
   agendaService.getAll().then(function(response){
-  vm.agendas = response.data;
+    console.log("agenda",response);
+    vm.agendas = response.data;
   });
 }

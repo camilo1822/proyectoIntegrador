@@ -1,7 +1,12 @@
 angular.module('app', ['ionic', 'ngCordova','app.authService','ngCordovaBeacon'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,$timeout) {
     $ionicPlatform.ready(function() {
+      if (navigator.splashscreen) {
+        $timeout(function () {
+          navigator.splashscreen.hide();
+        }, 100);
+      }
 
         if (window.cordova) {
             console.log('Plugin available');
@@ -135,6 +140,16 @@ angular.module('app')
                 }
             }
         })
+    .state('app.tab.agenda',{
+  url:'/lugares/agenda/:aId',
+  views:{
+    'tab-lugares':{
+      templateUrl:'templates/ag.html',
+      controller:'agendaDetailController',
+      controllerAs:'vm'
+    }
+  }
+})
         .state('app.tab.mapa', {
             url: '/lugares/:aId/mapa',
             views: {
@@ -270,56 +285,70 @@ function beaconService($ionicPlatform, $rootScope, $cordovaBeacon, lugaresServic
 
 }
 
-angular.module('app').service('lugaresService', lugaresService).service('detalleService', detalleService).service('comentarioService', comentarioService).service('favoritoService', favoritoService).service('seleccionInterna', seleccionInterna);
+angular
+  .module('app').filter('commentNumber', commentNumber);
+   commentNumber.$inject = [];
 
-lugaresService.$inject = ['$http','$q'];
+function commentNumber() {
+  return function (array, id) {
+
+    return array.filter(function (comment) {
+      return comment.id_lugar == id;
+    })
+  };
+
+}
+
+angular.module('app').service('lugaresService', lugaresService).service('detalleService', detalleService).service('comentarioService', comentarioService).service('favoritoService', favoritoService).service('seleccionInterna', seleccionInterna).service('agendaService', agendaService);
+
+lugaresService.$inject = ['$http', '$q'];
 detalleService.$inject = ['$http'];
 comentarioService.$inject = ['$http'];
 favoritoService.$inject = ['$http'];
 seleccionInterna.$inject = ['$state'];
-
-function lugaresService($http,$q) {
-  var service=this;
+agendaService.$inject = ['$http'];
+function lugaresService($http, $q) {
+  var service = this;
   var base = 'https://cultural-api.herokuapp.com/';
-  service.lugares=[];
-  this.getAll = function(lugar) {
+  service.lugares = [];
+  this.getAll = function (lugar) {
     return $http.get(base + 'api/' + lugar);
   };
-  this._initializeLugares=function(){
-      $http.get(base + 'api/lugares')
-      .then(function(response){
-        service.lugares=response.data;
-      },function(err){
+  this._initializeLugares = function () {
+    $http.get(base + 'api/lugares')
+      .then(function (response) {
+        service.lugares = response.data;
+      }, function (err) {
         console.log(err);
       });
   }
-/*  this._searchByBeaconId= function(beaconId){
-    var defer= $q.defer();
-    if(service.lugares){
-      service.lugares.forEach(function (lugar) {
-        if(lugar.beaconId==beaconId){
-          defer.resolve(lugar);
-        }
-      });
-    }else{
-      defer.reject('No se pudo cargar el lugar');
-    }
-    return defer.promise;
-  }*/
+  /*  this._searchByBeaconId= function(beaconId){
+   var defer= $q.defer();
+   if(service.lugares){
+   service.lugares.forEach(function (lugar) {
+   if(lugar.beaconId==beaconId){
+   defer.resolve(lugar);
+   }
+   });
+   }else{
+   defer.reject('No se pudo cargar el lugar');
+   }
+   return defer.promise;
+   }*/
 
-this._searchByBeaconId= function (beaconId) {
-  return service.lugares.find(function (lugar) {
-    return lugar.beaconId=beaconId
-  })
+  this._searchByBeaconId = function (beaconId) {
+    return service.lugares.find(function (lugar) {
+      return lugar.beaconId = beaconId
+    })
 
-}
+  }
 }
 
 
 //obtener lugar por medio de id
 function detalleService($http) {
   var base = 'https://cultural-api.herokuapp.com/api/Lugares/';
-  this.getAll = function(idMovimiento) {
+  this.getAll = function (idMovimiento) {
 
     return $http.get(base + idMovimiento);
 
@@ -329,7 +358,7 @@ function detalleService($http) {
 
 function comentarioService($http) {
   var base = 'https://cultural-api.herokuapp.com/api/Comentarios';
-  this.getAll = function() {
+  this.getAll = function () {
 
     return $http.get(base);
 
@@ -337,9 +366,16 @@ function comentarioService($http) {
 
 }
 
+function agendaService($http) {
+  var base = 'https://cultural-api.herokuapp.com/api/Agenda';
+  this.getAll = function () {
+    return $http.get(base);
+  };
+}
+
 function favoritoService($http) {
   var base = 'https://cultural-api.herokuapp.com/api/favoritos';
-  this.getAll = function() {
+  this.getAll = function () {
 
     return $http.get(base);
 
@@ -354,34 +390,34 @@ function seleccionInterna($state) {
     email: null,
     photoURL: null
   };
-  this.setLugarSeleccionado = function(lugar) {
+  this.setLugarSeleccionado = function (lugar) {
     LugarSeleccionado = lugar;
   };
 
-  this.setUsuarioSeleccionado = function(usuario) {
+  this.setUsuarioSeleccionado = function (usuario) {
     facebookConnectPlugin.api('/me?fields=name,email,picture.type(large)', [
       "email", "public_profile"
-    ], function(data) {
+    ], function (data) {
       console.log("User info: ", data);
       usuarioSeleccionado.displayName = data.name;
       usuarioSeleccionado.email = data.email;
       usuarioSeleccionado.photoURL = data.picture.data.url;
       $state.go('app.tab.lugares');
-    }, function(data) {
+    }, function (data) {
       console.log("ERROR");
     });
   };
 
-  this.getLugarSeleccionado = function() {
+  this.getLugarSeleccionado = function () {
     return LugarSeleccionado;
 
   };
 
-  this.getUser = function() {
+  this.getUser = function () {
     return usuarioSeleccionado;
   };
 
-  this.fechaExacta = function() {
+  this.fechaExacta = function () {
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth() + 1; //January is 0!
@@ -405,6 +441,31 @@ function seleccionInterna($state) {
     return today;
   }
 
+}
+
+angular.module('app')
+
+.controller('agendaDetailController',agendaDetailController);
+
+agendaDetailController.$inject=['$scope','detalleService','agendaService','$state','seleccionInterna','$stateParams'];
+
+ function agendaDetailController($scope,detalleService,agendaService,$state,seleccionInterna,$stateParams) {
+  var vm= this;
+  vm.lugar = seleccionInterna.getLugarSeleccionado();
+  console.log(vm.lugar);
+  vm.detalle = [];
+  vm.agendas = [];
+  var identificador = vm.lugar.id_lugar;
+
+  detalleService.getAll($stateParams.aId).then(function(response){
+    console.log("detalle",response);
+    vm.detalle = response.data;
+  });
+
+  agendaService.getAll().then(function(response){
+    console.log("agenda",response);
+    vm.agendas = response.data;
+  });
 }
 
 // TODO: Native map
@@ -1047,12 +1108,35 @@ function nuevoFavoritoController($scope, comentarioService, $http, $ionicLoading
     var vm = this;
     vm.informacion = seleccionInterna.getUser();
     vm.lugar = seleccionInterna.getLugarSeleccionado();
-    vm.estrella = 'ion-ios-star-outline';
+    //vm.estrella = 'ion-ios-star-outline';
     vm.comentario = '';
     vm.setRating = setRating;
     vm.comentarios = [];
 
-    function setRating() {
+    /*Arreglo favorito*/
+    vm.favoritos = [];
+  vm.ident='';
+  FavoritoService.getAll().then(function(response){
+
+      
+      $scope.lugar = SeleccionInterna.getLugarSeleccionado();
+      $scope.estrella='ion-ios-star-outline';
+
+
+     favoritos = response.data;
+     var tamano = favoritos.length;
+     for(var i=0;i<tamano;i++){
+       var identificador2 = $scope.lugar._id;
+      if(favoritos[i].id_lugar==$scope.lugar._id && favoritos[i].id_user==$scope.informacion.uid){
+        $scope.estrella='ion-ios-star';
+        ident = favoritos[i]._id;
+      }
+
+     }
+    });
+    /*Fin*/
+
+    /*function setRating() {
         if (vm.estrella == 'ion-ios-star-outline') {
             vm.estrella = 'ion-ios-star';
 
@@ -1083,6 +1167,43 @@ function nuevoFavoritoController($scope, comentarioService, $http, $ionicLoading
                 console.log(data);
             });
             //}
+        };
+
+    }*/
+    $scope.setRating = function() {
+    $scope.lugar = SeleccionInterna.getLugarSeleccionado();
+        if ($scope.estrella=='ion-ios-star-outline') {
+         $scope.estrella = 'ion-ios-star';
+
+          console.log("entre a la save");
+        $http({
+        method : 'post',
+        url : 'https://cultural-api.herokuapp.com/api/Favoritos',
+        data :{
+            id_user:$scope.informacion.uid,
+            id_lugar:$scope.lugar._id,
+            title:$scope.lugar.title,
+            image:$scope.lugar.image
+           }
+        }).success(function(data) {
+            console.log(data);
+        });
+      }else {
+          $scope.estrella = 'ion-ios-star-outline';
+          var identificador = $stateParams.aId;
+          
+          //$scope.delete = function(){
+            console.log("entre a la delete");
+            console.log("borre",identificador);
+            
+            var base='https://cultural-api.herokuapp.com/api/Favoritos/'+ident;
+            //aca
+              $http({
+        method : 'delete',
+        url : base
+        }).success(function(data) {
+            console.log(data);
+        });
         };
 
     }

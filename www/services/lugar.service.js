@@ -1,53 +1,53 @@
-angular.module('app').service('lugaresService', lugaresService).service('detalleService', detalleService).service('comentarioService', comentarioService).service('favoritoService', favoritoService).service('seleccionInterna', seleccionInterna);
+angular.module('app').service('lugaresService', lugaresService).service('detalleService', detalleService).service('comentarioService', comentarioService).service('favoritoService', favoritoService).service('seleccionInterna', seleccionInterna).service('agendaService', agendaService);
 
-lugaresService.$inject = ['$http','$q'];
+lugaresService.$inject = ['$http', '$q'];
 detalleService.$inject = ['$http'];
 comentarioService.$inject = ['$http'];
 favoritoService.$inject = ['$http'];
 seleccionInterna.$inject = ['$state'];
-
-function lugaresService($http,$q) {
-  var service=this;
+agendaService.$inject = ['$http'];
+function lugaresService($http, $q) {
+  var service = this;
   var base = 'https://cultural-api.herokuapp.com/';
-  service.lugares=[];
-  this.getAll = function(lugar) {
+  service.lugares = [];
+  this.getAll = function (lugar) {
     return $http.get(base + 'api/' + lugar);
   };
-  this._initializeLugares=function(){
-      $http.get(base + 'api/lugares')
-      .then(function(response){
-        service.lugares=response.data;
-      },function(err){
+  this._initializeLugares = function () {
+    $http.get(base + 'api/lugares')
+      .then(function (response) {
+        service.lugares = response.data;
+      }, function (err) {
         console.log(err);
       });
   }
-/*  this._searchByBeaconId= function(beaconId){
-    var defer= $q.defer();
-    if(service.lugares){
-      service.lugares.forEach(function (lugar) {
-        if(lugar.beaconId==beaconId){
-          defer.resolve(lugar);
-        }
-      });
-    }else{
-      defer.reject('No se pudo cargar el lugar');
-    }
-    return defer.promise;
-  }*/
+  /*  this._searchByBeaconId= function(beaconId){
+   var defer= $q.defer();
+   if(service.lugares){
+   service.lugares.forEach(function (lugar) {
+   if(lugar.beaconId==beaconId){
+   defer.resolve(lugar);
+   }
+   });
+   }else{
+   defer.reject('No se pudo cargar el lugar');
+   }
+   return defer.promise;
+   }*/
 
-this._searchByBeaconId= function (beaconId) {
-  return service.lugares.find(function (lugar) {
-    return lugar.beaconId=beaconId
-  })
+  this._searchByBeaconId = function (beaconId) {
+    return service.lugares.find(function (lugar) {
+      return lugar.beaconId = beaconId
+    })
 
-}
+  }
 }
 
 
 //obtener lugar por medio de id
 function detalleService($http) {
   var base = 'https://cultural-api.herokuapp.com/api/Lugares/';
-  this.getAll = function(idMovimiento) {
+  this.getAll = function (idMovimiento) {
 
     return $http.get(base + idMovimiento);
 
@@ -57,7 +57,7 @@ function detalleService($http) {
 
 function comentarioService($http) {
   var base = 'https://cultural-api.herokuapp.com/api/Comentarios';
-  this.getAll = function() {
+  this.getAll = function () {
 
     return $http.get(base);
 
@@ -66,15 +66,15 @@ function comentarioService($http) {
 }
 
 function agendaService($http) {
-    var base = 'https://cultural-api.herokuapp.com/api/Agenda';
-    this.getAll=function () {
-            return $http.get(base);
-        };
+  var base = 'https://cultural-api.herokuapp.com/api/Agenda';
+  this.getAll = function () {
+    return $http.get(base);
+  };
 }
 
 function favoritoService($http) {
   var base = 'https://cultural-api.herokuapp.com/api/favoritos';
-  this.getAll = function() {
+  this.getAll = function () {
 
     return $http.get(base);
 
@@ -89,34 +89,34 @@ function seleccionInterna($state) {
     email: null,
     photoURL: null
   };
-  this.setLugarSeleccionado = function(lugar) {
+  this.setLugarSeleccionado = function (lugar) {
     LugarSeleccionado = lugar;
   };
 
-  this.setUsuarioSeleccionado = function(usuario) {
+  this.setUsuarioSeleccionado = function (usuario) {
     facebookConnectPlugin.api('/me?fields=name,email,picture.type(large)', [
       "email", "public_profile"
-    ], function(data) {
+    ], function (data) {
       console.log("User info: ", data);
       usuarioSeleccionado.displayName = data.name;
       usuarioSeleccionado.email = data.email;
       usuarioSeleccionado.photoURL = data.picture.data.url;
       $state.go('app.tab.lugares');
-    }, function(data) {
+    }, function (data) {
       console.log("ERROR");
     });
   };
 
-  this.getLugarSeleccionado = function() {
+  this.getLugarSeleccionado = function () {
     return LugarSeleccionado;
 
   };
 
-  this.getUser = function() {
+  this.getUser = function () {
     return usuarioSeleccionado;
   };
 
-  this.fechaExacta = function() {
+  this.fechaExacta = function () {
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth() + 1; //January is 0!

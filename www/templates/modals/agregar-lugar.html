@@ -1,26 +1,47 @@
 <ion-modal-view>
-  <ion-header-bar>
+  <ion-header-bar class="bar-dark">
     <h1 class = "title">Agregar un lugar</h1>
-    <button class="button button-icon icon ion-close" ng-click="closeAddModal() "></button>
+    <button class="button button-icon icon ion-android-close" ng-click="closeAddModal() "></button>
   </ion-header-bar>
-  <ion-content>
+  <ion-content class="has-footer">
     <ion-list>
       <label class="item item-input item-stacked-label">
-        <span class="input-label">First Name</span>
-        <input type="text" placeholder="John">
+        <span class="input-label">Nombre</span>
+        <input type="text" placeholder="Nombre">
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Tipo
+        </div>
+        <select>
+          <option selected>Estatua</option>
+          <option>Mural</option>
+          <option>Lugar</option>
+        </select>
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Descripción</span>
+        <input type="text" placeholder="Descripción">
       </label>
       <label class="item item-input item-stacked-label">
-        <span class="input-label">First Name</span>
-        <input type="text" placeholder="John">
+        <span class="input-label">Latitud</span>
+        <input type="number" placeholder="Descripción">
       </label>
       <label class="item item-input item-stacked-label">
-        <span class="input-label">First Name</span>
-        <input type="text" placeholder="John">
+        <span class="input-label">Longitud</span>
+        <input type="number" placeholder="Longitud">
       </label>
+      <div class="item item-button-right">
+        Agregar foto
+        <button class="button button-positive">
+          <i class="icon ion-android-camera"></i>
+        </button>
+      </div>
     </ion-list>
-    <button class="button button-block button-positive icon-left ion-android-send">
-      Enviar
-    </button>
   </ion-content>
+  <div class="bar bar-footer bar-positive">
+    <button class="button button-clear pull-right">Enviar</button>
+  </div>
 
 </ion-modal-view>

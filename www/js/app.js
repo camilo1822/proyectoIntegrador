@@ -1,7 +1,12 @@
 angular.module('app', ['ionic', 'ngCordova','app.authService','ngCordovaBeacon'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,$timeout) {
     $ionicPlatform.ready(function() {
+      if (navigator.splashscreen) {
+        $timeout(function () {
+          navigator.splashscreen.hide();
+        }, 100);
+      }
 
         if (window.cordova) {
             console.log('Plugin available');
