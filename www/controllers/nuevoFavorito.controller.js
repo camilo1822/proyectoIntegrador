@@ -2,11 +2,11 @@ angular.module('app')
 
 .controller('nuevoFavoritoController', nuevoFavoritoController);
 
-nuevoFavoritoController.$inject=['$scope', 'comentarioService', '$http', '$ionicLoading', 
+nuevoFavoritoController.$inject=['$scope', 'comentarioService', '$http', '$ionicLoading',
 '$window', ' seleccionInterna', '$ionicPopup', '$state'];
 
 
-function nuevoFavoritoController($scope, comentarioService, $http, $ionicLoading, 
+function nuevoFavoritoController($scope, comentarioService, $http, $ionicLoading,
   $window, seleccionInterna, $ionicPopup, $state) {
     var vm = this;
     vm.informacion = seleccionInterna.getUser();
@@ -18,10 +18,10 @@ function nuevoFavoritoController($scope, comentarioService, $http, $ionicLoading
 
     /*Arreglo favorito*/
     vm.favoritos = [];
-  vm.ident='';
+    vm.ident='';
   FavoritoService.getAll().then(function(response){
 
-      
+
       $scope.lugar = SeleccionInterna.getLugarSeleccionado();
       $scope.estrella='ion-ios-star-outline';
 
@@ -94,11 +94,11 @@ function nuevoFavoritoController($scope, comentarioService, $http, $ionicLoading
       }else {
           $scope.estrella = 'ion-ios-star-outline';
           var identificador = $stateParams.aId;
-          
+
           //$scope.delete = function(){
             console.log("entre a la delete");
             console.log("borre",identificador);
-            
+
             var base='https://cultural-api.herokuapp.com/api/Favoritos/'+ident;
             //aca
               $http({
@@ -133,7 +133,7 @@ function nuevoFavoritoController($scope, comentarioService, $http, $ionicLoading
 
                 console.log("refrescando ando");
 
-       
+
 
 
                 comentarioService.getAll().then(function(response) {

@@ -1,14 +1,14 @@
 angular.module('app')
 
-.controller('favoritosController', favoritosController);
+  .controller('favoritosController', favoritosController);
 
-favoritosController.$inject=['$scope', 'favoritoService', 'seleccionInterna', '$timeout', 
-'$state', '$ionicLoading'];
+favoritosController.$inject = ['$scope', 'favoritoService', 'seleccionInterna', '$timeout',
+  '$state', '$ionicLoading'];
 
 function favoritosController($scope, favoritoService, seleccionInterna, $timeout, $state, $ionicLoading) {
-    var vm= this;
-    vm.favoritos = [];
-    vm.informacion = seleccionInterna.getUser();
+  var vm = this;
+  vm.favoritos = [];
+  vm.informacion = seleccionInterna.getUser();
 
     vm.selectFavorito=selectFavorito;
     $scope.$on('$ionicView.enter', function() {
@@ -17,8 +17,8 @@ function favoritosController($scope, favoritoService, seleccionInterna, $timeout
         });
     });
 
-    function selectFavorito(favorito) {
-        seleccionInterna.setLugarSeleccionado(favorito);
-    };
+  function selectFavorito(favorito) {
+    seleccionInterna.setLugarSeleccionado(favorito);
+  };
 
 }

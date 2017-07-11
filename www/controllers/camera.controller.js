@@ -9,5 +9,12 @@ cameraController.$inject = [
 function cameraController($scope,beaconService) {
 
   var vm = this;
+  vm.selectLugar= selectLugar;
   $scope.beacons = beaconService.beaconPlaces;
+
+
+  function selectLugar(lugar) {
+    seleccionInterna.setLugarSeleccionado(lugar);
+  };
+
 }

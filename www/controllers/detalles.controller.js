@@ -28,11 +28,11 @@ function detallesController($scope, detalleService, comentarioService, $state, s
   vm.comentario = '';
   vm.setRating = setRating;
 
-  detalleService.getAll(identificador).then(function(response) {
+  detalleService.getAll(identificador).then(function (response) {
     vm.detalle = response.data;
   });
 
-  comentarioService.getAll().then(function(response) {
+  comentarioService.getAll().then(function (response) {
     vm.comentarios = response.data;
   });
 
@@ -54,26 +54,27 @@ function detallesController($scope, detalleService, comentarioService, $state, s
     };
     console.log(options);
     /*$cordovaSocialSharing.share(vm.detalle.title,vm.detalle.image,'www.google.com').then(function(result) {
-      console.log(result);
-      $ionicPopup.alert({title: 'Excelente!', template: 'Este lugar se compartió'});
-    }, function(err) {
-      console.log(err);
-    });*/
+     console.log(result);
+     $ionicPopup.alert({title: 'Excelente!', template: 'Este lugar se compartió'});
+     }, function(err) {
+     console.log(err);
+     });*/
     window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
-    var onSuccess = function(result) {
+    var onSuccess = function (result) {
       console.log("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
       console.log("Shared to app: " + result.app); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
     }
 
-    var onError = function(msg) {
+    var onError = function (msg) {
       console.log("Sharing failed with message: " + msg);
     }
   }
+
   ///
 
   function setRating() {
-    if ($scope.estrella == 'ion-ios-star-outline') {
-      $scope.estrella = 'ion-ios-star';
+    if (vm.estrella == 'ion-ios-star-outline') {
+      vm.estrella = 'ion-ios-star';
 
       console.log("entre a la save");
       $http({
@@ -85,7 +86,7 @@ function detallesController($scope, detalleService, comentarioService, $state, s
           title: vm.lugar.title,
           image: vm.lugar.image
         }
-      }).success(function(data) {
+      }).success(function (data) {
         console.log(data);
       });
     } else {
@@ -98,15 +99,16 @@ function detallesController($scope, detalleService, comentarioService, $state, s
       $http({
         method: 'delete',
         url: base + vm.lugar._id
-      }).success(function(data) {
+      }).success(function (data) {
         console.log(data);
       });
       //}
-    };
+    }
+
 
   }
 
-  vm.guardar = function() {
+  vm.guardar = function () {
     if (vm.comentario) {
       $http({
         method: 'post',
@@ -117,7 +119,7 @@ function detallesController($scope, detalleService, comentarioService, $state, s
           nombre: vm.informacion.displayName,
           comentario: vm.comentario
         }
-      }).success(function(data) {
+      }).success(function (data) {
 
         var alertPopup = $ionicPopup.alert({title: 'Hecho', template: 'Comentario agregado exitosamente'});
 
@@ -125,13 +127,13 @@ function detallesController($scope, detalleService, comentarioService, $state, s
 
         vm.comentarios = [];
 
-        comentarioService.getAll().then(function(response) {
+        comentarioService.getAll().then(function (response) {
           vm.comentarios = response.data;
-        }). finally(function() {
+        }).finally(function () {
           // Stop the ion-refresher from spinning
           $scope.$broadcast('scroll.refreshComplete');
         });
-        alertPopup.then(function(res) {
+        alertPopup.then(function (res) {
           vm.comentario = '';
         });
       });

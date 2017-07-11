@@ -3,7 +3,7 @@
 
     <div class="list card" ng-show="beacons.length != 0">
       <ion-item ng-repeat="lugar in beacons"
-                class="item-remove-animate item-text-wrap item-thumbnail-left item-icon-right">
+                class="item-remove-animate item-text-wrap item-thumbnail-left item-icon-right" href="#/app/tab/lugares/{{lugar._id}}" ng-click="vm.selectLugar(lugar)">
         <img ng-src="{{lugar.image}}">
         <h2>{{lugar.title}}</h2> Direccion: {{lugar.direccion}}
         <p>{{lugar.proximidad}}</p>

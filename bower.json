@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "firebaseui": "^1.0.0",
-    "ionic-material": "^0.4.2"
+    "ionic-material": "^0.4.2",
+    "ionic-timepicker": "^0.6.0"
   }
 }

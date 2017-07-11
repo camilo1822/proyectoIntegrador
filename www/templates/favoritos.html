@@ -1,16 +1,16 @@
-<ion-view view-title="Favoritos" >
+<ion-view view-title="Favoritos">
 
 
 <ion-content class="has-tabs">
 <ion-list show-reorder="data.showReorder">
-        <ion-item ng-repeat='favorito in vm.favoritos | filter:query' ng-if="favorito.id_user == vm.informacion.uid" class="item-remove-animate item-avatar item-icon-right" href="#/app/tab/favoritos/{{favorito.id_lugar}}"
+        <ion-item ng-repeat="favorito in filtered= (vm.favoritos|favoritoFilter:vm.informacion.uid)" ng-if="favorito.id_user == vm.informacion.uid" class="item-remove-animate item-avatar item-icon-right" href="#/app/tab/favoritos/{{favorito.id_lugar}}"
           ng-click="selectFavorito(favorito)">
           <img ng-src="{{favorito.image}}">
           <h2>{{favorito.title}}</h2>
       </ion-item>
 
       </ion-list>
-  <div  class="emptyPlaces" ng-show="vm.favoritos.length == 0">
+  <div  class="emptyPlaces" ng-show="filtered.length == 0">
     <svg class="emptyImage" width="50%" heigth="50%"  version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
 <path style="fill:#334F55;" d="M467.579,401.567V256c0-89.997-73.24-163.211-163.263-163.211h-96.941

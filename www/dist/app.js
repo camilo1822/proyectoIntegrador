@@ -299,6 +299,21 @@ function commentNumber() {
 
 }
 
+angular
+  .module('app').filter('favoritoFilter', favoritoFilter);
+favoritoFilter.$inject = [];
+
+function favoritoFilter() {
+  return function (array, id) {
+
+    return array.filter(function (place) {
+      return place.id_user == id;
+    })
+  };
+
+}
+
+
 angular.module('app').service('lugaresService', lugaresService).service('detalleService', detalleService).service('comentarioService', comentarioService).service('favoritoService', favoritoService).service('seleccionInterna', seleccionInterna).service('agendaService', agendaService);
 
 lugaresService.$inject = ['$http', '$q'];
@@ -338,7 +353,7 @@ function lugaresService($http, $q) {
 
   this._searchByBeaconId = function (beaconId) {
     return service.lugares.find(function (lugar) {
-      return lugar.beaconId = beaconId
+      return (lugar.beaconId === beaconId)
     })
 
   }
@@ -479,7 +494,14 @@ cameraController.$inject = [
 function cameraController($scope,beaconService) {
 
   var vm = this;
+  vm.selectLugar= selectLugar;
   $scope.beacons = beaconService.beaconPlaces;
+
+
+  function selectLugar(lugar) {
+    seleccionInterna.setLugarSeleccionado(lugar);
+  };
+
 }
 
 //TODO: Social sharing
@@ -512,11 +534,11 @@ function detallesController($scope, detalleService, comentarioService, $state, s
   vm.comentario = '';
   vm.setRating = setRating;
 
-  detalleService.getAll(identificador).then(function(response) {
+  detalleService.getAll(identificador).then(function (response) {
     vm.detalle = response.data;
   });
 
-  comentarioService.getAll().then(function(response) {
+  comentarioService.getAll().then(function (response) {
     vm.comentarios = response.data;
   });
 
@@ -538,26 +560,27 @@ function detallesController($scope, detalleService, comentarioService, $state, s
     };
     console.log(options);
     /*$cordovaSocialSharing.share(vm.detalle.title,vm.detalle.image,'www.google.com').then(function(result) {
-      console.log(result);
-      $ionicPopup.alert({title: 'Excelente!', template: 'Este lugar se compartió'});
-    }, function(err) {
-      console.log(err);
-    });*/
+     console.log(result);
+     $ionicPopup.alert({title: 'Excelente!', template: 'Este lugar se compartió'});
+     }, function(err) {
+     console.log(err);
+     });*/
     window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
-    var onSuccess = function(result) {
+    var onSuccess = function (result) {
       console.log("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
       console.log("Shared to app: " + result.app); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
     }
 
-    var onError = function(msg) {
+    var onError = function (msg) {
       console.log("Sharing failed with message: " + msg);
     }
   }
+
   ///
 
   function setRating() {
-    if ($scope.estrella == 'ion-ios-star-outline') {
-      $scope.estrella = 'ion-ios-star';
+    if (vm.estrella == 'ion-ios-star-outline') {
+      vm.estrella = 'ion-ios-star';
 
       console.log("entre a la save");
       $http({
@@ -569,7 +592,7 @@ function detallesController($scope, detalleService, comentarioService, $state, s
           title: vm.lugar.title,
           image: vm.lugar.image
         }
-      }).success(function(data) {
+      }).success(function (data) {
         console.log(data);
       });
     } else {
@@ -582,15 +605,16 @@ function detallesController($scope, detalleService, comentarioService, $state, s
       $http({
         method: 'delete',
         url: base + vm.lugar._id
-      }).success(function(data) {
+      }).success(function (data) {
         console.log(data);
       });
       //}
-    };
+    }
+
 
   }
 
-  vm.guardar = function() {
+  vm.guardar = function () {
     if (vm.comentario) {
       $http({
         method: 'post',
@@ -601,7 +625,7 @@ function detallesController($scope, detalleService, comentarioService, $state, s
           nombre: vm.informacion.displayName,
           comentario: vm.comentario
         }
-      }).success(function(data) {
+      }).success(function (data) {
 
         var alertPopup = $ionicPopup.alert({title: 'Hecho', template: 'Comentario agregado exitosamente'});
 
@@ -609,13 +633,13 @@ function detallesController($scope, detalleService, comentarioService, $state, s
 
         vm.comentarios = [];
 
-        comentarioService.getAll().then(function(response) {
+        comentarioService.getAll().then(function (response) {
           vm.comentarios = response.data;
-        }). finally(function() {
+        }).finally(function () {
           // Stop the ion-refresher from spinning
           $scope.$broadcast('scroll.refreshComplete');
         });
-        alertPopup.then(function(res) {
+        alertPopup.then(function (res) {
           vm.comentario = '';
         });
       });
@@ -648,15 +672,15 @@ detallesFavoritoController.$inject=['$scope','DetalleService','ComentarioService
 }
 angular.module('app')
 
-.controller('favoritosController', favoritosController);
+  .controller('favoritosController', favoritosController);
 
-favoritosController.$inject=['$scope', 'favoritoService', 'seleccionInterna', '$timeout', 
-'$state', '$ionicLoading'];
+favoritosController.$inject = ['$scope', 'favoritoService', 'seleccionInterna', '$timeout',
+  '$state', '$ionicLoading'];
 
 function favoritosController($scope, favoritoService, seleccionInterna, $timeout, $state, $ionicLoading) {
-    var vm= this;
-    vm.favoritos = [];
-    vm.informacion = seleccionInterna.getUser();
+  var vm = this;
+  vm.favoritos = [];
+  vm.informacion = seleccionInterna.getUser();
 
     vm.selectFavorito=selectFavorito;
     $scope.$on('$ionicView.enter', function() {
@@ -665,9 +689,9 @@ function favoritosController($scope, favoritoService, seleccionInterna, $timeout
         });
     });
 
-    function selectFavorito(favorito) {
-        seleccionInterna.setLugarSeleccionado(favorito);
-    };
+  function selectFavorito(favorito) {
+    seleccionInterna.setLugarSeleccionado(favorito);
+  };
 
 }
 
@@ -1099,11 +1123,11 @@ angular.module('app')
 
 .controller('nuevoFavoritoController', nuevoFavoritoController);
 
-nuevoFavoritoController.$inject=['$scope', 'comentarioService', '$http', '$ionicLoading', 
+nuevoFavoritoController.$inject=['$scope', 'comentarioService', '$http', '$ionicLoading',
 '$window', ' seleccionInterna', '$ionicPopup', '$state'];
 
 
-function nuevoFavoritoController($scope, comentarioService, $http, $ionicLoading, 
+function nuevoFavoritoController($scope, comentarioService, $http, $ionicLoading,
   $window, seleccionInterna, $ionicPopup, $state) {
     var vm = this;
     vm.informacion = seleccionInterna.getUser();
@@ -1115,10 +1139,10 @@ function nuevoFavoritoController($scope, comentarioService, $http, $ionicLoading
 
     /*Arreglo favorito*/
     vm.favoritos = [];
-  vm.ident='';
+    vm.ident='';
   FavoritoService.getAll().then(function(response){
 
-      
+
       $scope.lugar = SeleccionInterna.getLugarSeleccionado();
       $scope.estrella='ion-ios-star-outline';
 
@@ -1191,11 +1215,11 @@ function nuevoFavoritoController($scope, comentarioService, $http, $ionicLoading
       }else {
           $scope.estrella = 'ion-ios-star-outline';
           var identificador = $stateParams.aId;
-          
+
           //$scope.delete = function(){
             console.log("entre a la delete");
             console.log("borre",identificador);
-            
+
             var base='https://cultural-api.herokuapp.com/api/Favoritos/'+ident;
             //aca
               $http({
@@ -1230,7 +1254,7 @@ function nuevoFavoritoController($scope, comentarioService, $http, $ionicLoading
 
                 console.log("refrescando ando");
 
-       
+
 
 
                 comentarioService.getAll().then(function(response) {

@@ -37,7 +37,7 @@ function lugaresService($http, $q) {
 
   this._searchByBeaconId = function (beaconId) {
     return service.lugares.find(function (lugar) {
-      return lugar.beaconId = beaconId
+      return (lugar.beaconId === beaconId)
     })
 
   }
