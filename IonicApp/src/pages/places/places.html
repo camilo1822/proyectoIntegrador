@@ -7,21 +7,24 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Places</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Lugares</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
   <ion-list>
-    <ion-item>
+    <ion-item *ngFor="let place of places | async">
       <ion-thumbnail item-start>
-        <img src="img/thumbnail-totoro.png">
+        <img [src]="place.imageUrl">
       </ion-thumbnail>
-      <h2>My Neighbor Totoro</h2>
-      <p>Hayao Miyazaki • 1988</p>
-      <button ion-button clear item-end>View</button>
+      <h2>{{place.name}}</h2>
+      <p text-wrap>{{place.type}}</p>
+      <button ion-button clear item-end (click)="goDetails(place)">Ver</button>
     </ion-item>
   </ion-list>
 </ion-content>
